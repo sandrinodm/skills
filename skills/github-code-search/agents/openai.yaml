@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Code Search"
+  short_description: "Search GitHub code examples with ghx."
+  default_prompt: "Use $github-code-search to find similar code examples on GitHub with the ghx CLI, checking gh and ghx installation first."

@@ -14,5 +14,6 @@ npx skills add sandrinodimattia/skills --skill <skill-name>
 
 | Skill | Description | Install |
 | --- | --- | --- |
+| [GitHub Code Search](./skills/github-code-search) | Search GitHub for similar code examples using the ghx CLI, with GitHub CLI authentication and npm install checks. | `npx skills add sandrinodimattia/skills --skill github-code-search` |
 | [Product Name Finder](./skills/product-name-finder) | Generate strategic company, product, platform, feature, and sub-brand names using a professional naming workflow inspired by David Placek's work at Lexicon Branding. | `npx skills add sandrinodimattia/skills --skill product-name-finder` |
 | [Vercel Domain Checker](./skills/vercel-domain-checker) | Check Vercel Domains availability and displayed annual prices from Codex using Browser Use. | `npx skills add sandrinodimattia/skills --skill vercel-domain-checker` |
