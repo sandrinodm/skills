@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vercel Domain Checker"
+  short_description: "Check Vercel domain availability in Codex."
+  default_prompt: "Use $vercel-domain-checker in Codex to check Vercel Domains availability and prices for these startup name candidates."

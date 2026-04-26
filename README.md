@@ -15,3 +15,4 @@ npx skills add sandrinodimattia/skills --skill <skill-name>
 | Skill | Description | Install |
 | --- | --- | --- |
 | [Product Name Finder](./skills/product-name-finder) | Generate strategic company, product, platform, feature, and sub-brand names using a professional naming workflow inspired by David Placek's work at Lexicon Branding. | `npx skills add sandrinodimattia/skills --skill product-name-finder` |
+| [Vercel Domain Checker](./skills/vercel-domain-checker) | Check Vercel Domains availability and displayed annual prices from Codex using Browser Use. | `npx skills add sandrinodimattia/skills --skill vercel-domain-checker` |
