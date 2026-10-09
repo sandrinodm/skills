@@ -2,44 +2,65 @@
 name: crisp-diagrams
 argument-hint: "[what the diagram should show, or leave empty to be asked]"
 description: >-
-  Draw clean, minimal explanatory diagrams as standalone SVG files: thin warm-gray outlines, one blue accent on the idea that matters, a title that states the takeaway, automatic dark mode, optional pastel, gradient or tinted-zone themes and line icons. Covers architecture and anatomy, system context, sequence and auth flows, process flows and swimlanes, event-driven systems, state machines, data models, decision trees, journey maps, service blueprints, timelines and git branch graphs, quadrants and Wardley maps, fishbone and causal loop diagrams, trees, matrices, pyramids, cycles, concentric rings, boards, infrastructure maps, annotated tokens and requests, byte layouts, and scenes with device mockups. Use it whenever the user asks for a diagram, figure, schematic, flowchart or "a visual" for docs, a README, notes, a blog post or slides, even without saying SVG; to redraw a diagram in this style; or to match brand colors from a logo or slide (saved in DIAGRAM.md). Not for data charts.
+  Draw clean, minimal explanatory diagrams as standalone SVG files: thin warm-gray outlines, one blue accent on the idea that matters, a title that states the takeaway, automatic dark mode, optional pastel, gradient or tinted-zone themes and line icons. Covers architecture and anatomy, system context, sequence and auth flows, process flows and swimlanes, event-driven systems, state machines, data models, decision trees, journey maps, service blueprints, timelines and git branch graphs, quadrants and Wardley maps, fishbone and causal loop diagrams, trees, matrices, pyramids, cycles, concentric rings, boards, infrastructure maps, annotated tokens and requests, byte layouts, and scenes with device mockups. Use it whenever the user asks for a diagram, figure, schematic, flowchart or "a visual" for docs, a README, notes, a blog post or slides, even without saying SVG; to redraw a diagram in this style; or to match brand colors from a logo or slide (saved in STYLE.md). Not for data charts.
 ---
 
 # Crisp diagrams
 
 These diagrams explain one idea at a glance. They look calm because almost everything is the same thin gray line and the same three type sizes, so the single accent and the title do all the talking. Keep that restraint: every rule below exists to protect it.
 
-What you deliver is a standalone `.svg` file that renders the same in a browser, in GitHub or a Markdown viewer, and as an `<img>`. It switches to dark mode by itself, with no colors hard-coded.
+What you deliver is a standalone `.svg` file that renders the same in a browser, in GitHub or a Markdown viewer, and as an `<img>`. It switches to dark mode by itself, with no colors hard-coded. It goes into the project's diagram library with a high-resolution PNG and the prompt that produced it, so anyone can find, reuse or redraw it.
 
 ## How to start
 
 - **With a request** (`/crisp-diagrams the OAuth device flow for our login docs`, or any message asking for a diagram): go straight to the workflow below. Ask only if something essential is missing, such as what the diagram is about.
 - **With no request** (just `/crisp-diagrams`): interview the user before drawing. One round with the AskUserQuestion tool (or a short numbered list if that tool isn't available):
   1. *What kind of diagram?* "How something is built (anatomy)", "A flow or sequence of steps", "A comparison", "A scene with devices (phones, screens, servers)".
-  2. *Where will it be used?* "Docs, README or notes" (quiet), "Slides" (pastel), "Product or marketing page" (gradient), "Architecture or security review" (zones). When a DIAGRAM.md exists, offer "Our brand style (DIAGRAM.md)" first, marked as recommended.
+  2. *Where will it be used?* "Docs, README or notes" (quiet), "Slides" (pastel), "Product or marketing page" (gradient), "Architecture or security review" (zones). When the library's STYLE.md sets a theme or a brand palette, offer "Our house style (STYLE.md)" first, marked as recommended.
   3. *How much detail?* "Simple, 4 to 6 boxes", "Detailed, up to 12", "You decide".
 
   Then ask in plain text: "What should it show? Name the parts or steps, how they connect, and the one thing a reader should remember." Turn the answer into a title and an outline, show them in two or three lines, and draw unless the user objects. Stop at these two rounds; more questions feel like a form.
-- **With an image of their brand** (a logo, a slide, a screenshot of their site): set up the visual identity first (next section), then draw.
+- **With an image of their brand** (a logo, a slide, a screenshot of their site): set up the visual identity first (Visual identity: STYLE.md, below), then draw.
 
-## Visual identity: DIAGRAM.md
+## Where diagrams go: the library
 
-Before drawing anything, look for `DIAGRAM.md` in the current directory and upward to the repository root. If it exists, it is the project's visual identity:
-- Restyle every diagram with it: `python3 <skill-dir>/scripts/theme.py diagram.svg --brand DIAGRAM.md` (or `--theme brand`, which finds the file).
-- Use its group colors for what it says they mean, and follow its project notes.
-- Don't edit it unless the user asks. The exception is the file you just created: write the preferences the user actually stated ("subtle", "customers are always coral") into its Project notes so the next diagram follows them. Rules you think would help but the user didn't state go in your reply as suggestions, not into the file.
+Every diagram lives in the project's diagram library, one folder per diagram:
 
-To create one from an image the user provides (logo, slide, website screenshot, a diagram they like):
-
-```bash
-python3 <skill-dir>/scripts/palette.py brand.png [slide.png] --out DIAGRAM.md --preview <scratch-dir>
+```
+diagrams/                  the library (or the folder the user picks, such as docs/diagrams)
+  STYLE.md                 the house style: a theme or brand palette, plus house rules
+  index.html               a gallery of every diagram, each viewable as SVG, PNG or prompt
+  device-flow/
+    device-flow.svg        the diagram
+    device-flow.png        a 3x light-mode PNG for slides and tools that can't show SVG
+    prompt.md              the request and the brief, so anyone can redraw or tweak it
 ```
 
-The script clusters the image's colors and picks the most prominent saturated one as the accent, darkening it only if it wouldn't read on white. It maps the other brand colors to group slots, derives quiet hues for empty slots, builds subtle light and dark shades, and writes `DIAGRAM.md` at the project root. The background always stays white: brand colors reach only the accent, the soft group fills and the lines.
+Find the library before drawing: `python3 <skill-dir>/scripts/library.py where` prints it. It's the folder of an existing STYLE.md this skill wrote, anywhere in the project, or `./diagrams` when there isn't one yet. If the user names a folder ("put them in docs/diagrams"), pass `--dir docs/diagrams` to `where`; once that folder has a STYLE.md, `where` finds it on its own, so later diagrams land there too. Don't move an existing library unless asked.
 
-The default treatment is `pastel`, which suits a request for "subtle" brand colors; `quiet` would hide the group colors entirely, and `gradient` is for polished product pages. The class names in DIAGRAM.md are slots, not literal colors (in a purple brand, `violet` might draw coral): pick them by the meaning DIAGRAM.md lists.
+Name each diagram with a short kebab-case slug (`device-flow`, `booking-erd`): the file name the user gave, without `.svg`, or 2–4 words from the topic. A bare file name ("save it as device-flow.svg") only names the diagram; a path with a folder in it ("save it to assets/hero.svg") also asks for a copy there (see Variations). If that folder already exists, overwrite it only when the user is revising that diagram; for a new one, pick another name.
 
-Then show the user `palette.light.png` and one example from the preview folder (Read the PNGs), say which brand color became the accent, and offer adjustments: a different accent (`--accent "#4b2bb3"`), another treatment (`--treatment gradient`), or a single color edited in DIAGRAM.md's css block. If a DIAGRAM.md already exists, show what would change and ask before replacing it (`--force`).
+## Visual identity: STYLE.md
+
+The library's `STYLE.md` is the project's visual identity, and every diagram follows it. Read it before drawing:
+- **Theme:** the stock theme every diagram gets (`quiet` until someone changes it), or `brand`, with a palette further down.
+- **Project notes:** house rules the user stated ("customers are always teal"). Follow them, and use group colors for what the notes say they mean.
+
+Apply it to each diagram with `python3 <skill-dir>/scripts/theme.py diagram.svg --style`, which reads the library's STYLE.md and applies its stock theme or brand palette (skip it when the theme is `quiet`: the template already is).
+
+`library.py publish` creates a plain STYLE.md (the quiet theme, no notes) with the first diagram. After that, update it when the user gives style advice about the project's diagrams in general ("use pastel from now on", "make them more colorful", "customers should always be coral"): change the **Theme:** line or add a line under Project notes, and tell the user what changed. A request about one diagram ("this one is for a slide, make it pastel") restyles only that diagram; mention that it can become the default. Write down only preferences the user actually stated. Rules you think would help go in your reply as suggestions, not into the file.
+
+To add brand colors from an image the user provides (logo, slide, website screenshot, a diagram they like):
+
+```bash
+python3 <skill-dir>/scripts/palette.py brand.png [slide.png] --preview <scratch-dir>
+```
+
+The script clusters the image's colors and picks the most prominent saturated one as the accent, darkening it only if it wouldn't read on white. It maps the other brand colors to group slots, derives quiet hues for empty slots, builds subtle light and dark shades, and writes them into the library's STYLE.md (`--out` to write elsewhere). It upgrades a plain STYLE.md in place and keeps its Project notes. The background always stays white: brand colors reach only the accent, the soft group fills and the lines.
+
+The default treatment is `pastel`, which suits a request for "subtle" brand colors; `quiet` would hide the group colors entirely, and `gradient` is for polished product pages. The class names in STYLE.md are slots, not literal colors (in a purple brand, `violet` might draw coral): pick them by the meaning STYLE.md lists.
+
+Then show the user `palette.light.png` and one example from the preview folder (Read the PNGs), say which brand color became the accent, and offer adjustments: a different accent (`--accent "#4b2bb3"`), another treatment (`--treatment gradient`), or a single color edited in STYLE.md's css block. If STYLE.md already has a brand palette, show what would change and ask before replacing it (`--force`); the Project notes survive either way.
 
 ## Workflow
 
@@ -48,7 +69,7 @@ Then show the user `palette.light.png` and one example from the preview folder (
 - **Title = the takeaway**, written as a sentence a reader could repeat: "A smart speaker listens on the device, and audio leaves only after the wake word", not "Smart speaker architecture". It sits top-left and tells the reader what to see.
 - **Subtitle = the scope**: what is being shown ("How a work agent gets a token for a SaaS app, step by step").
 - **The one key element**: the mechanism, step or layer the diagram exists to show (the guard, the policy check, the shared identity layer). It gets the accent. If you can't name it, the diagram doesn't have a point yet.
-- **List the content**: nodes (names of 2–4 words), at most two short note lines each, and arrows labelled with what moves along them. Aim for 12 boxes or fewer. If it won't fit, split it into two diagrams rather than shrinking things.
+- **List the content**: nodes (names of 2–4 words), at most two short note lines each, and arrows labelled with what moves along them. Aim for 12 boxes or fewer. If it won't fit, split it into two diagrams rather than shrinking things. Draw what the user described: a part or lane they didn't mention (a payments service, a database) needs a reason, and your reply should say you added it.
 
 ### 2. Pick a pattern
 
@@ -127,13 +148,38 @@ The checker uses headless Chrome to measure every label as the browser draws it.
 
 Then open both PNGs (`<name>.light.png`, `<name>.dark.png`) with the Read tool and look at them as a reader would. The checker can't judge these: are columns aligned and gaps equal? Do arrows start and end on box edges? Is there a lopsided empty area? Does the accent land on the thing the title talks about? Fix and re-check. Write the previews to a scratch directory, not next to the deliverable.
 
-### 5. Deliver
+### 5. Save it to the library
 
-If the project has a DIAGRAM.md, make sure the delivered file was restyled with `--brand` (and re-run the checker after theming). Save the `.svg` where it belongs. Next to the document it illustrates (for example `diagrams/<short-name>.svg`) is usually right. Give the user the path and an embed line: `![<title>](diagrams/<short-name>.svg)` for Markdown, or `<img src="…" alt="<title>">` for HTML.
+1. Put the final SVG at `<library>/<name>/<name>.svg`, restyled with `theme.py --style` when STYLE.md sets anything other than `quiet` (re-run the checker after theming).
+2. Write `<library>/<name>/prompt.md`, so the diagram can be redrawn later or adapted by someone else:
+
+   ```markdown
+   # <the title>
+
+   ## Request
+
+   <the user's words, verbatim. For a revision, the original request, then each change they asked for.>
+
+   ## Brief
+
+   Title: <the takeaway>
+   Subtitle: <the scope>
+   Pattern: <Anatomy, Sequence, Flow, …>
+   Theme: <from STYLE.md, or the one-off theme>
+   Accent: <the one key element>
+
+   - <each node, as "Name: note">
+   - <each arrow, as "From → To: label">
+
+   Layout: <the grid in a line or two: columns, rows, where the accent sits>
+   ```
+
+3. Run `python3 <skill-dir>/scripts/library.py publish <library>/<name>/<name>.svg`. It renders `<name>.png` at 3x in light mode, creates STYLE.md if this is the library's first diagram, and rebuilds `<library>/index.html`. Add `--dark` for a dark-mode PNG as well.
+4. Tell the user where it is and give an embed line: `![<title>](<library>/<name>/<name>.svg)` for Markdown, or `<img src="…" alt="<title>">` for HTML. Mention that `<library>/index.html` shows every diagram, and say so when STYLE.md was just created or changed.
 
 ## Themes: when the user wants more color
 
-The default theme is `quiet`: use it unless the user asks for color or the project's DIAGRAM.md says otherwise (a word like "explainer" or "slide" alone isn't a request for color). When the user asks for color (pastel, gradients, "more colorful", "for a slide" or "for the product page"), write the diagram exactly as usual, with groups marked, then restyle it:
+The default theme is `quiet`: use it unless the user asks for color or STYLE.md says otherwise (a word like "explainer" or "slide" alone isn't a request for color). When the user asks for color (pastel, gradients, "more colorful", "for a slide" or "for the product page"), write the diagram exactly as usual, with groups marked, then restyle it:
 
 ```bash
 python3 <skill-dir>/scripts/theme.py diagram.svg --theme pastel        # in place, or -o out.svg
@@ -147,7 +193,7 @@ python3 <skill-dir>/scripts/theme.py diagram.svg --all <scratch-dir>   # every t
 | `gradient` | light top-to-bottom gradients in boxes | product pages, polished decks |
 | `zones` | pastel washes on areas, white boxes inside | showing which parts belong where (inside vs outside, teams, trust zones) |
 
-If the user isn't sure, run `--all` and show them the PNG previews of each, or pick `pastel`. A project with a DIAGRAM.md uses `--brand DIAGRAM.md` instead of a stock theme; `--brand DIAGRAM.md --all <dir>` shows its palette in every treatment. Colorful themes keep everything else: same layout, same type, automatic dark mode, and still one blue `key`. That's why the groups avoid `blue`: in a colorful theme, blue fills next to the key would drown the accent. Use the other five hues first.
+If the user isn't sure, run `--all` and show them the PNG previews of each, or pick `pastel`. When the request is about the project's diagrams in general ("from now on", "all our diagrams"), set the theme in STYLE.md and apply it with `--style`. A brand palette in STYLE.md replaces the stock themes: `--style` applies it, and `--brand <library>/STYLE.md --all <dir>` shows it in every treatment. Colorful themes keep everything else: same layout, same type, automatic dark mode, and still one blue `key`. That's why the groups avoid `blue`: in a colorful theme, blue fills next to the key would drown the accent. Use the other five hues first.
 
 Color in these themes means "belongs to this group", never decoration. Use two or three group hues per diagram, four at most, not counting the blue accent. Text stays ink and gray, never colored. Don't hand-edit colors or write your own gradients: the theme defines them for both light and dark mode, and the checker rejects anything else.
 
@@ -158,7 +204,7 @@ Color in these themes means "belongs to this group", never decoration. Use two o
 - **Gray wash for supporting detail.** `chip` for concrete names (MCP, OAuth, Slack), and `callout` for a closing takeaway. They read as "examples" or "aside" without adding a color.
 - **Three sizes, two weights.** 15 for the title, 13 for names and labels, 11.5 for notes (plus 10, only inside device screens and code chips). Semibold only for title and names. Hierarchy comes from size, weight and gray, not color.
 - **Plain words in sentence case.** Labels are short phrases with no final period. Notes say what a part does ("Runs jobs on a timer or when something changes"), not what it's called again. Use jargon only where the reader would use it.
-- **Arrows only where something moves.** They are thin, gray, orthogonal (no diagonals or curves, except where a pattern needs them: causal loop links, a journey map's feeling line, Wardley dependencies) and have a small solid head. Label them with what moves, in `note`, 8px from the line. Leave arrows unlabelled when the boxes already make it obvious.
+- **Arrows only where something moves.** They are thin, gray, orthogonal (no diagonals or curves, except where a pattern needs them: causal loop links, a journey map's feeling line, Wardley dependencies) and have a small solid head. Label them with what moves, in `note`, 8px from the line. Leave arrows unlabelled when the boxes already make it obvious, with one exception: every branch out of a decision or check carries its condition ("under €50", "€50 or more", "otherwise") as a `note` on or beside that arrow, because the branch is the point. A condition written only inside the box the arrow leads to doesn't count: the reader looks for it where the path splits.
 - **Aligned and evenly spaced.** Use a 24 outer margin, 16 between siblings and 12 inner padding, and share columns and rows. Uneven gaps are the most visible flaw in a sparse diagram.
 - **Nothing decorative.** No emoji, shadows, 3D, legends or hand-drawn pictograms. The device mockups and the icon set in `references/visuals.md` are the exception because they carry meaning (this is the person's phone, this box is the vault) and share the line style: one icon per box at most, never in place of its name. Gradients and fills come only from a theme. If a category matters, mark it as a group (the colorful themes show it) and say it in words or with a labelled container.
 - **Never hard-code a color.** Use only the theme's classes or `var(--token)`. Hard-coded colors break dark mode.
@@ -170,5 +216,6 @@ SVG never wraps text, so you break lines yourself: one `<text>` per line, 16 apa
 ## Variations
 
 - **Inline in an HTML page** instead of a separate file: paste the `<svg>` as is. If the page has its own dark-mode toggle (a class such as `.dark`), add that selector to the theme's dark block, for example `@media (prefers-color-scheme:dark){svg{…}} .dark svg{…same values…}`. Keep marker ids unique per diagram on a page.
-- **A user asks for their brand colors** without an image: `palette.py --accent "#hex" --out DIAGRAM.md` builds the same subtle palette from a single color. With an image, use the visual identity flow above.
+- **A user asks for their brand colors** without an image: `palette.py --accent "#hex"` builds the same subtle palette from a single color, in the library's STYLE.md. With an image, use the visual identity flow above.
+- **A user asks for the file somewhere specific** (`save it to assets/hero.svg`): save it to the library as usual, then copy the SVG (or the PNG) to that path too, and name both locations.
 - **Redrawing an existing diagram** (a whiteboard photo, Mermaid or a busy figure): extract the takeaway and the nodes first, then rebuild with a pattern. Don't trace the original layout.

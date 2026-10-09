@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Turn a brand image (logo, slide, screenshot) into a subtle diagram palette in DIAGRAM.md.
+"""Turn a brand image (logo, slide, screenshot) into a subtle diagram palette in the library's STYLE.md.
 
-usage: python3 palette.py brand.png [more.png ...] [--out DIAGRAM.md] [--treatment pastel]
+usage: python3 palette.py brand.png [more.png ...] [--out STYLE.md] [--treatment pastel]
                           [--accent "#5b3cc4"] [--preview DIR] [--force]
 
 What it does:
@@ -11,8 +11,11 @@ What it does:
      the accent (analogous and complementary), so the set stays on-brand.
   3. Turns them into subtle shades: very light fills, soft lines, a dark-mode version of
      everything, contrast-checked text and accent. The background stays white.
-  4. Writes DIAGRAM.md (palette tables + the exact tokens) for theme.py --brand to apply,
+  4. Writes STYLE.md (palette tables + the exact tokens) for theme.py --style to apply,
      and with --preview renders swatches and example diagrams in the new palette.
+     The default --out is the library's STYLE.md (see library.py). A plain STYLE.md (a stock
+     theme, no palette yet) is upgraded in place; an existing palette needs --force. Either
+     way the "Project notes" section is kept.
 
 Reads images with Pillow if installed, else ImageMagick (magick/convert), else macOS sips.
 """
@@ -341,9 +344,12 @@ def tokens_css(p):
 def diagram_md(p, colors):
     acc = p["light"]["--accent"]
     prim = p["primary"]
-    lines = ["# Diagram style", "",
-             "Diagrams in this project use the crisp-diagrams skill with the palette below, so they read as one family. "
-             "The skill looks for this file before drawing and applies it with `theme.py --brand DIAGRAM.md`.", "",
+    sys.path.insert(0, HERE)
+    import library
+    lines = ["# Diagram style", "", library.MARKER,
+             "Every diagram in this folder is drawn with the crisp-diagrams skill and the brand palette below, so they read as one family. "
+             "The skill reads this file before drawing and applies it with `theme.py --style`.", "",
+             "- **Theme:** brand",
              "- **Treatment:** %s" % p["treatment"],
              "- **Background:** always white (#ffffff) in light mode. Brand colors go into the accent, the group fills and the lines, never the canvas.",
              "- **Accent:** %s, from the brand color %s%s. It marks one thing per diagram." % (
@@ -406,20 +412,33 @@ def swatch_svg(p):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("images", nargs="*", help="logo, slide or screenshot with the brand's colors")
-    ap.add_argument("--out", default="DIAGRAM.md")
+    ap.add_argument("--out", help="where to write the palette (default: the library's STYLE.md)")
     ap.add_argument("--treatment", default="pastel", choices=["quiet", "pastel", "gradient", "zones"])
     ap.add_argument("--accent", help="force the accent (hex), e.g. when the image's main color isn't the one you want")
     ap.add_argument("--preview", metavar="DIR", help="render swatches and example diagrams in the new palette")
-    ap.add_argument("--force", action="store_true", help="overwrite an existing DIAGRAM.md")
+    ap.add_argument("--force", action="store_true", help="replace an existing brand palette in STYLE.md")
     args = ap.parse_args()
     if not args.images and not args.accent:
         ap.error("give at least one image, or --accent")
-    if os.path.exists(args.out) and not args.force:
-        sys.exit("%s already exists. Show the user what would change, then rerun with --force to replace it." % args.out)
+    if not args.out:
+        sys.path.insert(0, HERE)
+        import library
+        args.out = os.path.join(library.resolve(), "STYLE.md")
+    notes = None
+    if os.path.exists(args.out):
+        old = open(args.out, encoding="utf-8").read()
+        if re.search(r"```css\s*svg\{", old) and not args.force:
+            sys.exit("%s already has a brand palette. Show the user what would change, then rerun with --force to replace it." % args.out)
+        m = re.search(r"^## Project notes\n.*", old, re.S | re.M)
+        notes = m.group(0) if m else None
     colors, _ = brand_colors(args.images) if args.images else ([], [])
     primary, secondaries = pick(colors, args.accent)
     p = build(primary, secondaries, args.treatment, args.images)
-    open(args.out, "w").write(diagram_md(p, colors))
+    md = diagram_md(p, colors)
+    if notes:
+        md = re.sub(r"^## Project notes\n.*", lambda _: notes, md, count=1, flags=re.S | re.M)
+    os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
+    open(args.out, "w", encoding="utf-8").write(md if md.endswith("\n") else md + "\n")
     print("wrote %s" % args.out)
     print("accent %s (from %s)" % (p["light"]["--accent"], primary["hex"]))
     for c in colors[:6]:

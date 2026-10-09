@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Restyle a crisp-diagrams SVG with another theme or with the project's brand palette.
 
-usage: python3 theme.py diagram.svg --theme pastel [-o out.svg]
-       python3 theme.py diagram.svg --brand DIAGRAM.md [--treatment gradient] [-o out.svg]
-       python3 theme.py diagram.svg --theme brand          # finds DIAGRAM.md from here up to the repo root
+usage: python3 theme.py diagram.svg --style [STYLE.md]   # apply the project's style (finds the library's STYLE.md)
+       python3 theme.py diagram.svg --theme pastel [-o out.svg]
+       python3 theme.py diagram.svg --brand STYLE.md [--treatment gradient] [-o out.svg]
        python3 theme.py diagram.svg --all OUT_DIR          # every stock theme, or every treatment with --brand
 
-Stock themes live in ../assets/themes/<name>.css. A brand palette comes from the ```css token
-block in DIAGRAM.md (written by palette.py): the tokens replace the stock ones, and the
-treatment (quiet, pastel, gradient, zones) decides how boxes use them. The script swaps the
+Stock themes live in ../assets/themes/<name>.css. STYLE.md names a stock theme (**Theme:** pastel), or
+holds a brand palette as a ```css token block written by palette.py: the tokens replace the stock ones,
+and the treatment (quiet, pastel, gradient, zones) decides how boxes use them. The script swaps the
 <style> block and adds or removes the gradient definitions; geometry and text are untouched.
 """
 import argparse
@@ -26,17 +26,22 @@ def themes():
     return sorted(f[:-4] for f in os.listdir(THEMES_DIR) if f.endswith(".css"))
 
 
-def find_diagram_md(start=None):
-    d = os.path.abspath(start or os.getcwd())
-    if os.path.isfile(d):
-        d = os.path.dirname(d)
-    while True:
-        p = os.path.join(d, "DIAGRAM.md")
-        if os.path.exists(p):
-            return p
-        if os.path.exists(os.path.join(d, ".git")) or os.path.dirname(d) == d:
-            return None
-        d = os.path.dirname(d)
+def find_style_md():
+    """The library's STYLE.md (see library.py), or None."""
+    sys.path.insert(0, HERE)
+    import library
+    lib = library.find_library()
+    return os.path.join(lib, "STYLE.md") if lib else None
+
+
+def style_of(md_path):
+    """('brand', treatment) when STYLE.md holds a palette, else (stock theme, None)."""
+    s = open(md_path, encoding="utf-8").read()
+    if re.search(r"```css\s*svg\{", s):
+        return "brand", None
+    t = re.search(r"\*\*Theme:\*\*\s*([a-z]+)", s)
+    theme = t.group(1) if t else "quiet"
+    return (theme if theme in themes() else "quiet"), None
 
 
 def read_brand(md_path):
@@ -51,7 +56,7 @@ def read_brand(md_path):
 def stock_css(theme):
     path = os.path.join(THEMES_DIR, theme + ".css")
     if not os.path.exists(path):
-        sys.exit("unknown theme %r; choose from %s, or use --brand" % (theme, ", ".join(themes())))
+        sys.exit("unknown theme %r; choose from %s, or use --brand STYLE.md" % (theme, ", ".join(themes())))
     return open(path).read().strip()
 
 
@@ -62,7 +67,7 @@ def brand_css(md_path, treatment=None):
     base = re.sub(r"^svg\{[^}]*\}\n?", "", base, count=1, flags=re.M)
     base = re.sub(r"@media \(prefers-color-scheme:dark\)\{svg\{[^}]*\}\}\n?", "", base, count=1)
     head, _, rest = base.partition("\n")
-    comment = "/* crisp-diagrams brand palette from DIAGRAM.md, %s treatment */" % treatment
+    comment = "/* crisp-diagrams brand palette from STYLE.md, %s treatment */" % treatment
     return comment + "\n" + tokens + "\n" + (rest if head.startswith("/*") else base), treatment
 
 
@@ -93,17 +98,28 @@ def apply_brand(svg, md_path, treatment=None):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("svg")
-    ap.add_argument("--theme", help="one of: %s, or 'brand' to use the nearest DIAGRAM.md" % ", ".join(themes()))
-    ap.add_argument("--brand", metavar="DIAGRAM.md", help="apply the palette from this DIAGRAM.md")
-    ap.add_argument("--treatment", choices=TREATMENTS, help="with --brand: override the treatment named in DIAGRAM.md")
+    ap.add_argument("--style", nargs="?", const="auto", metavar="STYLE.md",
+                    help="apply whatever STYLE.md says (a stock theme or a brand palette); without a path, use the library's")
+    ap.add_argument("--theme", help="one of: %s, or 'brand' to use the library's STYLE.md palette" % ", ".join(themes()))
+    ap.add_argument("--brand", metavar="STYLE.md", help="apply the palette from this STYLE.md")
+    ap.add_argument("--treatment", choices=TREATMENTS, help="with --brand: override the treatment named in STYLE.md")
     ap.add_argument("-o", "--out", help="output path (default: overwrite the input)")
     ap.add_argument("--all", metavar="OUT_DIR", help="write every stock theme (or, with --brand, every treatment) into OUT_DIR")
     args = ap.parse_args()
     brand = args.brand
-    if args.theme == "brand":
-        brand = find_diagram_md(args.svg) or find_diagram_md()
-        if not brand:
-            sys.exit("no DIAGRAM.md found from here up to the repo root; create one with palette.py")
+    if args.style:
+        path = find_style_md() if args.style == "auto" else args.style
+        if not path or not os.path.exists(path):
+            sys.exit("no STYLE.md found: the library creates one when the first diagram is published (library.py publish)")
+        kind, _ = style_of(path)
+        if kind == "brand":
+            brand = path
+        else:
+            args.theme = kind
+    elif args.theme == "brand":
+        brand = find_style_md()
+        if not brand or style_of(brand)[0] != "brand":
+            sys.exit("no brand palette in the library's STYLE.md; create one with palette.py")
     src = open(args.svg, encoding="utf-8").read()
     stem = os.path.splitext(os.path.basename(args.svg))[0]
     if args.all:
@@ -114,7 +130,7 @@ def main():
             print(out)
         return
     if not brand and not args.theme:
-        ap.error("pass --theme, --brand or --all")
+        ap.error("pass --style, --theme, --brand or --all")
     out = args.out or args.svg
     open(out, "w", encoding="utf-8").write(apply_brand(src, brand, args.treatment) if brand else apply(src, args.theme))
     print(out)
