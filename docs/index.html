@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sandrino's Skills</title>
+<meta name="description" content="Agent skills for Codex, Claude Code, and other agents that read SKILL.md files. Each one installs with a single command.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='3' width='22' height='26' rx='3' fill='none' stroke='%23898781' stroke-width='2'/%3E%3Crect x='9' y='15' width='14' height='9' rx='2' fill='%23e6eefa' stroke='%232a78d6' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Palette and type follow the crisp-diagrams site: paper, white plates, thin lines, one blue accent. */
+:root {
+  color-scheme: light;
+  --paper: #f3f3ef;
+  --plate: #ffffff;
+  --ink: #17171a;
+  --muted: #5c5b56;
+  --line: #e2e0d8;
+  --edge: #c3c2b7;
+  --accent: #2a78d6;
+  --accent-wash: #e6eefa;
+  --code-bg: #f8f8f5;
+  --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #161615;
+    --plate: #1f1e1d;
+    --ink: #ecebe6;
+    --muted: #a3a29b;
+    --line: #2f2e2b;
+    --edge: #4a4944;
+    --accent: #5b9cec;
+    --accent-wash: #1d2a3b;
+    --code-bg: #191918;
+  }
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 var(--sans); -webkit-text-size-adjust: 100%; }
+button { font: inherit; color: inherit; }
+a { color: inherit; text-underline-offset: 3px; }
+button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+.page { max-width: 880px; margin: 0 auto; padding: 0 16px 56px; }
+
+/* Top bar */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.brand svg { flex: none; }
+.link { font: 400 12px/1 var(--mono); color: var(--muted); text-decoration: none; }
+.link::after { content: " \2197"; }
+.link:hover { color: var(--accent); text-decoration: underline; }
+
+/* Hero */
+.hero { padding: 56px 0 0; }
+h1 { max-width: 24ch; margin: 0; font-size: clamp(26px, 4vw, 34px); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; }
+.lede { max-width: 58ch; margin: 12px 0 0; color: var(--muted); font-size: 16px; }
+.lede code { font: 400 14px/1 var(--mono); color: var(--ink); }
+.command { margin: 28px 0 0; padding: 14px 18px; background: var(--plate); border: 1px solid var(--line); border-radius: 12px;
+  font: 400 clamp(14px, 1.9vw, 17px)/2 var(--mono); }
+.command .sign { margin-right: .6ch; color: var(--muted); user-select: none; }
+.command .token { white-space: nowrap; }
+.slot { display: inline-block; padding: 0 8px; border-radius: 6px; background: var(--accent-wash); box-shadow: inset 0 0 0 1px var(--accent);
+  font-weight: 500; line-height: 1.75; white-space: nowrap; }
+.slot.swap { animation: swap .22s ease both; }
+@keyframes swap { from { opacity: 0; transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .slot.swap { animation: none; } }
+
+/* Skill cards */
+.catalog { margin-top: 56px; }
+.label { margin: 0 0 12px; font: 500 11px/1 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.card { min-width: 0; overflow: hidden; background: var(--plate); border: 1px solid var(--line); border-radius: 12px; }
+.card-body { padding: 18px 16px 16px; }
+.card h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
+.card-body p { max-width: 68ch; margin: 6px 0 0; }
+.plate { display: block; padding: 16px 16px 8px; border-top: 1px solid var(--line); }
+/* Every example sits in a box as tall as the tallest one, so the card never changes height as they rotate. */
+.stage { position: relative; display: block; max-width: 680px; margin: 0 auto; aspect-ratio: 760 / 516; }
+.stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: top; opacity: 0; transition: opacity .4s ease; }
+.stage img.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .stage img { transition: none; } }
+.explore { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 10px 16px 14px; color: var(--muted); font-size: 13px; }
+.go { color: var(--accent); font-weight: 500; text-decoration: none; }
+.go::after { content: " \2192"; }
+.go:hover { text-decoration: underline; }
+.install { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 16px; border-top: 1px solid var(--line); }
+.cmd-row { display: flex; flex: 1 1 360px; gap: 8px; min-width: 0; }
+.cmd { flex: 1; min-width: 0; padding: 7px 10px; overflow-x: auto; white-space: nowrap; scrollbar-width: thin;
+  font: 400 12.5px/1.4 var(--mono); background: var(--code-bg); border: 1px solid var(--line); border-radius: 6px; }
+.copy { flex: none; padding: 4px 12px; background: var(--plate); border: 1px solid var(--line); border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; }
+.copy:hover { border-color: var(--edge); }
+.copy.done { border-color: var(--accent); color: var(--accent); }
+.prompt { border-top: 1px solid var(--line); }
+.prompt summary { display: flex; align-items: center; gap: 10px; padding: 10px 16px; cursor: pointer; list-style: none; }
+.prompt summary::-webkit-details-marker { display: none; }
+.prompt summary::before { content: ""; flex: none; width: 6px; height: 6px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted);
+  transform: rotate(-45deg); transition: transform .15s ease; }
+.prompt[open] summary::before { transform: rotate(45deg); }
+.prompt summary:hover .pt { color: var(--accent); }
+.pt { flex: none; font-size: 13px; font-weight: 600; }
+.ph { flex: 1; min-width: 0; overflow: hidden; color: var(--muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.prompt[open] .ph { visibility: hidden; }
+.prompt p { margin: 0 16px 16px; padding: 12px 14px; font: 400 12px/1.55 var(--mono); background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px; }
+
+footer { max-width: 72ch; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+footer code { font: 400 12px/1 var(--mono); }
+footer a:hover { color: var(--accent); }
+
+@media (min-width: 720px) {
+  .page { padding: 0 32px 72px; }
+}
+/* On phones the command wraps; give the skill name its own line so cycling names never reflow the page. */
+@media (max-width: 719px) {
+  .slot { display: table; margin-top: 6px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <span class="brand">
+      <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="3" width="22" height="26" rx="3" fill="none" stroke="var(--edge)" stroke-width="2"/><rect x="9" y="15" width="14" height="9" rx="2" fill="var(--accent-wash)" stroke="var(--accent)" stroke-width="2"/></svg>
+      Sandrino's skills
+    </span>
+    <a class="link" href="https://github.com/sandrinodm/skills">sandrinodm/skills</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Skills for Codex, Claude Code, and other agents</h1>
+      <p class="lede">Each one is a <code>SKILL.md</code> file your agent reads when a task calls for it. Install any of them with one command.</p>
+      <p class="command">
+        <span class="sign" aria-hidden="true">$</span><span class="token">pnpx</span> <span class="token">skills</span> <span class="token">add</span> <span class="token">sandrinodm/skills</span> <span class="token">--skill</span>
+        <span class="sr-only">&lt;skill-name&gt;</span><span class="slot" id="slot" aria-hidden="true">android-apk-decompilation</span>
+      </p>
+    </section>
+
+    <section class="catalog" aria-labelledby="catalog-label">
+      <h2 class="label" id="catalog-label">Skills</h2>
+      <!-- One card per skill. The card id is the skill's folder name; the hero command cycles through them. -->
+      <ul class="cards">
+        <li class="card" id="android-apk-decompilation">
+          <div class="card-body">
+            <h3>Android APK Decompilation</h3>
+            <p>Acquire, verify, sandbox, and decompile Android APK/APKM/XAPK/APKS artifacts with Dockerized ADB, JADX, apktool, and apksigner.</p>
+          </div>
+          <div class="install">
+            <div class="cmd-row">
+              <code class="cmd">pnpx skills add sandrinodm/skills --skill android-apk-decompilation</code>
+              <button class="copy" type="button"><span class="copy-label">Copy</span><span class="sr-only"> install command for Android APK Decompilation</span></button>
+            </div>
+            <a class="link" href="https://github.com/sandrinodm/skills/blob/main/skills/android-apk-decompilation/SKILL.md">SKILL.md</a>
+          </div>
+          <details class="prompt">
+            <summary><span class="pt">Agent description</span><span class="ph" aria-hidden="true"></span></summary>
+            <p>Use when working with Android APK, APKM, XAPK, or APKS files; pulling installed packages with adb; verifying Android app signatures; sandboxing jadx, apktool, apksigner, and Android platform-tools in Docker; decompiling apps; or extracting static API evidence from authorized Android apps.</p>
+          </details>
+        </li>
+        <li class="card" id="crisp-diagrams">
+          <div class="card-body">
+            <h3>Crisp Diagrams</h3>
+            <p>Draw clean, minimal explanatory diagrams as standalone SVG files: thin outlines, one blue accent on the idea that matters, a title that states the takeaway, and automatic dark mode.</p>
+          </div>
+          <!-- Five example diagrams, shown one at a time in a random order. -->
+          <a class="plate" href="crisp-diagrams/" tabindex="-1" aria-hidden="true">
+            <span class="stage">
+              <img class="on" src="crisp-diagrams/svg/rings-defense-in-depth.svg" width="760" height="472" alt="An attacker has to get through five layers to reach the customer data" loading="lazy">
+              <img src="crisp-diagrams/svg/swimlane-onboarding.svg" width="760" height="464" alt="A new hire's first day works because HR, IT and the manager each act in order" loading="lazy">
+              <img src="crisp-diagrams/svg/quadrant-risks.svg" width="760" height="516" alt="Fix the risks that are both likely and damaging before anything else" loading="lazy">
+              <img src="crisp-diagrams/svg/consent-screen.svg" width="760" height="448" alt="On the consent screen, the person decides exactly what the app may do" loading="lazy">
+              <img src="crisp-diagrams/svg/webhook-signature.svg" width="760" height="440" alt="Trust a webhook only after checking its signature and its age" loading="lazy">
+            </span>
+          </a>
+          <div class="explore">
+            <span>Examples from 227 diagrams drawn with this skill</span>
+            <a class="go" href="crisp-diagrams/">Open the diagram explorer</a>
+          </div>
+          <div class="install">
+            <div class="cmd-row">
+              <code class="cmd">pnpx skills add sandrinodm/skills --skill crisp-diagrams</code>
+              <button class="copy" type="button"><span class="copy-label">Copy</span><span class="sr-only"> install command for Crisp Diagrams</span></button>
+            </div>
+            <a class="link" href="https://github.com/sandrinodm/skills/blob/main/skills/crisp-diagrams/SKILL.md">SKILL.md</a>
+          </div>
+          <details class="prompt">
+            <summary><span class="pt">Agent description</span><span class="ph" aria-hidden="true"></span></summary>
+            <p>Draw clean, minimal explanatory diagrams as standalone SVG files: thin warm-gray outlines, one blue accent on the idea that matters, a title that states the takeaway, automatic dark mode, optional pastel, gradient or tinted-zone themes and line icons. Covers architecture and anatomy, system context, sequence and auth flows, process flows and swimlanes, event-driven systems, state machines, data models, decision trees, journey maps, service blueprints, timelines and git branch graphs, quadrants and Wardley maps, fishbone and causal loop diagrams, trees, matrices, pyramids, cycles, concentric rings, boards, infrastructure maps, annotated tokens and requests, byte layouts, and scenes with device mockups. Use it whenever the user asks for a diagram, figure, schematic, flowchart or "a visual" for docs, a README, notes, a blog post or slides, even without saying SVG; to redraw a diagram in this style; or to match brand colors from a logo or slide (saved in DIAGRAM.md). Not for data charts.</p>
+          </details>
+        </li>
+        <li class="card" id="github-code-search">
+          <div class="card-body">
+            <h3>GitHub Code Search</h3>
+            <p>Search GitHub for similar code examples using the ghx CLI, with GitHub CLI authentication and npm install checks.</p>
+          </div>
+          <div class="install">
+            <div class="cmd-row">
+              <code class="cmd">pnpx skills add sandrinodm/skills --skill github-code-search</code>
+              <button class="copy" type="button"><span class="copy-label">Copy</span><span class="sr-only"> install command for GitHub Code Search</span></button>
+            </div>
+            <a class="link" href="https://github.com/sandrinodm/skills/blob/main/skills/github-code-search/SKILL.md">SKILL.md</a>
+          </div>
+          <details class="prompt">
+            <summary><span class="pt">Agent description</span><span class="ph" aria-hidden="true"></span></summary>
+            <p>Use the ghx CLI to search GitHub for similar code examples, implementation patterns, APIs, configuration snippets, and real-world usage before or during coding work. Use when the user asks to find examples on GitHub, compare how other projects implement something, inspect open-source usage of a library or API, or research code patterns with ghx.</p>
+          </details>
+        </li>
+        <li class="card" id="product-name-finder">
+          <div class="card-body">
+            <h3>Product Name Finder</h3>
+            <p>Generate strategic company, product, platform, feature, and sub-brand names using a professional naming workflow inspired by David Placek's work at Lexicon Branding.</p>
+          </div>
+          <div class="install">
+            <div class="cmd-row">
+              <code class="cmd">pnpx skills add sandrinodm/skills --skill product-name-finder</code>
+              <button class="copy" type="button"><span class="copy-label">Copy</span><span class="sr-only"> install command for Product Name Finder</span></button>
+            </div>
+            <a class="link" href="https://github.com/sandrinodm/skills/blob/main/skills/product-name-finder/SKILL.md">SKILL.md</a>
+          </div>
+          <details class="prompt">
+            <summary><span class="pt">Agent description</span><span class="ph" aria-hidden="true"></span></summary>
+            <p>Generate strong, scalable company, product, platform, feature, sub-brand, or rename candidates using a professional naming workflow. Use when the user asks to name or rename a startup, company, product, app, AI product, platform, feature, service, brand architecture element, or when they request naming territories, raw name candidates, scored shortlists, naming rationale, product-name brainstorming, or final naming recommendations.</p>
+          </details>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>Installs use the <a href="https://skills.sh">skills.sh</a> CLI. Each card links to the skill's own <code>SKILL.md</code> on GitHub.</footer>
+</div>
+
+<p class="sr-only" id="copy-status" aria-live="polite"></p>
+
+<script>
+  // The closed description shows a one-line preview of the full text below it.
+  document.querySelectorAll('.prompt').forEach((details) => {
+    details.querySelector('.ph').textContent = details.querySelector('p').textContent;
+  });
+
+  const slugs = [...document.querySelectorAll('.card')].map((card) => card.id);
+  const slot = document.getElementById('slot');
+  if (slugs.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let current = 0;
+    setInterval(() => {
+      current = (current + 1) % slugs.length;
+      slot.textContent = slugs[current];
+      slot.classList.remove('swap');
+      void slot.offsetWidth;
+      slot.classList.add('swap');
+    }, 2800);
+  }
+
+  // Rotate the example diagrams in a shuffled order, pausing while the pointer is over them.
+  const examples = [...document.querySelectorAll('.stage img')];
+  if (examples.length) {
+    const order = examples.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    let step = 0;
+    let paused = false;
+    const showExample = () => examples.forEach((img, i) => img.classList.toggle('on', i === order[step]));
+    showExample();
+    const plate = examples[0].closest('.plate');
+    plate.addEventListener('mouseenter', () => { paused = true; });
+    plate.addEventListener('mouseleave', () => { paused = false; });
+    if (examples.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(() => {
+        if (paused || document.hidden) return;
+        step = (step + 1) % order.length;
+        showExample();
+      }, 3000);
+    }
+  }
+
+  const status = document.getElementById('copy-status');
+  function flash(button, label, message) {
+    button.querySelector('.copy-label').textContent = label;
+    button.classList.add('done');
+    status.textContent = message;
+    clearTimeout(button.resetTimer);
+    button.resetTimer = setTimeout(() => {
+      button.querySelector('.copy-label').textContent = 'Copy';
+      button.classList.remove('done');
+    }, 1800);
+  }
+
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('.copy');
+    if (!button) return;
+    const code = button.previousElementSibling;
+    try {
+      await navigator.clipboard.writeText(code.textContent);
+      flash(button, 'Copied', `Copied ${code.textContent}`);
+    } catch {
+      getSelection().selectAllChildren(code);
+      flash(button, 'Selected', 'Clipboard access is blocked. The command is selected, so copy it with your keyboard.');
+    }
+  });
+</script>
+</body>
+</html>
