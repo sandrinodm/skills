@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="584" viewBox="0 0 760 584" role="img" aria-label="Four doors into your company, with one identity layer under all of them">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="doors-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z" />
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Four doors into your company, one identity layer under all of them</text>
+  <text class="note" x="24" y="54">Where each standard sits between a personal agent and your systems</text>
+  <g>
+    <rect class="box zone violet" x="24" y="72" width="168" height="416" rx="8" />
+    <text class="name mid" x="108" y="96">Personal agent</text>
+    <rect class="box violet" x="40" y="124" width="136" height="40" rx="8" />
+    <text class="mid" x="108" y="148">Its chat</text>
+    <rect class="box violet" x="40" y="220" width="136" height="40" rx="8" />
+    <text class="mid" x="108" y="244">Its own browser</text>
+    <rect class="box violet" x="40" y="316" width="136" height="40" rx="8" />
+    <text class="mid" x="108" y="340">Its wallet</text>
+    <rect class="box violet" x="40" y="412" width="136" height="40" rx="8" />
+    <text class="mid" x="108" y="436">Its messages</text>
+  </g>
+  <g>
+    <rect class="box zone green" x="568" y="72" width="168" height="416" rx="8" />
+    <text class="name mid" x="652" y="96">Your company</text>
+    <rect class="box green" x="584" y="124" width="136" height="40" rx="8" />
+    <text class="mid" x="652" y="148">Your API</text>
+    <rect class="box green" x="584" y="220" width="136" height="40" rx="8" />
+    <text class="mid" x="652" y="244">Your website</text>
+    <rect class="box green" x="584" y="316" width="136" height="40" rx="8" />
+    <text class="mid" x="652" y="340">Your checkout</text>
+    <rect class="box green" x="584" y="412" width="136" height="40" rx="8" />
+    <text class="mid" x="652" y="436">Your own agent</text>
+  </g>
+  <g class="line">
+    <path d="M176 144H208" marker-end="url(#doors-arrow)" />
+    <path d="M552 144H584" marker-end="url(#doors-arrow)" />
+    <path d="M176 240H208" marker-end="url(#doors-arrow)" />
+    <path d="M552 240H584" marker-end="url(#doors-arrow)" />
+    <path d="M176 336H208" marker-end="url(#doors-arrow)" />
+    <path d="M552 336H584" marker-end="url(#doors-arrow)" />
+    <path d="M176 432H208" marker-end="url(#doors-arrow)" />
+    <path d="M552 432H584" marker-end="url(#doors-arrow)" />
+    <path d="M108 488V504" />
+    <path d="M652 488V504" />
+  </g>
+  <g>
+    <rect class="box amber" x="208" y="104" width="344" height="80" rx="8" />
+    <text class="name" x="224" y="128">Door 1: inside the agent</text>
+    <rect class="chip amber" x="224" y="144" width="82" height="26" rx="13" />
+    <text class="small mid" x="265" y="161">MCP server</text>
+    <rect class="chip amber" x="314" y="144" width="70" height="26" rx="13" />
+    <text class="small mid" x="349" y="161">MCP Apps</text>
+  </g>
+  <g>
+    <rect class="box amber" x="208" y="200" width="344" height="80" rx="8" />
+    <text class="name" x="224" y="224">Door 2: on your website</text>
+    <rect class="chip amber" x="224" y="240" width="96" height="26" rx="13" />
+    <text class="small mid" x="272" y="257">Web Bot Auth</text>
+    <rect class="chip amber" x="328" y="240" width="68" height="26" rx="13" />
+    <text class="small mid" x="362" y="257">WebMCP</text>
+    <rect class="chip amber" x="404" y="240" width="114" height="26" rx="13" />
+    <text class="small mid" x="461" y="257">Sign-in handoff</text>
+  </g>
+  <g>
+    <rect class="box amber" x="208" y="296" width="344" height="80" rx="8" />
+    <text class="name" x="224" y="320">Door 3: at checkout</text>
+    <rect class="chip amber" x="224" y="336" width="42" height="26" rx="13" />
+    <text class="small mid" x="245" y="353">UCP</text>
+    <rect class="chip amber" x="274" y="336" width="42" height="26" rx="13" />
+    <text class="small mid" x="295" y="353">ACP</text>
+    <rect class="chip amber" x="324" y="336" width="42" height="26" rx="13" />
+    <text class="small mid" x="345" y="353">AP2</text>
+    <rect class="chip amber" x="374" y="336" width="144" height="26" rx="13" />
+    <text class="small mid" x="446" y="353">Visa TAP, Mastercard</text>
+  </g>
+  <g>
+    <rect class="box amber" x="208" y="392" width="344" height="80" rx="8" />
+    <text class="name" x="224" y="416">Door 4: agent to agent</text>
+    <rect class="chip amber" x="224" y="432" width="164" height="26" rx="13" />
+    <text class="small mid" x="306" y="449">Personal Agent Protocol</text>
+    <rect class="chip amber" x="396" y="432" width="46" height="26" rx="13" />
+    <text class="small mid" x="419" y="449">PACT</text>
+    <rect class="chip amber" x="450" y="432" width="42" height="26" rx="13" />
+    <text class="small mid" x="471" y="449">A2A</text>
+  </g>
+  <g>
+    <rect class="key" x="24" y="504" width="712" height="56" rx="8" />
+    <text class="name" x="40" y="526">Under every door: identity and access</text>
+    <text class="small" x="40" y="546">OAuth for MCP, Client ID Metadata Documents, Enterprise-Managed Authorization, step-up scopes</text>
+  </g>
+</svg>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="372" viewBox="0 0 760 372" role="img" aria-label="A UUIDv7 starts with the time, so new IDs sort after old ones">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="bytes-uuidv7-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">A UUIDv7 starts with the time, so new IDs sort after old ones</text>
+  <text class="note" x="24" y="54">The 128 bits of a version 7 UUID, 64 per row</text>
+  <text class="note mid" x="69.25" y="92">0</text>
+  <text class="note mid" x="153.25" y="92">8</text>
+  <text class="note mid" x="237.25" y="92">16</text>
+  <text class="note mid" x="321.25" y="92">24</text>
+  <text class="note mid" x="405.25" y="92">32</text>
+  <text class="note mid" x="489.25" y="92">40</text>
+  <text class="note mid" x="573.25" y="92">48</text>
+  <text class="note mid" x="657.25" y="92">56</text>
+  <g class="line"><path d="M64 98V106"/></g>
+  <g class="line"><path d="M74.5 98V104"/></g>
+  <g class="line"><path d="M85 98V104"/></g>
+  <g class="line"><path d="M95.5 98V104"/></g>
+  <g class="line"><path d="M106 98V104"/></g>
+  <g class="line"><path d="M116.5 98V104"/></g>
+  <g class="line"><path d="M127 98V104"/></g>
+  <g class="line"><path d="M137.5 98V104"/></g>
+  <g class="line"><path d="M148 98V106"/></g>
+  <g class="line"><path d="M158.5 98V104"/></g>
+  <g class="line"><path d="M169 98V104"/></g>
+  <g class="line"><path d="M179.5 98V104"/></g>
+  <g class="line"><path d="M190 98V104"/></g>
+  <g class="line"><path d="M200.5 98V104"/></g>
+  <g class="line"><path d="M211 98V104"/></g>
+  <g class="line"><path d="M221.5 98V104"/></g>
+  <g class="line"><path d="M232 98V106"/></g>
+  <g class="line"><path d="M242.5 98V104"/></g>
+  <g class="line"><path d="M253 98V104"/></g>
+  <g class="line"><path d="M263.5 98V104"/></g>
+  <g class="line"><path d="M274 98V104"/></g>
+  <g class="line"><path d="M284.5 98V104"/></g>
+  <g class="line"><path d="M295 98V104"/></g>
+  <g class="line"><path d="M305.5 98V104"/></g>
+  <g class="line"><path d="M316 98V106"/></g>
+  <g class="line"><path d="M326.5 98V104"/></g>
+  <g class="line"><path d="M337 98V104"/></g>
+  <g class="line"><path d="M347.5 98V104"/></g>
+  <g class="line"><path d="M358 98V104"/></g>
+  <g class="line"><path d="M368.5 98V104"/></g>
+  <g class="line"><path d="M379 98V104"/></g>
+  <g class="line"><path d="M389.5 98V104"/></g>
+  <g class="line"><path d="M400 98V106"/></g>
+  <g class="line"><path d="M410.5 98V104"/></g>
+  <g class="line"><path d="M421 98V104"/></g>
+  <g class="line"><path d="M431.5 98V104"/></g>
+  <g class="line"><path d="M442 98V104"/></g>
+  <g class="line"><path d="M452.5 98V104"/></g>
+  <g class="line"><path d="M463 98V104"/></g>
+  <g class="line"><path d="M473.5 98V104"/></g>
+  <g class="line"><path d="M484 98V106"/></g>
+  <g class="line"><path d="M494.5 98V104"/></g>
+  <g class="line"><path d="M505 98V104"/></g>
+  <g class="line"><path d="M515.5 98V104"/></g>
+  <g class="line"><path d="M526 98V104"/></g>
+  <g class="line"><path d="M536.5 98V104"/></g>
+  <g class="line"><path d="M547 98V104"/></g>
+  <g class="line"><path d="M557.5 98V104"/></g>
+  <g class="line"><path d="M568 98V106"/></g>
+  <g class="line"><path d="M578.5 98V104"/></g>
+  <g class="line"><path d="M589 98V104"/></g>
+  <g class="line"><path d="M599.5 98V104"/></g>
+  <g class="line"><path d="M610 98V104"/></g>
+  <g class="line"><path d="M620.5 98V104"/></g>
+  <g class="line"><path d="M631 98V104"/></g>
+  <g class="line"><path d="M641.5 98V104"/></g>
+  <g class="line"><path d="M652 98V106"/></g>
+  <g class="line"><path d="M662.5 98V104"/></g>
+  <g class="line"><path d="M673 98V104"/></g>
+  <g class="line"><path d="M683.5 98V104"/></g>
+  <g class="line"><path d="M694 98V104"/></g>
+  <g class="line"><path d="M704.5 98V104"/></g>
+  <g class="line"><path d="M715 98V104"/></g>
+  <g class="line"><path d="M725.5 98V104"/></g>
+  <g class="line"><path d="M736 98V106"/></g>
+  <text class="note end" x="52" y="139">0</text>
+  <text class="note end" x="52" y="191">64</text>
+  <rect class="box violet" x="568" y="112" width="42" height="44" rx="4"/>
+  <rect class="box teal" x="610" y="112" width="126" height="44" rx="4"/>
+  <rect class="box violet" x="64" y="164" width="21" height="44" rx="4"/>
+  <rect class="box teal" x="85" y="164" width="651" height="44" rx="4"/>
+  <rect class="key" x="64" y="112" width="504" height="44" rx="4"/>
+  <text class="small mid" x="316" y="131">unix_ts_ms</text>
+  <text class="note mid" x="316" y="146">48 bits</text>
+  <text class="small mid" x="589" y="138">ver</text>
+  <text class="small mid" x="673" y="131">rand_a</text>
+  <text class="note mid" x="673" y="146">12 bits</text>
+  <text class="small mid" x="410.5" y="183">rand_b</text>
+  <text class="note mid" x="410.5" y="198">62 bits</text>
+  <text class="small strong" x="24" y="240">unix_ts_ms</text>
+  <text class="note" x="24" y="256">Milliseconds since 1970: the part that makes IDs sortable</text>
+  <text class="small strong" x="392" y="240">ver</text>
+  <text class="note" x="392" y="256">Always 7</text>
+  <text class="small strong" x="24" y="284">rand_a</text>
+  <text class="note" x="24" y="300">Random, or a counter within the same millisecond</text>
+  <text class="small strong" x="392" y="284">var</text>
+  <text class="note" x="392" y="300">Always binary 10</text>
+  <text class="small strong" x="24" y="328">rand_b</text>
+  <text class="note" x="24" y="344">Random bits that keep IDs unguessable</text>
+</svg>

@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760" role="img" aria-label="Icon set">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <text class="title" x="24" y="34">The icon set: 82 line icons on a 24px grid</text>
+  <text class="note" x="24" y="54">Shown on badges; use the name with icon() or badge() in scripts/components.py</text>
+  <rect class="badge teal" x="24" y="80" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 86) scale(0.833333)"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></g>
+  <text class="note" x="64" y="101">user</text>
+  <rect class="badge violet" x="144" y="80" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 86) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="note" x="184" y="101">users</text>
+  <rect class="badge green" x="264" y="80" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 86) scale(0.833333)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <text class="note" x="304" y="101">phone</text>
+  <rect class="badge amber" x="384" y="80" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 86) scale(0.833333)"><rect x="4" y="4.5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/></g>
+  <text class="note" x="424" y="101">laptop</text>
+  <rect class="badge rose" x="504" y="80" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 86) scale(0.833333)"><rect x="3" y="3.5" width="18" height="12" rx="1.5"/><path d="M12 15.5v4M8 20.5h8"/></g>
+  <text class="note" x="544" y="101">monitor</text>
+  <rect class="badge blue" x="624" y="80" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 86) scale(0.833333)"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H5.5A1.5 1.5 0 0 1 4 17.5zM20 14h-3v5h1.5a1.5 1.5 0 0 0 1.5-1.5zM17 19c0 1.5-2 2.5-5 2.5"/></g>
+  <text class="note" x="664" y="101">headset</text>
+  <rect class="badge teal" x="24" y="128" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 134) scale(0.833333)"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4.5V8M3 12.5v3M21 12.5v3M9.5 13v1M14.5 13v1"/><circle cx="12" cy="3.5" r="1"/></g>
+  <text class="note" x="64" y="149">bot</text>
+  <rect class="badge violet" x="144" y="128" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 134) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="note" x="184" y="149">sparkle</text>
+  <rect class="badge green" x="264" y="128" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 134) scale(0.833333)"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/></g>
+  <text class="note" x="304" y="149">mic</text>
+  <rect class="badge amber" x="384" y="128" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 134) scale(0.833333)"><rect x="5" y="3" width="14" height="18" rx="2.5"/><circle cx="12" cy="14" r="3.5"/><circle cx="12" cy="7" r="1"/></g>
+  <text class="note" x="424" y="149">speaker</text>
+  <rect class="badge rose" x="504" y="128" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 134) scale(0.833333)"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7l1.5-2.5h4L15.5 7"/><circle cx="12" cy="13.5" r="3.5"/></g>
+  <text class="note" x="544" y="149">camera</text>
+  <rect class="badge blue" x="624" y="128" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 134) scale(0.833333)"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/></g>
+  <text class="note" x="664" y="149">video</text>
+  <rect class="badge teal" x="24" y="176" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 182) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="note" x="64" y="197">server</text>
+  <rect class="badge violet" x="144" y="176" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 182) scale(0.833333)"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g>
+  <text class="note" x="184" y="197">database</text>
+  <rect class="badge green" x="264" y="176" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 182) scale(0.833333)"><path d="M7 18.5h10a4 4 0 0 0 .6-8A6 6 0 0 0 6.2 9.6 4.5 4.5 0 0 0 7 18.5z"/></g>
+  <text class="note" x="304" y="197">cloud</text>
+  <rect class="badge amber" x="384" y="176" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 182) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="note" x="424" y="197">globe</text>
+  <rect class="badge rose" x="504" y="176" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 182) scale(0.833333)"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></g>
+  <text class="note" x="544" y="197">cpu</text>
+  <rect class="badge blue" x="624" y="176" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 182) scale(0.833333)"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></g>
+  <text class="note" x="664" y="197">code</text>
+  <rect class="badge teal" x="24" y="224" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 230) scale(0.833333)"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 10l3 2.5L7 15M12.5 15H17"/></g>
+  <text class="note" x="64" y="245">terminal</text>
+  <rect class="badge violet" x="144" y="224" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 230) scale(0.833333)"><path d="M9 4c-2 0-3 1-3 3v2.5c0 1.2-.8 2.5-2.5 2.5 1.7 0 2.5 1.3 2.5 2.5V17c0 2 1 3 3 3"/><path d="M15 4c2 0 3 1 3 3v2.5c0 1.2.8 2.5 2.5 2.5-1.7 0-2.5 1.3-2.5 2.5V17c0 2-1 3-3 3"/></g>
+  <text class="note" x="184" y="245">api</text>
+  <rect class="badge green" x="264" y="224" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 230) scale(0.833333)"><path d="M9 3v5M15 3v5M6.5 8h11v3a5.5 5.5 0 0 1-11 0zM12 16.5V21"/></g>
+  <text class="note" x="304" y="245">plug</text>
+  <rect class="badge amber" x="384" y="224" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 230) scale(0.833333)"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></g>
+  <text class="note" x="424" y="245">link</text>
+  <rect class="badge rose" x="504" y="224" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 230) scale(0.833333)"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M7 11l10-5M7 13l10 5"/></g>
+  <text class="note" x="544" y="245">network</text>
+  <rect class="badge blue" x="624" y="224" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 230) scale(0.833333)"><circle cx="6" cy="5.5" r="2"/><circle cx="6" cy="18.5" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7.5v9M18 10c0 3-3 4-7 4.5-2.5.3-4 1-5 2.5"/></g>
+  <text class="note" x="664" y="245">git</text>
+  <rect class="badge teal" x="24" y="272" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 278) scale(0.833333)"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/></g>
+  <text class="note" x="64" y="293">layers</text>
+  <rect class="badge violet" x="144" y="272" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 278) scale(0.833333)"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></g>
+  <text class="note" x="184" y="293">package</text>
+  <rect class="badge green" x="264" y="272" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 278) scale(0.833333)"><path d="M5.5 5h13L21 13v6H3v-6z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></g>
+  <text class="note" x="304" y="293">queue</text>
+  <rect class="badge amber" x="384" y="272" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 278) scale(0.833333)"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/></g>
+  <text class="note" x="424" y="293">settings</text>
+  <rect class="badge rose" x="504" y="272" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 278) scale(0.833333)"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></g>
+  <text class="note" x="544" y="293">sliders</text>
+  <rect class="badge blue" x="624" y="272" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 278) scale(0.833333)"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5M20 20v-4h-4"/></g>
+  <text class="note" x="664" y="293">refresh</text>
+  <rect class="badge teal" x="24" y="320" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 326) scale(0.833333)"><path d="M3.5 5h17l-6.5 7.5V19l-4 2v-8.5z"/></g>
+  <text class="note" x="64" y="341">filter</text>
+  <rect class="badge violet" x="144" y="320" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 326) scale(0.833333)"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></g>
+  <text class="note" x="184" y="341">search</text>
+  <rect class="badge green" x="264" y="320" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 326) scale(0.833333)"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></g>
+  <text class="note" x="304" y="341">lock</text>
+  <rect class="badge amber" x="384" y="320" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 326) scale(0.833333)"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 7.7-1.5"/></g>
+  <text class="note" x="424" y="341">unlock</text>
+  <rect class="badge rose" x="504" y="320" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 326) scale(0.833333)"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14.5 8.5l2 2"/></g>
+  <text class="note" x="544" y="341">key</text>
+  <rect class="badge blue" x="624" y="320" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 326) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/></g>
+  <text class="note" x="664" y="341">shield</text>
+  <rect class="badge teal" x="24" y="368" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 374) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></g>
+  <text class="note" x="64" y="389">shield-check</text>
+  <rect class="badge violet" x="144" y="368" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 374) scale(0.833333)"><path d="M7 11a5 5 0 0 1 10 0c0 3-.5 5.5-1.5 7.5"/><path d="M9.5 11a2.5 2.5 0 0 1 5 0c0 3.5-.8 6-2 8.5"/><path d="M12 11c0 3-.6 6-2 9"/><path d="M4.5 14c-.3-1-.5-2-.5-3a8 8 0 0 1 14.5-4.6"/><path d="M7 18.5c.7-1.2 1-2.6 1-4"/></g>
+  <text class="note" x="184" y="389">fingerprint</text>
+  <rect class="badge green" x="264" y="368" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 374) scale(0.833333)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.5-1.5 1.7-2.3 3-2.3s2.5.8 3 2.3M14 10h4M14 13.5h4"/></g>
+  <text class="note" x="304" y="389">id</text>
+  <rect class="badge amber" x="384" y="368" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 374) scale(0.833333)"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g>
+  <text class="note" x="424" y="389">eye</text>
+  <rect class="badge rose" x="504" y="368" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 374) scale(0.833333)"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><path d="M4 4l16 16"/></g>
+  <text class="note" x="544" y="389">eye-off</text>
+  <rect class="badge blue" x="624" y="368" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 374) scale(0.833333)"><path d="M12 4v16M7 20h10M5 7h14M7.5 7L4.5 13a3 3 0 0 0 6 0zM16.5 7l-3 6a3 3 0 0 0 6 0z"/></g>
+  <text class="note" x="664" y="389">policy</text>
+  <rect class="badge teal" x="24" y="416" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 422) scale(0.833333)"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2M18 18h2v2M14 20h2M20 14v2"/></g>
+  <text class="note" x="64" y="437">qr</text>
+  <rect class="badge violet" x="144" y="416" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 422) scale(0.833333)"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></g>
+  <text class="note" x="184" y="437">mail</text>
+  <rect class="badge green" x="264" y="416" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 422) scale(0.833333)"><path d="M4 5.5h16v10H10l-4 3.5v-3.5H4z"/></g>
+  <text class="note" x="304" y="437">chat</text>
+  <rect class="badge amber" x="384" y="416" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 422) scale(0.833333)"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></g>
+  <text class="note" x="424" y="437">bell</text>
+  <rect class="badge rose" x="504" y="416" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 422) scale(0.833333)"><path d="M21 3L3 10.5l7 3 3 7z"/><path d="M10 13.5L21 3"/></g>
+  <text class="note" x="544" y="437">send</text>
+  <rect class="badge blue" x="624" y="416" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 422) scale(0.833333)"><path d="M5.5 5h13L21 13v6H3v-6z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></g>
+  <text class="note" x="664" y="437">inbox</text>
+  <rect class="badge teal" x="24" y="464" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 470) scale(0.833333)"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></g>
+  <text class="note" x="64" y="485">calendar</text>
+  <rect class="badge violet" x="144" y="464" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 470) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></g>
+  <text class="note" x="184" y="485">clock</text>
+  <rect class="badge green" x="264" y="464" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 470) scale(0.833333)"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></g>
+  <text class="note" x="304" y="485">file</text>
+  <rect class="badge amber" x="384" y="464" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 470) scale(0.833333)"><path d="M3 6.5h6l2 2h10v10.5H3z"/></g>
+  <text class="note" x="424" y="485">folder</text>
+  <rect class="badge rose" x="504" y="464" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 470) scale(0.833333)"><rect x="5.5" y="4.5" width="13" height="16.5" rx="1.5"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M9 11h6M9 15h4"/></g>
+  <text class="note" x="544" y="485">clipboard</text>
+  <rect class="badge blue" x="624" y="464" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 470) scale(0.833333)"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M19 19v2H6"/></g>
+  <text class="note" x="664" y="485">book</text>
+  <rect class="badge teal" x="24" y="512" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 518) scale(0.833333)"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9M10 13h4"/></g>
+  <text class="note" x="64" y="533">archive</text>
+  <rect class="badge violet" x="144" y="512" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 518) scale(0.833333)"><path d="M4 6.5h16M9 6.5V4h6v2.5M6.5 6.5l1 14h9l1-14M10 10.5v6M14 10.5v6"/></g>
+  <text class="note" x="184" y="533">trash</text>
+  <rect class="badge green" x="264" y="512" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 518) scale(0.833333)"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></g>
+  <text class="note" x="304" y="533">list</text>
+  <rect class="badge amber" x="384" y="512" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 518) scale(0.833333)"><path d="M6 3h12v18l-6-4-6 4z"/></g>
+  <text class="note" x="424" y="533">bookmark</text>
+  <rect class="badge rose" x="504" y="512" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 518) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 16.8v.2"/></g>
+  <text class="note" x="544" y="533">help</text>
+  <rect class="badge blue" x="624" y="512" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 518) scale(0.833333)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="note" x="664" y="533">card</text>
+  <rect class="badge teal" x="24" y="560" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 566) scale(0.833333)"><path d="M4 7.5V18a2 2 0 0 0 2 2h14V9H6a2 2 0 0 1-2-1.5zM4 7.5A2 2 0 0 1 6 5.5h11V9"/><circle cx="16.5" cy="14.5" r="1.2"/></g>
+  <text class="note" x="64" y="581">wallet</text>
+  <rect class="badge violet" x="144" y="560" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 566) scale(0.833333)"><rect x="2.5" y="6.5" width="19" height="11" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9.5v5M18 9.5v5"/></g>
+  <text class="note" x="184" y="581">money</text>
+  <rect class="badge green" x="264" y="560" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 566) scale(0.833333)"><path d="M3 4h2.5l2.2 10.5h10l2-7.5H7"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></g>
+  <text class="note" x="304" y="581">cart</text>
+  <rect class="badge amber" x="384" y="560" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 566) scale(0.833333)"><path d="M4 9.5V20h16V9.5M3 9.5l2-5.5h14l2 5.5zM9.5 20v-5h5v5"/></g>
+  <text class="note" x="424" y="581">store</text>
+  <rect class="badge rose" x="504" y="560" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 566) scale(0.833333)"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></g>
+  <text class="note" x="544" y="581">receipt</text>
+  <rect class="badge blue" x="624" y="560" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 566) scale(0.833333)"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></g>
+  <text class="note" x="664" y="581">tag</text>
+  <rect class="badge teal" x="24" y="608" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 614) scale(0.833333)"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></g>
+  <text class="note" x="64" y="629">truck</text>
+  <rect class="badge violet" x="144" y="608" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 614) scale(0.833333)"><path d="M5 12.5l4.5 4.5L19 7.5"/></g>
+  <text class="note" x="184" y="629">check</text>
+  <rect class="badge green" x="264" y="608" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 614) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5.5-6"/></g>
+  <text class="note" x="304" y="629">check-circle</text>
+  <rect class="badge amber" x="384" y="608" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 614) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></g>
+  <text class="note" x="424" y="629">x-circle</text>
+  <rect class="badge rose" x="504" y="608" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 614) scale(0.833333)"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v4.5M12 17.3v.2"/></g>
+  <text class="note" x="544" y="629">alert</text>
+  <rect class="badge blue" x="624" y="608" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 614) scale(0.833333)"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></g>
+  <text class="note" x="664" y="629">flag</text>
+  <rect class="badge teal" x="24" y="656" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 662) scale(0.833333)"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/></g>
+  <text class="note" x="64" y="677">star</text>
+  <rect class="badge violet" x="144" y="656" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 662) scale(0.833333)"><path d="M13 2.5L5 13.5h6l-1 8 8-11h-6z"/></g>
+  <text class="note" x="184" y="677">zap</text>
+  <rect class="badge green" x="264" y="656" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 662) scale(0.833333)"><path d="M4 20V4M4 20h16M8.5 16.5v-4M12.5 16.5V8M16.5 16.5v-6"/></g>
+  <text class="note" x="304" y="677">chart</text>
+  <rect class="badge amber" x="384" y="656" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 662) scale(0.833333)"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></g>
+  <text class="note" x="424" y="677">trend</text>
+  <rect class="badge rose" x="504" y="656" width="32" height="32" rx="9"/>
+  <g class="icon rose" transform="translate(510 662) scale(0.833333)"><path d="M12 16V4M7 9l5-5 5 5M4 16v4h16v-4"/></g>
+  <text class="note" x="544" y="677">upload</text>
+  <rect class="badge blue" x="624" y="656" width="32" height="32" rx="9"/>
+  <g class="icon blue" transform="translate(630 662) scale(0.833333)"><path d="M12 4v12M7 11l5 5 5-5M4 16v4h16v-4"/></g>
+  <text class="note" x="664" y="677">download</text>
+  <rect class="badge teal" x="24" y="704" width="32" height="32" rx="9"/>
+  <g class="icon teal" transform="translate(30 710) scale(0.833333)"><path d="M3.5 11L12 4l8.5 7M6 9.5V20h12V9.5M10 20v-5.5h4V20"/></g>
+  <text class="note" x="64" y="725">home</text>
+  <rect class="badge violet" x="144" y="704" width="32" height="32" rx="9"/>
+  <g class="icon violet" transform="translate(150 710) scale(0.833333)"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10.5 21v-3h3v3"/></g>
+  <text class="note" x="184" y="725">building</text>
+  <rect class="badge green" x="264" y="704" width="32" height="32" rx="9"/>
+  <g class="icon green" transform="translate(270 710) scale(0.833333)"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.5"/></g>
+  <text class="note" x="304" y="725">pin</text>
+  <rect class="badge amber" x="384" y="704" width="32" height="32" rx="9"/>
+  <g class="icon amber" transform="translate(390 710) scale(0.833333)"><path d="M3 9.5a13 13 0 0 1 18 0M6 13a8.5 8.5 0 0 1 12 0M9 16.5a4 4 0 0 1 6 0M12 19.5v.2"/></g>
+  <text class="note" x="424" y="725">wifi</text>
+</svg>

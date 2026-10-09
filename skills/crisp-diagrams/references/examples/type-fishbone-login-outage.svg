@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="368" viewBox="0 0 760 368" role="img" aria-label="Logins failed for 47 minutes because a signing certificate expired unnoticed">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="fishbone-login-outage-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Logins failed for 47 minutes because a signing certificate expired unnoticed</text>
+  <text class="note" x="24" y="54">Possible causes, grouped, from the incident review</text>
+  <g class="line"><path d="M40 212H584" marker-end="url(#fishbone-login-outage-arrow)"/></g>
+  <rect class="callout" x="584" y="172" width="152" height="80" rx="8"/>
+  <text class="name" x="596" y="196">Logins failed</text>
+  <text class="small" x="596" y="214">47 minutes, all</text>
+  <text class="small" x="596" y="230">regions</text>
+  <g class="line"><path d="M40 112V212"/></g>
+  <rect class="box teal" x="24" y="80" width="170.667" height="32" rx="8"/>
+  <text class="name mid" x="109.333" y="101">Config</text>
+  <rect class="key" x="48" y="118" width="130" height="20" rx="4"/>
+  <g class="line"><path d="M40 128H48"/></g>
+  <text class="small" x="56" y="132">Certificate expired</text>
+  <g class="line"><path d="M40 152H48"/></g>
+  <text class="note" x="56" y="156">Wrong key ID</text>
+  <g class="line"><path d="M40 176H48"/></g>
+  <text class="note" x="56" y="180">Stale cache</text>
+  <g class="line"><path d="M226.667 112V212"/></g>
+  <rect class="box teal" x="210.667" y="80" width="170.667" height="32" rx="8"/>
+  <text class="name mid" x="296" y="101">Code</text>
+  <g class="line"><path d="M226.667 128H234.667"/></g>
+  <text class="note" x="242.667" y="132">New token library</text>
+  <g class="line"><path d="M226.667 152H234.667"/></g>
+  <text class="note" x="242.667" y="156">Retry storm</text>
+  <g class="line"><path d="M413.333 112V212"/></g>
+  <rect class="box teal" x="397.333" y="80" width="170.667" height="32" rx="8"/>
+  <text class="name mid" x="482.667" y="101">Process</text>
+  <g class="line"><path d="M413.333 128H421.333"/></g>
+  <text class="note" x="429.333" y="132">No expiry alert</text>
+  <g class="line"><path d="M413.333 152H421.333"/></g>
+  <text class="note" x="429.333" y="156">Manual rotation</text>
+  <g class="line"><path d="M40 212V312"/></g>
+  <rect class="box teal" x="24" y="312" width="170.667" height="32" rx="8"/>
+  <text class="name mid" x="109.333" y="333">Infrastructure</text>
+  <g class="line"><path d="M40 236H48"/></g>
+  <text class="note" x="56" y="240">Region failover</text>
+  <g class="line"><path d="M40 260H48"/></g>
+  <text class="note" x="56" y="264">DNS change</text>
+  <g class="line"><path d="M226.667 212V312"/></g>
+  <rect class="box teal" x="210.667" y="312" width="170.667" height="32" rx="8"/>
+  <text class="name mid" x="296" y="333">People</text>
+  <g class="line"><path d="M226.667 236H234.667"/></g>
+  <text class="note" x="242.667" y="240">Owner on leave</text>
+  <g class="line"><path d="M226.667 260H234.667"/></g>
+  <text class="note" x="242.667" y="264">Runbook outdated</text>
+  <g class="line"><path d="M413.333 212V312"/></g>
+  <rect class="box teal" x="397.333" y="312" width="170.667" height="32" rx="8"/>
+  <text class="name mid" x="482.667" y="333">Dependencies</text>
+  <g class="line"><path d="M413.333 236H421.333"/></g>
+  <text class="note" x="429.333" y="240">Identity provider</text>
+  <g class="line"><path d="M413.333 260H421.333"/></g>
+  <text class="note" x="429.333" y="264">CDN</text>
+</svg>

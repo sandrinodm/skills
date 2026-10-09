@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="516" viewBox="0 0 760 516" role="img" aria-label="Ship the quick wins first: high impact for little effort">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="quadrant-priorities-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Ship the quick wins first: high impact for little effort</text>
+  <text class="note" x="24" y="54">Prioritizing the next quarter's work</text>
+  <rect class="box " x="456" y="80" width="280" height="192" rx="0"/>
+  <text class="name" x="472" y="106">Big bets</text>
+  <text class="note" x="472" y="122">Plan them carefully</text>
+  <rect class="box " x="176" y="272" width="280" height="192" rx="0"/>
+  <text class="name" x="192" y="298">Fill-ins</text>
+  <text class="note" x="192" y="314">When there's time</text>
+  <rect class="box " x="456" y="272" width="280" height="192" rx="0"/>
+  <text class="name" x="472" y="298">Money pits</text>
+  <text class="note" x="472" y="314">Avoid</text>
+  <rect class="key" x="176" y="80" width="280" height="192" rx="0"/>
+  <text class="name" x="192" y="106">Quick wins</text>
+  <text class="small" x="192" y="122">Do these now</text>
+  <rect class="chip amber" x="234.5" y="166.84" width="107" height="26" rx="13"/>
+  <text class="small mid" x="288" y="183.84">Passkey nudge</text>
+  <rect class="chip amber" x="316.8" y="220.6" width="88" height="26" rx="13"/>
+  <text class="small mid" x="360.8" y="237.6">CSV export</text>
+  <rect class="chip amber" x="544.6" y="166.84" width="114" height="26" rx="13"/>
+  <text class="small mid" x="601.6" y="183.84">Agent payments</text>
+  <rect class="chip amber" x="514.5" y="220.6" width="107" height="26" rx="13"/>
+  <text class="small mid" x="568" y="237.6">New dashboard</text>
+  <rect class="chip amber" x="258.2" y="358.84" width="82" height="26" rx="13"/>
+  <text class="small mid" x="299.2" y="375.84">Dark mode</text>
+  <rect class="chip amber" x="552.8" y="374.2" width="120" height="26" rx="13"/>
+  <text class="small mid" x="612.8" y="391.2">Rewrite billing</text>
+  <text class="note end" x="160" y="94">high</text>
+  <text class="name end" x="160" y="277">Impact</text>
+  <text class="note end" x="160" y="460">low</text>
+  <text class="note" x="176" y="488">low</text>
+  <text class="name mid" x="456" y="488">Effort</text>
+  <text class="note end" x="736" y="488">high</text>
+</svg>
