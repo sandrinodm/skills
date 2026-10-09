@@ -80,6 +80,18 @@ h1 { max-width: 24ch; margin: 0; font-size: clamp(26px, 4vw, 34px); font-weight:
 .card-body { padding: 18px 16px 16px; }
 .card h3 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
 .card-body p { max-width: 68ch; margin: 6px 0 0; }
+.facts { display: grid; gap: 14px; margin: 18px 0 0; font-size: 14px; }
+.facts > div { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 4px 16px; }
+.facts dt { padding-top: 3px; font: 500 11px/1.4 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.facts dd { max-width: 68ch; margin: 0; }
+.facts ul { margin: 0; padding-left: 18px; }
+.facts li + li { margin-top: 4px; }
+.facts li::marker { color: var(--edge); }
+.facts code { font: 400 12.5px/1 var(--mono); }
+.facts strong { font-weight: 600; }
+.facts .asks { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 0; list-style: none; }
+.facts .asks li { margin: 0; padding: 4px 10px; background: var(--code-bg); border: 1px solid var(--line); border-radius: 6px; }
+@media (max-width: 599px) { .facts > div { grid-template-columns: minmax(0, 1fr); } }
 .plate { display: block; padding: 16px 16px 8px; border-top: 1px solid var(--line); }
 /* Every example sits in a box as tall as the tallest one, so the card never changes height as they rotate. */
 .stage { position: relative; display: block; max-width: 680px; margin: 0 auto; aspect-ratio: 760 / 516; }
@@ -150,6 +162,28 @@ footer a:hover { color: var(--accent); }
           <div class="card-body">
             <h3>Android APK Decompilation</h3>
             <p>Acquire, verify, sandbox, and decompile Android APK/APKM/XAPK/APKS artifacts with Dockerized ADB, JADX, apktool, and apksigner.</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd><ul>
+                  <li>Pulls the copy Google Play installed on your own phone over wireless ADB, so you analyze exactly what users run.</li>
+                  <li>Runs ADB, JADX, apktool and apksigner in Docker, so nothing gets installed on your machine, and keeps the network off during analysis.</li>
+                  <li>Verifies hashes and signing certificates, and trusts an APKM, XAPK or APKS download only once its signer matches the Play copy.</li>
+                  <li>Searches the decompiled app for endpoints, auth tokens, permissions and certificate pinning, then writes sanitized notes with a confidence label instead of committing APKs or decompiled source.</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Try asking</dt>
+                <dd><ul class="asks">
+                  <li>Pull com.example.app from my phone and check who signed it</li>
+                  <li>Decompile this .xapk and list the API endpoints it calls</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Needs</dt>
+                <dd>Docker, plus an Android phone with wireless debugging to pull apps. Use it only on apps and devices you own or are allowed to inspect.</dd>
+              </div>
+            </dl>
           </div>
           <div class="install">
             <div class="cmd-row">
@@ -167,6 +201,31 @@ footer a:hover { color: var(--accent); }
           <div class="card-body">
             <h3>Crisp Diagrams</h3>
             <p>Draw clean, minimal explanatory diagrams as standalone SVG files: thin outlines, one blue accent on the idea that matters, a title that states the takeaway, and automatic dark mode.</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd><ul>
+                  <li>Turns a description, a Mermaid file or a whiteboard photo into one SVG that looks the same on GitHub, in Markdown, in docs and on slides, and switches to dark mode by itself.</li>
+                  <li>Covers 31 diagram types, from architecture, auth flows and swimlanes to state machines, data models, Wardley maps, timelines and device mockups.</li>
+                  <li>Comes with four themes: quiet outlines for docs, pastel for slides, gradients for product pages and tinted zones for trust boundaries.</li>
+                  <li><strong>Set your own theme:</strong> share a logo, a slide or a screenshot (or a single hex color) and it saves your brand palette to <code>DIAGRAM.md</code>. Every later diagram in the project follows it.</li>
+                  <li>Checks each diagram in headless Chrome for overflowing text, overlapping labels and off-palette colors, and reviews the light and dark previews before handing it over.</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Try asking</dt>
+                <dd><ul class="asks">
+                  <li><code>/crisp-diagrams</code> the OAuth device flow for our login docs</li>
+                  <li>Make our diagrams match our brand. Here's our logo.</li>
+                  <li>Redraw this whiteboard photo as a clean diagram</li>
+                  <li><code>/crisp-diagrams</code> on its own, and it asks what to draw</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Needs</dt>
+                <dd>Python 3 and Google Chrome or Chromium. Reading brand colors from an image also needs Pillow, ImageMagick or the sips tool built into macOS.</dd>
+              </div>
+            </dl>
           </div>
           <!-- Five example diagrams, shown one at a time in a random order. -->
           <a class="plate" href="crisp-diagrams/" tabindex="-1" aria-hidden="true">
@@ -198,6 +257,29 @@ footer a:hover { color: var(--accent); }
           <div class="card-body">
             <h3>GitHub Code Search</h3>
             <p>Search GitHub for similar code examples using the ghx CLI, with GitHub CLI authentication and npm install checks.</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd><ul>
+                  <li>Turns your question into targeted GitHub code searches, narrowed by repository, language, file extension, filename or path.</li>
+                  <li>Starts with a few results and widens the search only when they're weak.</li>
+                  <li>Summarizes the patterns it finds across several repositories, then adapts them to your codebase's architecture and style instead of copying code.</li>
+                  <li>Checks that the GitHub CLI is installed and signed in, and installs ghx from npm if it's missing.</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Try asking</dt>
+                <dd><ul class="asks">
+                  <li>How do other projects debounce input with useState?</li>
+                  <li>Find examples of Bun.serve with WebSockets</li>
+                  <li>Show me how open-source apps set up strict mode in tsconfig.json</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Needs</dt>
+                <dd>The GitHub CLI (<code>gh</code>), signed in. The skill installs <code>ghx</code> if it isn't there yet.</dd>
+              </div>
+            </dl>
           </div>
           <div class="install">
             <div class="cmd-row">
@@ -215,6 +297,29 @@ footer a:hover { color: var(--accent); }
           <div class="card-body">
             <h3>Product Name Finder</h3>
             <p>Generate strategic company, product, platform, feature, and sub-brand names using a professional naming workflow inspired by David Placek's work at Lexicon Branding.</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd><ul>
+                  <li>Works like a naming agency: a brief, a map of the category, 8 to 15 naming territories, then 150 to 300+ candidates before it narrows anything down.</li>
+                  <li>Scores candidates from 1 to 5 on twelve criteria, including distinctiveness, memorability, believability, trademark promise and cross-language safety, and drops the ones that fail hard.</li>
+                  <li>Tests the finalists in context and explains the trade-offs, separating the safest pick from the one with the most upside.</li>
+                  <li>Ends with a recommendation: a top 3, 2 backups and a wild card, plus the checks to run next with trademark counsel, domains and native speakers.</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Try asking</dt>
+                <dd><ul class="asks">
+                  <li>Name our AI bookkeeping tool for freelancers in Europe</li>
+                  <li>We're renaming the company. Here's what we do, who we sell to and who we compete with.</li>
+                  <li>Give me a quick sprint of 30 names for our new search feature</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Needs</dt>
+                <dd>Nothing to install. Share a brief (what you do, audience, category, what sets you apart, tone, markets), or let it state its assumptions.</dd>
+              </div>
+            </dl>
           </div>
           <div class="install">
             <div class="cmd-row">
