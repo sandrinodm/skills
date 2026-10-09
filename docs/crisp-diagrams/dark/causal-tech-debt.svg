@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="447" viewBox="0 0 760 447" role="img" aria-label="Shortcuts make every change slower, which creates pressure for more shortcuts">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="causal-tech-debt-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Shortcuts make every change slower, which creates pressure for more shortcuts</text>
+  <text class="note" x="24" y="54">The tech-debt spiral, and the budget that breaks it</text>
+  <g class="line"><path d="M371.2 119.543Q411.668 128.377 463.592 198" marker-end="url(#causal-tech-debt-arrow)"/></g>
+  <text class="name mid" x="450.316" y="167.389">+</text>
+  <g class="line"><path d="M465.084 240Q411.668 311.623 350.8 324.91" marker-end="url(#causal-tech-debt-arrow)"/></g>
+  <text class="name mid" x="382.064" y="332.22">+</text>
+  <g class="line"><path d="M251.2 325.347Q188.332 311.623 136.408 242" marker-end="url(#causal-tech-debt-arrow)"/></g>
+  <text class="name mid" x="151.074" y="283.183">+</text>
+  <g class="line"><path d="M134.916 200Q188.332 128.377 226.8 119.98" marker-end="url(#causal-tech-debt-arrow)"/></g>
+  <text class="name mid" x="203.496" y="121.15">+</text>
+  <g class="line"><path d="M348.8 323.689Q484.799 289.381 609.134 378" marker-end="url(#causal-tech-debt-arrow)"/></g>
+  <text class="name mid" x="559.1" y="339.161">+</text>
+  <g class="line"><path d="M562.4 419.576Q455.201 446.619 330.866 358" marker-end="url(#causal-tech-debt-arrow)"/></g>
+  <text class="name mid" x="379.175" y="407.024">−</text>
+  <rect class="box teal" x="232.8" y="88" width="134.4" height="32" rx="16"/>
+  <text class="mid" x="300" y="109">Pressure to ship</text>
+  <rect class="box teal" x="435.2" y="204" width="89.6" height="32" rx="16"/>
+  <text class="mid" x="480" y="225">Shortcuts</text>
+  <rect class="key" x="255.2" y="320" width="89.6" height="32" rx="16"/>
+  <text class="mid" x="300" y="341">Tech debt</text>
+  <rect class="box teal" x="56" y="204" width="128" height="32" rx="16"/>
+  <text class="mid" x="120" y="225">Time per change</text>
+  <rect class="box teal" x="566.4" y="384" width="147.2" height="32" rx="16"/>
+  <text class="mid" x="640" y="405">Refactoring budget</text>
+  <circle class="box" cx="300" cy="212" r="16"/>
+  <text class="name mid" x="300" y="217">R</text>
+  <text class="note mid" x="300" y="246">Debt spiral</text>
+  <circle class="box" cx="474" cy="362" r="16"/>
+  <text class="name mid" x="474" y="367">B</text>
+  <text class="note mid" x="474" y="396">Payback</text>
+</svg>

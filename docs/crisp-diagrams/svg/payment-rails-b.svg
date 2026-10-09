@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="488" viewBox="0 0 760 488" role="img" aria-label="Agents pay merchants on three rails, each with proof the user approved">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="payment-rails-b-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Agents pay merchants on three rails, each with proof the user approved</text>
+  <text class="note" x="24" y="54">Where agent payment standards sit between an agent and a merchant</text>
+  <rect class="box zone violet" x="24" y="72" width="168" height="320" rx="8"/>
+  <text class="name mid" x="108" y="96">Agent</text>
+  <rect class="box violet" x="40" y="124" width="136" height="40" rx="8"/>
+  <g class="icon violet" transform="translate(50 135) scale(0.75)"><path d="M4 7.5V18a2 2 0 0 0 2 2h14V9H6a2 2 0 0 1-2-1.5zM4 7.5A2 2 0 0 1 6 5.5h11V9"/><circle cx="16.5" cy="14.5" r="1.2"/></g>
+  <text class="small" x="76" y="148">Stablecoins</text>
+  <rect class="box violet" x="40" y="220" width="136" height="40" rx="8"/>
+  <g class="icon violet" transform="translate(50 231) scale(0.75)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="small" x="76" y="244">Card on file</text>
+  <rect class="box violet" x="40" y="316" width="136" height="40" rx="8"/>
+  <g class="icon violet" transform="translate(50 327) scale(0.75)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.5-1.5 1.7-2.3 3-2.3s2.5.8 3 2.3M14 10h4M14 13.5h4"/></g>
+  <text class="small" x="76" y="340">Bank account</text>
+  <rect class="box zone green" x="568" y="72" width="168" height="320" rx="8"/>
+  <text class="name mid" x="652" y="96">Merchant</text>
+  <rect class="box green" x="584" y="124" width="136" height="40" rx="8"/>
+  <g class="icon green" transform="translate(594 135) scale(0.75)"><path d="M9 4c-2 0-3 1-3 3v2.5c0 1.2-.8 2.5-2.5 2.5 1.7 0 2.5 1.3 2.5 2.5V17c0 2 1 3 3 3"/><path d="M15 4c2 0 3 1 3 3v2.5c0 1.2.8 2.5 2.5 2.5-1.7 0-2.5 1.3-2.5 2.5V17c0 2-1 3-3 3"/></g>
+  <text class="small" x="620" y="148">Paid API</text>
+  <rect class="box green" x="584" y="220" width="136" height="40" rx="8"/>
+  <g class="icon green" transform="translate(594 231) scale(0.75)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="small" x="620" y="244">Checkout</text>
+  <rect class="box green" x="584" y="316" width="136" height="40" rx="8"/>
+  <g class="icon green" transform="translate(594 327) scale(0.75)"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10.5 21v-3h3v3"/></g>
+  <text class="small" x="620" y="340">Bank</text>
+  <rect class="box amber" x="208" y="104" width="344" height="80" rx="8"/>
+  <g class="icon amber" transform="translate(222 115) scale(0.75)"><path d="M4 7.5V18a2 2 0 0 0 2 2h14V9H6a2 2 0 0 1-2-1.5zM4 7.5A2 2 0 0 1 6 5.5h11V9"/><circle cx="16.5" cy="14.5" r="1.2"/></g>
+  <text class="name" x="248" y="128">Rail 1: stablecoins</text>
+  <rect class="chip amber" x="224" y="144" width="50" height="26" rx="13"/>
+  <text class="small mid" x="249" y="161">x402</text>
+  <rect class="chip amber" x="282" y="144" width="107" height="26" rx="13"/>
+  <text class="small mid" x="335.5" y="161">Wallet limits</text>
+  <g class="line"><path d="M176 144H208" marker-end="url(#payment-rails-b-arrow)"/></g>
+  <g class="line"><path d="M552 144H584" marker-end="url(#payment-rails-b-arrow)"/></g>
+  <rect class="box amber" x="208" y="200" width="344" height="80" rx="8"/>
+  <g class="icon amber" transform="translate(222 211) scale(0.75)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="name" x="248" y="224">Rail 2: cards</text>
+  <rect class="chip amber" x="224" y="240" width="75" height="26" rx="13"/>
+  <text class="small mid" x="261.5" y="257">Visa TAP</text>
+  <rect class="chip amber" x="307" y="240" width="152" height="26" rx="13"/>
+  <text class="small mid" x="383" y="257">Mastercard Agent Pay</text>
+  <g class="line"><path d="M176 240H208" marker-end="url(#payment-rails-b-arrow)"/></g>
+  <g class="line"><path d="M552 240H584" marker-end="url(#payment-rails-b-arrow)"/></g>
+  <rect class="box amber" x="208" y="296" width="344" height="80" rx="8"/>
+  <g class="icon amber" transform="translate(222 307) scale(0.75)"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10.5 21v-3h3v3"/></g>
+  <text class="name" x="248" y="320">Rail 3: bank transfers</text>
+  <rect class="chip amber" x="224" y="336" width="101" height="26" rx="13"/>
+  <text class="small mid" x="274.5" y="353">Open banking</text>
+  <rect class="chip amber" x="333" y="336" width="75" height="26" rx="13"/>
+  <text class="small mid" x="370.5" y="353">Mandates</text>
+  <g class="line"><path d="M176 336H208" marker-end="url(#payment-rails-b-arrow)"/></g>
+  <g class="line"><path d="M552 336H584" marker-end="url(#payment-rails-b-arrow)"/></g>
+  <g class="line"><path d="M108 392V408"/></g>
+  <g class="line"><path d="M652 392V408"/></g>
+  <rect class="key" x="24" y="408" width="712" height="56" rx="8"/>
+  <text class="name" x="40" y="430">Proof of approval travels with every payment</text>
+  <text class="small" x="40" y="450">A signed mandate or token shows the merchant and the network that the user said yes</text>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-label="One MCP host connects to many servers, and you approve the tool calls">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="mcp-host-b-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">One MCP host connects to many servers, and you approve the tool calls</text>
+  <text class="note" x="24" y="54">How a Model Context Protocol host such as Claude Desktop reaches tools and data</text>
+  <rect class="box violet" x="200" y="76" width="360" height="56" rx="8"/>
+  <rect class="badge violet" x="214" y="88" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(220 94) scale(0.833333)"><path d="M4 5.5h16v10H10l-4 3.5v-3.5H4z"/></g>
+  <text class="name" x="258" y="100">You, in the chat app</text>
+  <text class="note" x="258" y="116">Ask for something that needs a tool</text>
+  <g class="line"><path d="M340 132V172" marker-end="url(#mcp-host-b-arrow)"/></g>
+  <g class="line"><path d="M420 172V132" marker-end="url(#mcp-host-b-arrow)"/></g>
+  <text class="note end" x="332" y="156">requests</text>
+  <text class="note" x="428" y="156">answers and approval prompts</text>
+  <rect class="box zone teal" x="24" y="172" width="712" height="184" rx="8"/>
+  <text class="name" x="40" y="196">MCP host: the app you talk to</text>
+  <rect class="box teal" x="40" y="212" width="216" height="72" rx="8"/>
+  <g class="icon teal" transform="translate(52 223) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="name" x="82" y="236">Model</text>
+  <text class="note" x="82" y="252">Decides which tool to call</text>
+  <text class="note" x="82" y="268">and with what input</text>
+  <rect class="box teal" x="272" y="212" width="216" height="72" rx="8"/>
+  <g class="icon teal" transform="translate(284 223) scale(0.833333)"><path d="M9 3v5M15 3v5M6.5 8h11v3a5.5 5.5 0 0 1-11 0zM12 16.5V21"/></g>
+  <text class="name" x="314" y="236">MCP clients</text>
+  <text class="note" x="314" y="252">One client per server, each</text>
+  <text class="note" x="314" y="268">on its own connection</text>
+  <rect class="box teal" x="504" y="212" width="216" height="72" rx="8"/>
+  <g class="icon teal" transform="translate(516 223) scale(0.833333)"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></g>
+  <text class="name" x="546" y="236">Tool list</text>
+  <text class="note" x="546" y="252">The tools, resources and</text>
+  <text class="note" x="546" y="268">prompts servers offer</text>
+  <rect class="key" x="40" y="300" width="680" height="40" rx="8"/>
+  <g class="icon accent" transform="translate(54 310) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></g>
+  <text class="name" x="82" y="324">Approval</text>
+  <text x="152" y="324">you confirm tool calls before they run</text>
+  <g class="line"><path d="M132 340V404" marker-end="url(#mcp-host-b-arrow)"/></g>
+  <rect class="box green" x="24" y="404" width="216" height="72" rx="8"/>
+  <g class="icon green" transform="translate(36 415) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="name" x="66" y="428">Filesystem server</text>
+  <text class="note" x="66" y="444">Reads and writes files in</text>
+  <text class="note" x="66" y="460">folders you allow</text>
+  <g class="line"><path d="M380 340V404" marker-end="url(#mcp-host-b-arrow)"/></g>
+  <rect class="box green" x="272" y="404" width="216" height="72" rx="8"/>
+  <g class="icon green" transform="translate(284 415) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="name" x="314" y="428">GitHub server</text>
+  <text class="note" x="314" y="444">Issues, pull requests and</text>
+  <text class="note" x="314" y="460">code search</text>
+  <g class="line"><path d="M628 340V404" marker-end="url(#mcp-host-b-arrow)"/></g>
+  <rect class="box green" x="520" y="404" width="216" height="72" rx="8"/>
+  <g class="icon green" transform="translate(532 415) scale(0.833333)"><path d="M4 5.5h16v10H10l-4 3.5v-3.5H4z"/></g>
+  <text class="name" x="562" y="428">Slack server</text>
+  <text class="note" x="562" y="444">Reads channels and posts</text>
+  <text class="note" x="562" y="460">messages</text>
+  <text class="note" x="388" y="384">approved calls only</text>
+</svg>

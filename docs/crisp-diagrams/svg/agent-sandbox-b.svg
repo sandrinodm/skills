@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="780" viewBox="0 0 760 780" role="img" aria-label="The agent reads untrusted content in a sandbox; only the action gate can act">
+  <style>
+/* crisp-diagrams theme: zones: colored washes on areas, white boxes inside. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--key-fill:#e3eefa;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#7a7872;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--key-fill:#1e2f45;--blue:#1f3350;--blue-line:#4a76b0;--green:#1e3a2a;--green-line:#4c8a60;--violet:#2f2a50;--violet-line:#7464b4;--amber:#3e3120;--amber-line:#a07e45;--rose:#3f2532;--rose-line:#a65b72;--teal:#1a3a38;--teal-line:#3e908a;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505;--blue-ink:#8fb8ef;--green-ink:#8fd0a6;--violet-ink:#b6a8f0;--amber-ink:#e6bd73;--rose-ink:#eda3b4;--teal-ink:#85d0c8}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--key-fill);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:var(--tint)}
+.box.blue,.chip.blue{stroke:var(--blue-line)}
+.box.green,.chip.green{stroke:var(--green-line)}
+.box.violet,.chip.violet{stroke:var(--violet-line)}
+.box.amber,.chip.amber{stroke:var(--amber-line)}
+.box.rose,.chip.rose{stroke:var(--rose-line)}
+.box.teal,.chip.teal{stroke:var(--teal-line)}
+.box.zone.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.zone.green{fill:var(--green);stroke:var(--green-line)}
+.box.zone.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.zone.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.zone.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.zone.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{stroke:var(--blue-line)}
+.device.green{stroke:var(--green-line)}
+.device.violet{stroke:var(--violet-line)}
+.device.amber{stroke:var(--amber-line)}
+.device.rose{stroke:var(--rose-line)}
+.device.teal{stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--blue)}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--green)}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--violet)}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--amber)}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--rose)}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--teal)}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="agent-sandbox-b-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The agent reads untrusted content in a sandbox; only the action gate can act</text>
+  <text class="note" x="24" y="54">Trust zones for an agent that browses the web and takes actions for you</text>
+  <rect class="box violet" x="232" y="76" width="488" height="56" rx="8"/>
+  <rect class="badge violet" x="246" y="88" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(252 94) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="name" x="290" y="100">The open web</text>
+  <text class="note" x="290" y="116">Pages, emails and files the agent reads</text>
+  <rect class="box zone rose" x="24" y="180" width="712" height="160" rx="8"/>
+  <text class="name" x="40" y="220">Untrusted input</text>
+  <text class="note" x="40" y="240">Anything the agent reads</text>
+  <text class="note" x="40" y="256">May hide prompt injections</text>
+  <rect class="box rose" x="232" y="196" width="488" height="40" rx="8"/>
+  <g class="icon rose" transform="translate(246 206) scale(0.833333)"><path d="M3.5 5h17l-6.5 7.5V19l-4 2v-8.5z"/></g>
+  <text class="name" x="274" y="220">Fetcher</text>
+  <text x="385" y="220">strips scripts, keeps the text</text>
+  <rect class="box rose" x="232" y="268" width="232" height="56" rx="8"/>
+  <g class="icon rose" transform="translate(244 279) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="name" x="274" y="292">Web pages</text>
+  <text class="note" x="274" y="308">Read through a text-only view</text>
+  <rect class="box rose" x="488" y="268" width="232" height="56" rx="8"/>
+  <g class="icon rose" transform="translate(500 279) scale(0.833333)"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></g>
+  <text class="name" x="530" y="292">Inbox</text>
+  <text class="note" x="530" y="308">Emails and attachments</text>
+  <g class="line"><path d="M348 236V268" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <g class="line"><path d="M604 236V268" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <g class="line"><path d="M476 132V196" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <text class="note" x="488" y="160">content</text>
+  <rect class="box zone amber" x="24" y="388" width="712" height="160" rx="8"/>
+  <text class="name" x="40" y="428">Agent sandbox</text>
+  <text class="note" x="40" y="448">No credentials here</text>
+  <text class="note" x="40" y="464">Can draft, not send</text>
+  <rect class="box amber" x="232" y="404" width="488" height="40" rx="8"/>
+  <g class="icon amber" transform="translate(246 414) scale(0.833333)"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/></g>
+  <text class="name" x="274" y="428">Context filter</text>
+  <text x="385" y="428">treats fetched text as data, not commands</text>
+  <rect class="box amber" x="232" y="476" width="232" height="56" rx="8"/>
+  <g class="icon amber" transform="translate(244 487) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="name" x="274" y="500">Model</text>
+  <text class="note" x="274" y="516">Plans and drafts actions</text>
+  <rect class="box amber" x="488" y="476" width="232" height="56" rx="8"/>
+  <g class="icon amber" transform="translate(500 487) scale(0.833333)"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></g>
+  <text class="name" x="530" y="500">Scratch files</text>
+  <text class="note" x="530" y="516">Wiped after each task</text>
+  <g class="line"><path d="M348 444V476" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <g class="line"><path d="M464 504H488" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <g class="line"><path d="M348 324V404" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <text class="note" x="360" y="368">page text</text>
+  <rect class="box zone green" x="24" y="596" width="712" height="160" rx="8"/>
+  <text class="name" x="40" y="636">Trusted actions</text>
+  <text class="note" x="40" y="656">Holds the credentials</text>
+  <text class="note" x="40" y="672">Every action is logged</text>
+  <rect class="key" x="232" y="612" width="488" height="40" rx="8"/>
+  <g class="icon accent" transform="translate(246 622) scale(0.833333)"><path d="M12 4v16M7 20h10M5 7h14M7.5 7L4.5 13a3 3 0 0 0 6 0zM16.5 7l-3 6a3 3 0 0 0 6 0z"/></g>
+  <text class="name" x="274" y="636">Action gate</text>
+  <text x="385" y="636">your rules decide; risky actions wait for you</text>
+  <rect class="box green" x="232" y="684" width="232" height="56" rx="8"/>
+  <g class="icon green" transform="translate(244 695) scale(0.833333)"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></g>
+  <text class="name" x="274" y="708">Send email</text>
+  <text class="note" x="274" y="724">From your account</text>
+  <rect class="box green" x="488" y="684" width="232" height="56" rx="8"/>
+  <g class="icon green" transform="translate(500 695) scale(0.833333)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="name" x="530" y="708">Payments</text>
+  <text class="note" x="530" y="724">Within your spending limits</text>
+  <g class="line"><path d="M348 652V684" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <g class="line"><path d="M604 652V684" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <g class="line"><path d="M348 532V612" marker-end="url(#agent-sandbox-b-arrow)"/></g>
+  <text class="note" x="360" y="576">proposed actions</text>
+</svg>

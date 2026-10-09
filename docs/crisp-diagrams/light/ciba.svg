@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="584" viewBox="0 0 760 584" role="img" aria-label="With CIBA, the bank asks the customer on their own phone, not in the agent&#x27;s chat">
+  <style>
+/* crisp-diagrams theme: gradient: light top-to-bottom gradients in boxes (needs gradient-defs.svg, added by theme.py). Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--paper-0:#ffffff;--paper-1:#f1f0eb;--key-0:#eef5ff;--key-1:#d3e4fb;--blue-0:#f3f8ff;--blue-1:#dbe8fc;--green-0:#f2faf5;--green-1:#d7efdf;--violet-0:#f7f4ff;--violet-1:#e4dcfa;--amber-0:#fffaf1;--amber-1:#f9e6c4;--rose-0:#fff5f7;--rose-1:#f8dbe2;--teal-0:#f0faf9;--teal-1:#d3eeeb;--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:url(#cd-paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:url(#cd-key);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.box.green{fill:url(#cd-green);stroke:var(--green-line)}
+.box.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.box.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.box.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.box.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.chip.green{fill:var(--green);stroke:var(--green-line)}
+.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.device.green{fill:url(#cd-green);stroke:var(--green-line)}
+.device.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.device.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.device.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.device.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <linearGradient id="cd-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--paper-0)"/><stop offset="1" style="stop-color:var(--paper-1)"/></linearGradient>
+    <linearGradient id="cd-key" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--key-0)"/><stop offset="1" style="stop-color:var(--key-1)"/></linearGradient>
+    <linearGradient id="cd-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue-0)"/><stop offset="1" style="stop-color:var(--blue-1)"/></linearGradient>
+    <linearGradient id="cd-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--green-0)"/><stop offset="1" style="stop-color:var(--green-1)"/></linearGradient>
+    <linearGradient id="cd-violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--violet-0)"/><stop offset="1" style="stop-color:var(--violet-1)"/></linearGradient>
+    <linearGradient id="cd-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber-0)"/><stop offset="1" style="stop-color:var(--amber-1)"/></linearGradient>
+    <linearGradient id="cd-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--rose-0)"/><stop offset="1" style="stop-color:var(--rose-1)"/></linearGradient>
+    <linearGradient id="cd-teal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--teal-0)"/><stop offset="1" style="stop-color:var(--teal-1)"/></linearGradient>
+    <marker id="ciba-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">With CIBA, the bank asks the customer on their own phone, not in the agent's chat</text>
+  <text class="note" x="24" y="54">Client-Initiated Backchannel Authentication, as an agent uses it to get a payment approved</text>
+  <g class="life"><line x1="104" x2="104" y1="124" y2="484"/></g>
+  <g class="life"><line x1="288" x2="288" y1="124" y2="484"/></g>
+  <g class="life"><line x1="472" x2="472" y1="124" y2="484"/></g>
+  <g class="life"><line x1="656" x2="656" y1="124" y2="484"/></g>
+  <rect class="box violet" x="24" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="104" y="94">Agent</text>
+  <text class="note mid" x="104" y="112">wants to pay</text>
+  <rect class="box teal" x="208" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="288" y="94">Bank auth server</text>
+  <text class="note mid" x="288" y="112">asks and issues tokens</text>
+  <rect class="box amber" x="392" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="472" y="94">Customer's phone</text>
+  <text class="note mid" x="472" y="112">the bank's app</text>
+  <rect class="box green" x="576" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="656" y="94">Bank API</text>
+  <text class="note mid" x="656" y="112">moves the money</text>
+  <g class="line"><path d="M104 172H286" marker-end="url(#ciba-arrow)"/></g>
+  <text class="small mid" x="196" y="164">1 Asks to act for the customer</text>
+  <g class="line"><path d="M288 220H106" marker-end="url(#ciba-arrow)"/></g>
+  <text class="small mid" x="196" y="212">2 Request ID, check back later</text>
+  <g class="line"><path d="M288 268H470" marker-end="url(#ciba-arrow)"/></g>
+  <text class="small mid" x="380" y="260">3 Push: approve €120 to Acme?</text>
+  <rect class="key" x="368" y="284" width="208" height="48" rx="8"/>
+  <text class="small strong mid" x="472" y="304">4 Customer approves</text>
+  <text class="small mid" x="472" y="320">with Face ID in the bank's app</text>
+  <g class="line"><path d="M104 364H286" marker-end="url(#ciba-arrow)"/></g>
+  <text class="small mid" x="196" y="356">5 Polls until approved</text>
+  <g class="line"><path d="M288 412H106" marker-end="url(#ciba-arrow)"/></g>
+  <text class="small mid" x="196" y="404">6 Token for this payment</text>
+  <g class="line"><path d="M104 460H654" marker-end="url(#ciba-arrow)"/></g>
+  <text class="small" x="116" y="452">7 Makes the payment with the token</text>
+  <rect class="callout" x="24" y="504" width="712" height="56" rx="8"/>
+  <text class="name" x="40" y="526">The agent never sees the customer's login</text>
+  <text class="small" x="40" y="546">Approval happens in the bank's own app, so the bank knows the real customer said yes</text>
+</svg>

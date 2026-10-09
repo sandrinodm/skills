@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="540" viewBox="0 0 760 540" role="img" aria-label="A computer-use agent works in a throwaway VM, and a guard watches every click">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="computer-use-b-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">A computer-use agent works in a throwaway VM, and a guard watches every click</text>
+  <text class="note" x="24" y="54">What sits inside an agent that operates a desktop for you</text>
+  <rect class="box violet" x="200" y="76" width="360" height="56" rx="8"/>
+  <rect class="badge violet" x="214" y="88" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(220 94) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="name" x="258" y="100">You</text>
+  <text class="note" x="258" y="116">Describe the task and approve risky steps</text>
+  <g class="line"><path d="M340 132V172" marker-end="url(#computer-use-b-arrow)"/></g>
+  <g class="line"><path d="M420 172V132" marker-end="url(#computer-use-b-arrow)"/></g>
+  <text class="note end" x="332" y="156">tasks and approvals</text>
+  <text class="note" x="428" y="156">progress and questions</text>
+  <rect class="box zone teal" x="24" y="172" width="712" height="240" rx="8"/>
+  <text class="name" x="40" y="196">Disposable virtual machine</text>
+  <rect class="box teal" x="40" y="212" width="332" height="56" rx="8"/>
+  <rect class="badge teal" x="52" y="224" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(58 230) scale(0.833333)"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/></g>
+  <text class="name" x="96" y="236">Screen reader</text>
+  <text class="note" x="96" y="252">Takes screenshots and reads what's on screen</text>
+  <rect class="box teal" x="388" y="212" width="332" height="56" rx="8"/>
+  <rect class="badge teal" x="400" y="224" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(406 230) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="name" x="444" y="236">Planner</text>
+  <text class="note" x="444" y="252">Picks the next click or keystroke</text>
+  <rect class="box teal" x="40" y="284" width="332" height="56" rx="8"/>
+  <rect class="badge teal" x="52" y="296" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(58 302) scale(0.833333)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <text class="name" x="96" y="308">Mouse and keyboard</text>
+  <text class="note" x="96" y="324">Sends input to apps inside the VM</text>
+  <rect class="box teal" x="388" y="284" width="332" height="56" rx="8"/>
+  <rect class="badge teal" x="400" y="296" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(406 302) scale(0.833333)"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></g>
+  <text class="name" x="444" y="308">Session recorder</text>
+  <text class="note" x="444" y="324">Keeps a replay of every step</text>
+  <rect class="key" x="40" y="356" width="680" height="40" rx="8"/>
+  <g class="icon accent" transform="translate(54 366) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/></g>
+  <text class="name" x="82" y="380">Guard</text>
+  <text x="132" y="380">pauses before purchases, sign-ins and deletes</text>
+  <g class="line"><path d="M196 396V460" marker-end="url(#computer-use-b-arrow)"/></g>
+  <rect class="box green" x="24" y="460" width="344" height="56" rx="8"/>
+  <rect class="badge green" x="36" y="472" width="32" height="32" rx="9"/><g class="icon green" transform="translate(42 478) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="name" x="80" y="484">Websites</text>
+  <text class="note" x="80" y="500">Opened in the VM's own browser</text>
+  <g class="line"><path d="M564 396V460" marker-end="url(#computer-use-b-arrow)"/></g>
+  <rect class="box green" x="392" y="460" width="344" height="56" rx="8"/>
+  <rect class="badge green" x="404" y="472" width="32" height="32" rx="9"/><g class="icon green" transform="translate(410 478) scale(0.833333)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <text class="name" x="448" y="484">Desktop apps</text>
+  <text class="note" x="448" y="500">Installed in the VM, never on your machine</text>
+  <text class="note" x="204" y="440">approved actions</text>
+</svg>

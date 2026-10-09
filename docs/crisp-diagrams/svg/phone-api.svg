@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="448" viewBox="0 0 760 448" role="img" aria-label="Every call from the app carries a short-lived token the API checks first">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="phone-api-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Every call from the app carries a short-lived token the API checks first</text>
+  <text class="note" x="24" y="54">A mobile app loading orders through an API gateway</text>
+  <g transform="translate(40 80)"><rect class="device" x="0" y="0" width="150" height="300" rx="24"/><rect class="screen" x="7" y="7" width="136" height="286" rx="18"/><rect class="island" x="56" y="15" width="38" height="11" rx="5.5"/><text class="uitext strong" x="17" y="52">Orders</text><rect class="field" x="17" y="64" width="116" height="38" rx="8"/><circle class="ui" cx="33" cy="83" r="8"/><text class="uitext" x="47" y="80">Order #1042</text><text class="uinote" x="47" y="93">Shipped</text><rect class="field" x="17" y="110" width="116" height="38" rx="8"/><circle class="ui" cx="33" cy="129" r="8"/><text class="uitext" x="47" y="126">Order #1039</text><text class="uinote" x="47" y="139">Delivered</text><rect class="field" x="17" y="156" width="116" height="38" rx="8"/><circle class="ui" cx="33" cy="175" r="8"/><text class="uitext" x="47" y="172">Order #1031</text><text class="uinote" x="47" y="185">Delivered</text><rect class="field" x="17" y="202" width="116" height="38" rx="8"/><circle class="ui" cx="33" cy="221" r="8"/><text class="uitext" x="47" y="218">Order #1027</text><text class="uinote" x="47" y="231">Refunded</text><path class="line" d="M17 250H133"/><circle class="btn" cx="43" cy="264" r="4"/><circle class="ui" cx="75" cy="264" r="4"/><circle class="ui" cx="107" cy="264" r="4"/><rect class="ui" x="56" y="283" width="38" height="3" rx="1.5"/></g>
+  <g transform="translate(350 188)"><rect class="device teal" x="0" y="0" width="100" height="24" rx="6"/><circle class="ui" cx="14" cy="12" r="3"/><circle class="ui" cx="25" cy="12" r="3"/><rect class="ui" x="62" y="10" width="26" height="4" rx="2"/><rect class="device teal" x="0" y="30" width="100" height="24" rx="6"/><circle class="ui" cx="14" cy="42" r="3"/><circle class="ui" cx="25" cy="42" r="3"/><rect class="ui" x="62" y="40" width="26" height="4" rx="2"/><rect class="device teal" x="0" y="60" width="100" height="24" rx="6"/><circle class="ui" cx="14" cy="72" r="3"/><circle class="ui" cx="25" cy="72" r="3"/><rect class="ui" x="62" y="70" width="26" height="4" rx="2"/></g>
+  <g transform="translate(600 182)"><path class="device green" d="M0 12 A42 12 0 0 1 84 12 V84 A42 12 0 0 1 0 84 Z"/><path class="glyph" d="M0 12 A42 12 0 0 0 84 12"/></g>
+  <g class="line"><path d="M202 218H338" marker-end="url(#phone-api-arrow)"/></g>
+  <g class="line"><path d="M338 242H202" marker-end="url(#phone-api-arrow)"/></g>
+  <rect class="key" x="214" y="162" width="112" height="22" rx="6"/>
+  <text class="uitext code mid" x="270" y="177">Bearer eyJhbG...</text>
+  <rect class="field" x="229" y="190" width="82" height="22" rx="6"/>
+  <text class="uitext code mid" x="270" y="205">GET /orders</text>
+  <rect class="field" x="220" y="248" width="100" height="22" rx="6"/>
+  <text class="uitext code mid" x="270" y="263">200 · 3 orders</text>
+  <g class="line"><path d="M462 218H588" marker-end="url(#phone-api-arrow)"/></g>
+  <g class="line"><path d="M588 242H462" marker-end="url(#phone-api-arrow)"/></g>
+  <rect class="field" x="478" y="190" width="94" height="22" rx="6"/>
+  <text class="uitext code mid" x="525" y="205">SELECT orders</text>
+  <rect class="field" x="499" y="248" width="52" height="22" rx="6"/>
+  <text class="uitext code mid" x="525" y="263">3 rows</text>
+  <text class="name mid" x="115" y="404">Acme app</text>
+  <text class="note mid" x="115" y="420">Shows your recent orders</text>
+  <text class="name mid" x="400" y="404">API gateway</text>
+  <text class="note mid" x="400" y="420">Checks the token first</text>
+  <text class="name mid" x="642" y="404">Orders database</text>
+  <text class="note mid" x="642" y="420">Only the gateway can reach it</text>
+</svg>

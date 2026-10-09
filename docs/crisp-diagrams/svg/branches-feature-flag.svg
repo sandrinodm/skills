@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="248" viewBox="0 0 760 248" role="img" aria-label="The feature ships dark behind a flag, so the release never waits for it">
+  <style>
+/* crisp-diagrams theme: zones: colored washes on areas, white boxes inside. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--key-fill:#e3eefa;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#7a7872;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--key-fill:#1e2f45;--blue:#1f3350;--blue-line:#4a76b0;--green:#1e3a2a;--green-line:#4c8a60;--violet:#2f2a50;--violet-line:#7464b4;--amber:#3e3120;--amber-line:#a07e45;--rose:#3f2532;--rose-line:#a65b72;--teal:#1a3a38;--teal-line:#3e908a;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505;--blue-ink:#8fb8ef;--green-ink:#8fd0a6;--violet-ink:#b6a8f0;--amber-ink:#e6bd73;--rose-ink:#eda3b4;--teal-ink:#85d0c8}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--key-fill);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:var(--tint)}
+.box.blue,.chip.blue{stroke:var(--blue-line)}
+.box.green,.chip.green{stroke:var(--green-line)}
+.box.violet,.chip.violet{stroke:var(--violet-line)}
+.box.amber,.chip.amber{stroke:var(--amber-line)}
+.box.rose,.chip.rose{stroke:var(--rose-line)}
+.box.teal,.chip.teal{stroke:var(--teal-line)}
+.box.zone.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.zone.green{fill:var(--green);stroke:var(--green-line)}
+.box.zone.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.zone.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.zone.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.zone.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{stroke:var(--blue-line)}
+.device.green{stroke:var(--green-line)}
+.device.violet{stroke:var(--violet-line)}
+.device.amber{stroke:var(--amber-line)}
+.device.rose{stroke:var(--rose-line)}
+.device.teal{stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--blue)}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--green)}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--violet)}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--amber)}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--rose)}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--teal)}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="branches-feature-flag-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The feature ships dark behind a flag, so the release never waits for it</text>
+  <text class="note" x="24" y="54">Merging unfinished work safely</text>
+  <text class="small code" x="24" y="136">main</text>
+  <text class="small code" x="24" y="220">new-checkout</text>
+  <g class="line"><path d="M160 132H692"/></g>
+  <g class="line"><path d="M160 139V216H426"/></g>
+  <g class="line"><path d="M255.667 216H337.333V143" marker-end="url(#branches-feature-flag-arrow)"/></g>
+  <g class="line"><path d="M433 216H603.333V141" marker-end="url(#branches-feature-flag-arrow)"/></g>
+  <circle class="box teal" cx="160" cy="132" r="7"/>
+  <text class="note mid" x="160" y="116">release</text>
+  <rect class="chip amber" x="136" y="78" width="48" height="22" rx="11"/>
+  <text class="small code mid" x="160" y="93">v3.0</text>
+  <circle class="box violet" cx="248.667" cy="216" r="7"/>
+  <text class="note mid" x="248.667" y="200">flag off</text>
+  <circle class="key" cx="337.333" cy="132" r="9"/>
+  <text class="small strong mid" x="337.333" y="116">merge dark</text>
+  <circle class="box violet" cx="426" cy="216" r="7"/>
+  <text class="note mid" x="426" y="200">polish</text>
+  <circle class="box teal" cx="514.667" cy="132" r="7"/>
+  <text class="note mid" x="514.667" y="116">release</text>
+  <rect class="chip amber" x="490.667" y="78" width="48" height="22" rx="11"/>
+  <text class="small code mid" x="514.667" y="93">v3.1</text>
+  <circle class="box teal" cx="603.333" cy="132" r="7"/>
+  <text class="note mid" x="603.333" y="116">merge</text>
+  <circle class="box teal" cx="692" cy="132" r="7"/>
+  <text class="note mid" x="692" y="116">flag on</text>
+</svg>

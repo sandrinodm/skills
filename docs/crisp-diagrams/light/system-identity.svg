@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="368" viewBox="0 0 760 368" role="img" aria-label="Every app signs users in through one identity platform">
+  <style>
+/* crisp-diagrams theme: pastel: flat soft fills per group. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.16;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue,.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.green,.chip.green{fill:var(--green);stroke:var(--green-line)}
+.box.violet,.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.amber,.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.rose,.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.teal,.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:var(--blue);stroke:var(--blue-line)}
+.device.green{fill:var(--green);stroke:var(--green-line)}
+.device.violet{fill:var(--violet);stroke:var(--violet-line)}
+.device.amber{fill:var(--amber);stroke:var(--amber-line)}
+.device.rose{fill:var(--rose);stroke:var(--rose-line)}
+.device.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="system-identity-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Every app signs users in through one identity platform</text>
+  <text class="note" x="24" y="54">System context for a customer identity platform</text>
+  <rect class="box violet" x="24" y="80" width="176" height="72" rx="8"/>
+  <rect class="badge violet" x="36" y="92" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(42 98) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="name" x="80" y="104">Customers</text>
+  <text class="note" x="80" y="120">Sign in and sign</text>
+  <text class="note" x="80" y="136">up</text>
+  <rect class="box violet" x="24" y="176" width="176" height="72" rx="8"/>
+  <rect class="badge violet" x="36" y="188" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(42 194) scale(0.833333)"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/></g>
+  <text class="name" x="80" y="200">Admins</text>
+  <text class="note" x="80" y="216">Manage users and</text>
+  <text class="note" x="80" y="232">rules</text>
+  <rect class="box violet" x="24" y="272" width="176" height="72" rx="8"/>
+  <rect class="badge violet" x="36" y="284" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(42 290) scale(0.833333)"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></g>
+  <text class="name" x="80" y="296">Developers</text>
+  <text class="note" x="80" y="312">Configure apps</text>
+  <rect class="box green" x="560" y="80" width="176" height="72" rx="8"/>
+  <rect class="badge green" x="572" y="92" width="32" height="32" rx="9"/><g class="icon green" transform="translate(578 98) scale(0.833333)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <text class="name" x="616" y="104">Your apps</text>
+  <text class="note" x="616" y="120">Trust its tokens</text>
+  <rect class="box green" x="560" y="176" width="176" height="72" rx="8"/>
+  <rect class="badge green" x="572" y="188" width="32" height="32" rx="9"/><g class="icon green" transform="translate(578 194) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="name" x="616" y="200">Social logins</text>
+  <text class="note" x="616" y="216">Google, Apple</text>
+  <rect class="box green" x="560" y="272" width="176" height="72" rx="8"/>
+  <rect class="badge green" x="572" y="284" width="32" height="32" rx="9"/><g class="icon green" transform="translate(578 290) scale(0.833333)"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></g>
+  <text class="name" x="616" y="296">Email and SMS</text>
+  <text class="note" x="616" y="312">One-time codes</text>
+  <rect class="key" x="296" y="80" width="168" height="264" rx="8"/>
+  <g class="icon accent" transform="translate(370 163) scale(1.16667)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.5-1.5 1.7-2.3 3-2.3s2.5.8 3 2.3M14 10h4M14 13.5h4"/></g>
+  <text class="name mid" x="380" y="209">Identity platform</text>
+  <text class="small mid" x="380" y="225">Sign-in, accounts, MFA</text>
+  <text class="small mid" x="380" y="241">and tokens for every</text>
+  <text class="small mid" x="380" y="257">app</text>
+  <g class="line"><path d="M200 116H296" marker-end="url(#system-identity-arrow)"/></g>
+  <text class="note mid" x="248" y="108">signs in</text>
+  <g class="line"><path d="M200 212H296" marker-end="url(#system-identity-arrow)"/></g>
+  <text class="note mid" x="248" y="204">manages</text>
+  <g class="line"><path d="M200 308H296" marker-end="url(#system-identity-arrow)"/></g>
+  <text class="note mid" x="248" y="300">configures</text>
+  <g class="line"><path d="M464 116H560" marker-end="url(#system-identity-arrow)"/></g>
+  <text class="note mid" x="512" y="108">tokens</text>
+  <g class="line"><path d="M464 212H560" marker-end="url(#system-identity-arrow)" marker-start="url(#system-identity-arrow)"/></g>
+  <text class="note mid" x="512" y="204">federates</text>
+  <g class="line"><path d="M464 308H560" marker-end="url(#system-identity-arrow)"/></g>
+  <text class="note mid" x="512" y="300">sends codes</text>
+</svg>

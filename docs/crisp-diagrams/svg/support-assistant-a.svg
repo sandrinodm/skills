@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="572" viewBox="0 0 760 572" role="img" aria-label="A support assistant answers from your help center, and hands off when it&#x27;s unsure">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="support-assistant-a-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">A support assistant answers from your help center, and hands off when it's unsure</text>
+  <text class="note" x="24" y="54">What sits inside an AI assistant for customer support</text>
+  <rect class="box violet" x="200" y="76" width="360" height="56" rx="8"/>
+  <rect class="badge violet" x="214" y="88" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(220 94) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="name" x="258" y="100">Customers</text>
+  <text class="note" x="258" y="116">Write in by chat or email</text>
+  <g class="line"><path d="M340 132V172" marker-end="url(#support-assistant-a-arrow)"/></g>
+  <g class="line"><path d="M420 172V132" marker-end="url(#support-assistant-a-arrow)"/></g>
+  <text class="note end" x="332" y="156">questions</text>
+  <text class="note" x="428" y="156">answers</text>
+  <rect class="box zone teal" x="24" y="172" width="712" height="256" rx="8"/>
+  <text class="name" x="40" y="196">Support assistant</text>
+  <rect class="box teal" x="40" y="212" width="332" height="72" rx="8"/>
+  <g class="icon teal" transform="translate(52 223) scale(0.833333)"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></g>
+  <text class="name" x="82" y="236">Retriever</text>
+  <text class="note" x="82" y="252">Finds the help-center articles that match the</text>
+  <text class="note" x="82" y="268">question</text>
+  <rect class="box teal" x="388" y="212" width="332" height="72" rx="8"/>
+  <g class="icon teal" transform="translate(400 223) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="name" x="430" y="236">Answer writer</text>
+  <text class="note" x="430" y="252">Replies in your tone and cites the article it</text>
+  <text class="note" x="430" y="268">used</text>
+  <rect class="box teal" x="40" y="300" width="332" height="56" rx="8"/>
+  <g class="icon teal" transform="translate(52 311) scale(0.833333)"><path d="M12 4v16M7 20h10M5 7h14M7.5 7L4.5 13a3 3 0 0 0 6 0zM16.5 7l-3 6a3 3 0 0 0 6 0z"/></g>
+  <text class="name" x="82" y="324">Policy rules</text>
+  <text class="note" x="82" y="340">Refund limits, tone, and topics to avoid</text>
+  <rect class="box teal" x="388" y="300" width="332" height="56" rx="8"/>
+  <g class="icon teal" transform="translate(400 311) scale(0.833333)"><path d="M4 5.5h16v10H10l-4 3.5v-3.5H4z"/></g>
+  <text class="name" x="430" y="324">Conversation memory</text>
+  <text class="note" x="430" y="340">Remembers what the customer said earlier</text>
+  <rect class="key" x="40" y="372" width="680" height="40" rx="8"/>
+  <g class="icon accent" transform="translate(54 382) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></g>
+  <text class="name" x="82" y="396">Escalation check</text>
+  <text x="207" y="396">unsure, or an upset customer? a person takes over</text>
+  <g class="line"><path d="M132 412V476" marker-end="url(#support-assistant-a-arrow)"/></g>
+  <rect class="box green" x="24" y="476" width="216" height="72" rx="8"/>
+  <g class="icon green" transform="translate(36 487) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="name" x="66" y="500">Help center</text>
+  <text class="note" x="66" y="516">The articles it answers</text>
+  <text class="note" x="66" y="532">from</text>
+  <g class="line"><path d="M380 412V476" marker-end="url(#support-assistant-a-arrow)"/></g>
+  <rect class="box green" x="272" y="476" width="216" height="72" rx="8"/>
+  <g class="icon green" transform="translate(284 487) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="name" x="314" y="500">Ticketing system</text>
+  <text class="note" x="314" y="516">Gets a ticket for every</text>
+  <text class="note" x="314" y="532">handoff</text>
+  <g class="line"><path d="M628 412V476" marker-end="url(#support-assistant-a-arrow)"/></g>
+  <rect class="box green" x="520" y="476" width="216" height="72" rx="8"/>
+  <g class="icon green" transform="translate(532 487) scale(0.833333)"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H5.5A1.5 1.5 0 0 1 4 17.5zM20 14h-3v5h1.5a1.5 1.5 0 0 0 1.5-1.5zM17 19c0 1.5-2 2.5-5 2.5"/></g>
+  <text class="name" x="562" y="500">Support team</text>
+  <text class="note" x="562" y="516">Picks up handoffs with the</text>
+  <text class="note" x="562" y="532">full context</text>
+  <text class="note" x="388" y="456">handoffs with context</text>
+</svg>

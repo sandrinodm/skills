@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="468" viewBox="0 0 760 468" role="img" aria-label="The API reads the token in one header before it looks at anything else">
+  <style>
+/* crisp-diagrams theme: pastel: flat soft fills per group. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#7a7872;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--blue:#1f3350;--blue-line:#4a76b0;--green:#1e3a2a;--green-line:#4c8a60;--violet:#2f2a50;--violet-line:#7464b4;--amber:#3e3120;--amber-line:#a07e45;--rose:#3f2532;--rose-line:#a65b72;--teal:#1a3a38;--teal-line:#3e908a;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505;--blue-ink:#8fb8ef;--green-ink:#8fd0a6;--violet-ink:#b6a8f0;--amber-ink:#e6bd73;--rose-ink:#eda3b4;--teal-ink:#85d0c8}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.16;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue,.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.green,.chip.green{fill:var(--green);stroke:var(--green-line)}
+.box.violet,.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.amber,.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.rose,.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.teal,.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:var(--blue);stroke:var(--blue-line)}
+.device.green{fill:var(--green);stroke:var(--green-line)}
+.device.violet{fill:var(--violet);stroke:var(--violet-line)}
+.device.amber{fill:var(--amber);stroke:var(--amber-line)}
+.device.rose{fill:var(--rose);stroke:var(--rose-line)}
+.device.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="artifact-http-request-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The API reads the token in one header before it looks at anything else</text>
+  <text class="note" x="24" y="54">Anatomy of an HTTP request to an API</text>
+  <rect class="box" x="24" y="80" width="424" height="168" rx="8"/>
+  <rect class="chip violet" x="32" y="92" width="408" height="22" rx="4"/>
+  <rect class="chip teal" x="32" y="120" width="408" height="22" rx="4"/>
+  <rect class="key" x="32" y="148" width="408" height="22" rx="4"/>
+  <rect class="chip amber" x="32" y="176" width="408" height="50" rx="4"/>
+  <text class="small code" x="40" y="110">GET /v1/orders?limit=20 HTTP/1.1</text>
+  <text class="small code" x="40" y="138">Host: api.acme.com</text>
+  <text class="small code" x="40" y="166">Authorization: Bearer eyJhbGciOi...</text>
+  <text class="small code" x="40" y="194">Accept: application/json</text>
+  <text class="small code" x="40" y="222">Idempotency-Key: 5f1c9a</text>
+  <circle class="box" cx="468" cy="106" r="12"/>
+  <text class="small strong mid" x="468" y="110">1</text>
+  <rect class="box violet" x="496" y="80" width="240" height="82" rx="8"/>
+  <circle class="box" cx="520" cy="102" r="12"/>
+  <text class="small strong mid" x="520" y="106">1</text>
+  <text class="name" x="542" y="107">Request line</text>
+  <text class="note" x="508" y="134">Method, path with query, and</text>
+  <text class="note" x="508" y="150">protocol version</text>
+  <circle class="box" cx="468" cy="134" r="12"/>
+  <text class="small strong mid" x="468" y="138">2</text>
+  <rect class="box teal" x="496" y="174" width="240" height="82" rx="8"/>
+  <circle class="box" cx="520" cy="196" r="12"/>
+  <text class="small strong mid" x="520" y="200">2</text>
+  <text class="name" x="542" y="201">Host</text>
+  <text class="note" x="508" y="228">Which API this is for, behind a</text>
+  <text class="note" x="508" y="244">shared gateway</text>
+  <circle class="box" cx="468" cy="162" r="12"/>
+  <text class="small strong mid" x="468" y="166">3</text>
+  <rect class="box" x="496" y="268" width="240" height="82" rx="8"/>
+  <circle class="box" cx="520" cy="290" r="12"/>
+  <text class="small strong mid" x="520" y="294">3</text>
+  <text class="name" x="542" y="295">Authorization</text>
+  <text class="small" x="508" y="322">The access token; the API checks it</text>
+  <text class="small" x="508" y="338">before anything else</text>
+  <circle class="box" cx="468" cy="204" r="12"/>
+  <text class="small strong mid" x="468" y="208">4</text>
+  <rect class="box amber" x="496" y="362" width="240" height="82" rx="8"/>
+  <circle class="box" cx="520" cy="384" r="12"/>
+  <text class="small strong mid" x="520" y="388">4</text>
+  <text class="name" x="542" y="389">Other headers</text>
+  <text class="note" x="508" y="416">The response format, and a key that</text>
+  <text class="note" x="508" y="432">makes retries safe</text>
+</svg>

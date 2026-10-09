@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="488" viewBox="0 0 760 488" role="img" aria-label="Token exchange gives a downstream agent a narrower token than the one it received">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="token-exchange-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Token exchange gives a downstream agent a narrower token than the one it received</text>
+  <text class="note" x="24" y="54">OAuth 2.0 token exchange (RFC 8693) when an agent calls another service for a user</text>
+  <g class="life"><line x1="104" x2="104" y1="124" y2="388"/></g>
+  <g class="life"><line x1="288" x2="288" y1="124" y2="388"/></g>
+  <g class="life"><line x1="472" x2="472" y1="124" y2="388"/></g>
+  <g class="life"><line x1="656" x2="656" y1="124" y2="388"/></g>
+  <rect class="box violet" x="24" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="104" y="94">Your app</text>
+  <text class="note mid" x="104" y="112">the user is signed in</text>
+  <rect class="box teal" x="208" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="288" y="94">Agent</text>
+  <text class="note mid" x="288" y="112">acts for the user</text>
+  <rect class="box amber" x="392" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="472" y="94">Token service</text>
+  <text class="note mid" x="472" y="112">authorization server</text>
+  <rect class="box green" x="576" y="72" width="160" height="52" rx="8"/>
+  <text class="name mid" x="656" y="94">Calendar API</text>
+  <text class="note mid" x="656" y="112">downstream service</text>
+  <g class="line"><path d="M104 172H286" marker-end="url(#token-exchange-arrow)"/></g>
+  <text class="small mid" x="196" y="164">1 Task plus the user's token</text>
+  <g class="line"><path d="M288 220H470" marker-end="url(#token-exchange-arrow)"/></g>
+  <text class="small mid" x="380" y="212">2 User's token and its own ID</text>
+  <rect class="key" x="359" y="236" width="226" height="48" rx="8"/>
+  <text class="small strong mid" x="472" y="256">3 Checks policy</text>
+  <text class="small mid" x="472" y="272">may this agent act for this user?</text>
+  <g class="line"><path d="M472 316H290" marker-end="url(#token-exchange-arrow)"/></g>
+  <text class="small mid" x="380" y="308">4 Calendar, read-only token</text>
+  <g class="line"><path d="M288 364H654" marker-end="url(#token-exchange-arrow)"/></g>
+  <text class="small" x="300" y="356">5 Reads the calendar with it</text>
+  <rect class="callout" x="24" y="408" width="712" height="56" rx="8"/>
+  <text class="name" x="40" y="430">Least privilege at every hop</text>
+  <text class="small" x="40" y="450">The new token names both the user and the agent, and it only works for the calendar</text>
+</svg>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="336" viewBox="0 0 760 336" role="img" aria-label="One task is waiting on you; everything else the agent is handling">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="board-agent-tasks-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">One task is waiting on you; everything else the agent is handling</text>
+  <text class="note" x="24" y="54">An agent's task board</text>
+  <rect class="box zone violet" x="24" y="72" width="166" height="240" rx="8"/>
+  <g class="icon violet" transform="translate(36 84) scale(0.75)"><path d="M5.5 5h13L21 13v6H3v-6z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></g>
+  <text class="name" x="60" y="98">Queued</text>
+  <rect class="chip violet" x="152" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="165" y="98">2</text>
+  <rect class="box violet" x="32" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="44" y="139">Renew passport</text>
+  <text class="note" x="44" y="156">Needs your photo</text>
+  <rect class="box violet" x="32" y="180" width="150" height="56" rx="8"/>
+  <text class="small strong" x="44" y="203">Plan Lisbon trip</text>
+  <text class="note" x="44" y="220">Starts Monday</text>
+  <rect class="box zone teal" x="206" y="72" width="166" height="240" rx="8"/>
+  <g class="icon teal" transform="translate(218 84) scale(0.75)"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5M20 20v-4h-4"/></g>
+  <text class="name" x="242" y="98">Running</text>
+  <rect class="chip teal" x="334" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="347" y="98">2</text>
+  <rect class="box teal" x="214" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="226" y="139">Compare energy plans</text>
+  <text class="note" x="226" y="156">3 of 8 checked</text>
+  <rect class="box teal" x="214" y="180" width="150" height="56" rx="8"/>
+  <text class="small strong" x="226" y="203">Book dentist</text>
+  <text class="note" x="226" y="220">Calling the clinic</text>
+  <rect class="box zone amber" x="388" y="72" width="166" height="240" rx="8"/>
+  <g class="icon amber" transform="translate(400 84) scale(0.75)"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></g>
+  <text class="name" x="424" y="98">Needs you</text>
+  <rect class="chip amber" x="516" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="529" y="98">1</text>
+  <rect class="key" x="396" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="408" y="139">Pay €120 to Luca's</text>
+  <text class="note" x="408" y="156">Waiting for approval</text>
+  <rect class="box zone green" x="570" y="72" width="166" height="240" rx="8"/>
+  <g class="icon green" transform="translate(582 84) scale(0.75)"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5.5-6"/></g>
+  <text class="name" x="606" y="98">Done</text>
+  <rect class="chip green" x="698" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="711" y="98">3</text>
+  <rect class="box green" x="578" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="590" y="139">Cancel old gym</text>
+  <text class="note" x="590" y="156">Confirmed by email</text>
+  <rect class="box green" x="578" y="180" width="150" height="56" rx="8"/>
+  <text class="small strong" x="590" y="203">Return shoes</text>
+  <text class="note" x="590" y="220">Label printed</text>
+  <rect class="box green" x="578" y="244" width="150" height="56" rx="8"/>
+  <text class="small strong" x="590" y="267">Split dinner bill</text>
+  <text class="note" x="590" y="284">Sent to 3 friends</text>
+</svg>

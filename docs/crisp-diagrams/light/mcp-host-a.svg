@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="516" viewBox="0 0 760 516" role="img" aria-label="One MCP host connects to many servers, and you approve the tool calls">
+  <style>
+/* crisp-diagrams theme: gradient: light top-to-bottom gradients in boxes (needs gradient-defs.svg, added by theme.py). Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--paper-0:#ffffff;--paper-1:#f1f0eb;--key-0:#eef5ff;--key-1:#d3e4fb;--blue-0:#f3f8ff;--blue-1:#dbe8fc;--green-0:#f2faf5;--green-1:#d7efdf;--violet-0:#f7f4ff;--violet-1:#e4dcfa;--amber-0:#fffaf1;--amber-1:#f9e6c4;--rose-0:#fff5f7;--rose-1:#f8dbe2;--teal-0:#f0faf9;--teal-1:#d3eeeb;--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:url(#cd-paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:url(#cd-key);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.box.green{fill:url(#cd-green);stroke:var(--green-line)}
+.box.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.box.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.box.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.box.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.chip.green{fill:var(--green);stroke:var(--green-line)}
+.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.device.green{fill:url(#cd-green);stroke:var(--green-line)}
+.device.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.device.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.device.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.device.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <linearGradient id="cd-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--paper-0)"/><stop offset="1" style="stop-color:var(--paper-1)"/></linearGradient>
+    <linearGradient id="cd-key" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--key-0)"/><stop offset="1" style="stop-color:var(--key-1)"/></linearGradient>
+    <linearGradient id="cd-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue-0)"/><stop offset="1" style="stop-color:var(--blue-1)"/></linearGradient>
+    <linearGradient id="cd-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--green-0)"/><stop offset="1" style="stop-color:var(--green-1)"/></linearGradient>
+    <linearGradient id="cd-violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--violet-0)"/><stop offset="1" style="stop-color:var(--violet-1)"/></linearGradient>
+    <linearGradient id="cd-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber-0)"/><stop offset="1" style="stop-color:var(--amber-1)"/></linearGradient>
+    <linearGradient id="cd-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--rose-0)"/><stop offset="1" style="stop-color:var(--rose-1)"/></linearGradient>
+    <linearGradient id="cd-teal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--teal-0)"/><stop offset="1" style="stop-color:var(--teal-1)"/></linearGradient>
+    <marker id="mcp-host-a-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">One MCP host connects to many servers, and you approve the tool calls</text>
+  <text class="note" x="24" y="54">How a Model Context Protocol host such as Claude Desktop reaches tools and data</text>
+  <rect class="box violet" x="200" y="76" width="360" height="56" rx="8"/>
+  <rect class="badge violet" x="214" y="88" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(220 94) scale(0.833333)"><path d="M4 5.5h16v10H10l-4 3.5v-3.5H4z"/></g>
+  <text class="name" x="258" y="100">You, in the chat app</text>
+  <text class="note" x="258" y="116">Ask for something that needs a tool</text>
+  <g class="line"><path d="M340 132V172" marker-end="url(#mcp-host-a-arrow)"/></g>
+  <g class="line"><path d="M420 172V132" marker-end="url(#mcp-host-a-arrow)"/></g>
+  <text class="note end" x="332" y="156">requests</text>
+  <text class="note" x="428" y="156">answers and approval prompts</text>
+  <rect class="box zone teal" x="24" y="172" width="712" height="200" rx="8"/>
+  <text class="name" x="40" y="196">MCP host: the app you talk to</text>
+  <rect class="box teal" x="40" y="212" width="216" height="88" rx="8"/>
+  <rect class="badge teal" x="52" y="224" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(58 230) scale(0.833333)"><path d="M12 3c.6 4.2 2.8 6.4 7 7-4.2.6-6.4 2.8-7 7-.6-4.2-2.8-6.4-7-7 4.2-.6 6.4-2.8 7-7z"/><path d="M19 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/></g>
+  <text class="name" x="96" y="236">Model</text>
+  <text class="note" x="96" y="252">Decides which tool to</text>
+  <text class="note" x="96" y="268">call and with what input</text>
+  <rect class="box teal" x="272" y="212" width="216" height="88" rx="8"/>
+  <rect class="badge teal" x="284" y="224" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(290 230) scale(0.833333)"><path d="M9 3v5M15 3v5M6.5 8h11v3a5.5 5.5 0 0 1-11 0zM12 16.5V21"/></g>
+  <text class="name" x="328" y="236">MCP clients</text>
+  <text class="note" x="328" y="252">One client per server,</text>
+  <text class="note" x="328" y="268">each on its own</text>
+  <text class="note" x="328" y="284">connection</text>
+  <rect class="box teal" x="504" y="212" width="216" height="88" rx="8"/>
+  <rect class="badge teal" x="516" y="224" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(522 230) scale(0.833333)"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></g>
+  <text class="name" x="560" y="236">Tool list</text>
+  <text class="note" x="560" y="252">The tools, resources and</text>
+  <text class="note" x="560" y="268">prompts servers offer</text>
+  <rect class="key" x="40" y="316" width="680" height="40" rx="8"/>
+  <g class="icon accent" transform="translate(54 326) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></g>
+  <text class="name" x="82" y="340">Approval</text>
+  <text x="152" y="340">you confirm tool calls before they run</text>
+  <g class="line"><path d="M132 356V420" marker-end="url(#mcp-host-a-arrow)"/></g>
+  <rect class="box green" x="24" y="420" width="216" height="72" rx="8"/>
+  <rect class="badge green" x="36" y="432" width="32" height="32" rx="9"/><g class="icon green" transform="translate(42 438) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="name" x="80" y="444">Filesystem server</text>
+  <text class="note" x="80" y="460">Reads and writes files</text>
+  <text class="note" x="80" y="476">in folders you allow</text>
+  <g class="line"><path d="M380 356V420" marker-end="url(#mcp-host-a-arrow)"/></g>
+  <rect class="box green" x="272" y="420" width="216" height="72" rx="8"/>
+  <rect class="badge green" x="284" y="432" width="32" height="32" rx="9"/><g class="icon green" transform="translate(290 438) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="name" x="328" y="444">GitHub server</text>
+  <text class="note" x="328" y="460">Issues, pull requests</text>
+  <text class="note" x="328" y="476">and code search</text>
+  <g class="line"><path d="M628 356V420" marker-end="url(#mcp-host-a-arrow)"/></g>
+  <rect class="box green" x="520" y="420" width="216" height="72" rx="8"/>
+  <rect class="badge green" x="532" y="432" width="32" height="32" rx="9"/><g class="icon green" transform="translate(538 438) scale(0.833333)"><path d="M4 5.5h16v10H10l-4 3.5v-3.5H4z"/></g>
+  <text class="name" x="576" y="444">Slack server</text>
+  <text class="note" x="576" y="460">Reads channels and posts</text>
+  <text class="note" x="576" y="476">messages</text>
+  <text class="note" x="388" y="400">approved calls only</text>
+</svg>

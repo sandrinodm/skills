@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="416" viewBox="0 0 760 416" role="img" aria-label="The customer only sees two steps; the merchant checks the agent&#x27;s mandate in between">
+  <style>
+/* crisp-diagrams theme: zones: colored washes on areas, white boxes inside. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--key-fill:#e3eefa;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--key-fill);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:var(--tint)}
+.box.blue,.chip.blue{stroke:var(--blue-line)}
+.box.green,.chip.green{stroke:var(--green-line)}
+.box.violet,.chip.violet{stroke:var(--violet-line)}
+.box.amber,.chip.amber{stroke:var(--amber-line)}
+.box.rose,.chip.rose{stroke:var(--rose-line)}
+.box.teal,.chip.teal{stroke:var(--teal-line)}
+.box.zone.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.zone.green{fill:var(--green);stroke:var(--green-line)}
+.box.zone.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.zone.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.zone.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.zone.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{stroke:var(--blue-line)}
+.device.green{stroke:var(--green-line)}
+.device.violet{stroke:var(--violet-line)}
+.device.amber{stroke:var(--amber-line)}
+.device.rose{stroke:var(--rose-line)}
+.device.teal{stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--blue)}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--green)}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--violet)}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--amber)}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--rose)}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--teal)}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="blueprint-agent-checkout-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The customer only sees two steps; the merchant checks the agent's mandate in between</text>
+  <text class="note" x="24" y="54">Service blueprint for a purchase made by an agent</text>
+  <text class="name" x="24" y="120">Customer</text>
+  <text class="name" x="24" y="204">Agent</text>
+  <g class="line"><path d="M24 164H736"/></g>
+  <text class="note" x="24" y="157">line of interaction</text>
+  <text class="name" x="24" y="288">Merchant</text>
+  <g class="life"><path d="M24 248H736"/></g>
+  <text class="note" x="24" y="241">line of visibility</text>
+  <text class="name" x="24" y="372">Systems</text>
+  <g class="line"><path d="M24 332H736"/></g>
+  <text class="note" x="24" y="325">internal line</text>
+  <rect class="box violet" x="164" y="92" width="134" height="48" rx="8"/>
+  <text class="small mid" x="231" y="120">Asks for shoes</text>
+  <rect class="box teal" x="164" y="176" width="134" height="48" rx="8"/>
+  <text class="small mid" x="231" y="204">Searches stores</text>
+  <rect class="box green" x="164" y="344" width="134" height="48" rx="8"/>
+  <text class="small mid" x="231" y="372">Store catalogs</text>
+  <rect class="box teal" x="310" y="176" width="134" height="48" rx="8"/>
+  <text class="small mid" x="377" y="204">Builds the cart</text>
+  <rect class="box amber" x="310" y="260" width="134" height="48" rx="8"/>
+  <text class="small mid" x="377" y="288">Prices the cart</text>
+  <rect class="box green" x="310" y="344" width="134" height="48" rx="8"/>
+  <text class="small mid" x="377" y="372">Checkout API</text>
+  <rect class="box violet" x="456" y="92" width="134" height="48" rx="8"/>
+  <text class="small mid" x="523" y="120">Approves the cart</text>
+  <rect class="box teal" x="456" y="176" width="134" height="48" rx="8"/>
+  <text class="small mid" x="523" y="204">Signs the mandate</text>
+  <rect class="key" x="456" y="260" width="134" height="48" rx="8"/>
+  <text class="small mid" x="523" y="288">Checks the mandate</text>
+  <rect class="box green" x="456" y="344" width="134" height="48" rx="8"/>
+  <text class="small mid" x="523" y="372">Payment network</text>
+  <rect class="box violet" x="602" y="92" width="134" height="48" rx="8"/>
+  <text class="small mid" x="669" y="120">Gets a receipt</text>
+  <rect class="box amber" x="602" y="260" width="134" height="48" rx="8"/>
+  <text class="small mid" x="669" y="288">Ships the order</text>
+  <rect class="box green" x="602" y="344" width="134" height="48" rx="8"/>
+  <text class="small mid" x="669" y="372">Warehouse</text>
+  <g class="line"><path d="M231 140V176" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M231 224V344" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M377 224V260" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M377 308V344" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M523 140V176" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M523 224V260" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M523 308V344" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M669 140V260" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M669 308V344" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M298 116H456" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+  <g class="line"><path d="M590 116H602" marker-end="url(#blueprint-agent-checkout-arrow)"/></g>
+</svg>

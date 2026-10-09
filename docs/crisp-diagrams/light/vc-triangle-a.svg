@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="464" viewBox="0 0 760 464" role="img" aria-label="The verifier checks the issuer&#x27;s signature without ever calling the issuer">
+  <style>
+/* crisp-diagrams theme: pastel: flat soft fills per group. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.16;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue,.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.green,.chip.green{fill:var(--green);stroke:var(--green-line)}
+.box.violet,.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.amber,.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.rose,.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.teal,.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:var(--blue);stroke:var(--blue-line)}
+.device.green{fill:var(--green);stroke:var(--green-line)}
+.device.violet{fill:var(--violet);stroke:var(--violet-line)}
+.device.amber{fill:var(--amber);stroke:var(--amber-line)}
+.device.rose{fill:var(--rose);stroke:var(--rose-line)}
+.device.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="vc-triangle-a-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The verifier checks the issuer's signature without ever calling the issuer</text>
+  <text class="note" x="24" y="54">How a verifiable credential moves from issuer to wallet to verifier</text>
+  <g class="life"><line x1="104" x2="104" y1="148" y2="364"/></g>
+  <g class="life"><line x1="380" x2="380" y1="148" y2="364"/></g>
+  <g class="life"><line x1="656" x2="656" y1="148" y2="364"/></g>
+  <rect class="box amber" x="24" y="72" width="160" height="76" rx="8"/>
+  <g class="icon amber" transform="translate(94 82) scale(0.833333)"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/></g>
+  <text class="name mid" x="104" y="118">Issuer</text>
+  <text class="note mid" x="104" y="136">a university</text>
+  <rect class="box violet" x="300" y="72" width="160" height="76" rx="8"/>
+  <g class="icon violet" transform="translate(370 82) scale(0.833333)"><path d="M4 7.5V18a2 2 0 0 0 2 2h14V9H6a2 2 0 0 1-2-1.5zM4 7.5A2 2 0 0 1 6 5.5h11V9"/><circle cx="16.5" cy="14.5" r="1.2"/></g>
+  <text class="name mid" x="380" y="118">Wallet</text>
+  <text class="note mid" x="380" y="136">the graduate's phone</text>
+  <rect class="box green" x="576" y="72" width="160" height="76" rx="8"/>
+  <g class="icon green" transform="translate(646 82) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></g>
+  <text class="name mid" x="656" y="118">Verifier</text>
+  <text class="note mid" x="656" y="136">an employer</text>
+  <g class="line"><path d="M104 196H378" marker-end="url(#vc-triangle-a-arrow)"/></g>
+  <text class="small mid" x="242" y="188">1 Signed diploma credential</text>
+  <g class="line"><path d="M656 244H382" marker-end="url(#vc-triangle-a-arrow)"/></g>
+  <text class="small mid" x="518" y="236">2 Asks for proof of a degree</text>
+  <g class="line"><path d="M380 292H654" marker-end="url(#vc-triangle-a-arrow)"/></g>
+  <text class="small mid" x="518" y="284">3 Shares the degree, not the grades</text>
+  <rect class="key" x="576" y="308" width="160" height="48" rx="8"/>
+  <text class="small strong mid" x="656" y="328">4 Verifies it</text>
+  <text class="small mid" x="656" y="344">with the issuer's public key</text>
+  <rect class="callout" x="24" y="384" width="712" height="56" rx="8"/>
+  <text class="name" x="40" y="406">The issuer never learns where the diploma was used</text>
+  <text class="small" x="40" y="426">Its public key is published once, so checks work offline and stay private</text>
+</svg>

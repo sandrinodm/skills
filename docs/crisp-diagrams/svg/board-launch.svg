@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="272" viewBox="0 0 760 272" role="img" aria-label="One blocked item holds up the launch: the legal review">
+  <style>
+/* crisp-diagrams theme: gradient: light top-to-bottom gradients in boxes (needs gradient-defs.svg, added by theme.py). Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--paper-0:#ffffff;--paper-1:#f1f0eb;--key-0:#eef5ff;--key-1:#d3e4fb;--blue-0:#f3f8ff;--blue-1:#dbe8fc;--green-0:#f2faf5;--green-1:#d7efdf;--violet-0:#f7f4ff;--violet-1:#e4dcfa;--amber-0:#fffaf1;--amber-1:#f9e6c4;--rose-0:#fff5f7;--rose-1:#f8dbe2;--teal-0:#f0faf9;--teal-1:#d3eeeb;--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+@media (prefers-color-scheme:dark){svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#7a7872;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--blue:#1f3350;--blue-line:#4a76b0;--green:#1e3a2a;--green-line:#4c8a60;--violet:#2f2a50;--violet-line:#7464b4;--amber:#3e3120;--amber-line:#a07e45;--rose:#3f2532;--rose-line:#a65b72;--teal:#1a3a38;--teal-line:#3e908a;--paper-0:#2c2c2a;--paper-1:#232321;--key-0:#22395a;--key-1:#182b45;--blue-0:#263a58;--blue-1:#1b2a40;--green-0:#23402f;--green-1:#182c21;--violet-0:#332d55;--violet-1:#242040;--amber-0:#433623;--amber-1:#2f2618;--rose-0:#442a37;--rose-1:#301e27;--teal-0:#1f403d;--teal-1:#16302e;--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505;--blue-ink:#8fb8ef;--green-ink:#8fd0a6;--violet-ink:#b6a8f0;--amber-ink:#e6bd73;--rose-ink:#eda3b4;--teal-ink:#85d0c8}}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:url(#cd-paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:url(#cd-key);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.box.green{fill:url(#cd-green);stroke:var(--green-line)}
+.box.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.box.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.box.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.box.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.chip.green{fill:var(--green);stroke:var(--green-line)}
+.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.device.green{fill:url(#cd-green);stroke:var(--green-line)}
+.device.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.device.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.device.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.device.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <linearGradient id="cd-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--paper-0)"/><stop offset="1" style="stop-color:var(--paper-1)"/></linearGradient>
+    <linearGradient id="cd-key" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--key-0)"/><stop offset="1" style="stop-color:var(--key-1)"/></linearGradient>
+    <linearGradient id="cd-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue-0)"/><stop offset="1" style="stop-color:var(--blue-1)"/></linearGradient>
+    <linearGradient id="cd-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--green-0)"/><stop offset="1" style="stop-color:var(--green-1)"/></linearGradient>
+    <linearGradient id="cd-violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--violet-0)"/><stop offset="1" style="stop-color:var(--violet-1)"/></linearGradient>
+    <linearGradient id="cd-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber-0)"/><stop offset="1" style="stop-color:var(--amber-1)"/></linearGradient>
+    <linearGradient id="cd-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--rose-0)"/><stop offset="1" style="stop-color:var(--rose-1)"/></linearGradient>
+    <linearGradient id="cd-teal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--teal-0)"/><stop offset="1" style="stop-color:var(--teal-1)"/></linearGradient>
+    <marker id="board-launch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">One blocked item holds up the launch: the legal review</text>
+  <text class="note" x="24" y="54">Launch checklist</text>
+  <rect class="box zone violet" x="24" y="72" width="166" height="176" rx="8"/>
+  <g class="icon violet" transform="translate(36 84) scale(0.75)"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></g>
+  <text class="name" x="60" y="98">To do</text>
+  <rect class="chip violet" x="152" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="165" y="98">2</text>
+  <rect class="box violet" x="32" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="44" y="139">Press release</text>
+  <text class="note" x="44" y="156">Marketing</text>
+  <rect class="box violet" x="32" y="180" width="150" height="56" rx="8"/>
+  <text class="small strong" x="44" y="203">Status page entry</text>
+  <text class="note" x="44" y="220">Support</text>
+  <rect class="box zone teal" x="206" y="72" width="166" height="176" rx="8"/>
+  <g class="icon teal" transform="translate(218 84) scale(0.75)"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5M20 20v-4h-4"/></g>
+  <text class="name" x="242" y="98">In progress</text>
+  <rect class="chip teal" x="334" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="347" y="98">2</text>
+  <rect class="box teal" x="214" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="226" y="139">Docs and guides</text>
+  <text class="note" x="226" y="156">Developer relations</text>
+  <rect class="box teal" x="214" y="180" width="150" height="56" rx="8"/>
+  <text class="small strong" x="226" y="203">Pricing page</text>
+  <text class="note" x="226" y="220">Web team</text>
+  <rect class="box zone rose" x="388" y="72" width="166" height="176" rx="8"/>
+  <g class="icon rose" transform="translate(400 84) scale(0.75)"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v4.5M12 17.3v.2"/></g>
+  <text class="name" x="424" y="98">Blocked</text>
+  <rect class="chip rose" x="516" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="529" y="98">1</text>
+  <rect class="key" x="396" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="408" y="139">Legal review</text>
+  <text class="note" x="408" y="156">Terms not signed off</text>
+  <rect class="box zone green" x="570" y="72" width="166" height="176" rx="8"/>
+  <g class="icon green" transform="translate(582 84) scale(0.75)"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5.5-6"/></g>
+  <text class="name" x="606" y="98">Done</text>
+  <rect class="chip green" x="698" y="84" width="26" height="20" rx="10"/>
+  <text class="small mid" x="711" y="98">2</text>
+  <rect class="box green" x="578" y="116" width="150" height="56" rx="8"/>
+  <text class="small strong" x="590" y="139">Load test</text>
+  <text class="note" x="590" y="156">10x normal traffic</text>
+  <rect class="box green" x="578" y="180" width="150" height="56" rx="8"/>
+  <text class="small strong" x="590" y="203">Security review</text>
+  <text class="note" x="590" y="220">No open findings</text>
+</svg>

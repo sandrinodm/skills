@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="464" viewBox="0 0 760 464" role="img" aria-label="Trust a webhook only after checking its signature and its age">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="webhook-signature-b-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Trust a webhook only after checking its signature and its age</text>
+  <text class="note" x="24" y="54">How a webhook receiver handles an event from a payment provider</text>
+  <g class="life"><line x1="104" x2="104" y1="148" y2="364"/></g>
+  <g class="life"><line x1="380" x2="380" y1="148" y2="364"/></g>
+  <g class="life"><line x1="656" x2="656" y1="148" y2="364"/></g>
+  <rect class="box violet" x="24" y="72" width="160" height="76" rx="8"/>
+  <g class="icon violet" transform="translate(94 82) scale(0.833333)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="name mid" x="104" y="118">Payment provider</text>
+  <text class="note mid" x="104" y="136">sends events</text>
+  <rect class="box teal" x="300" y="72" width="160" height="76" rx="8"/>
+  <g class="icon teal" transform="translate(370 82) scale(0.833333)"><path d="M9 4c-2 0-3 1-3 3v2.5c0 1.2-.8 2.5-2.5 2.5 1.7 0 2.5 1.3 2.5 2.5V17c0 2 1 3 3 3"/><path d="M15 4c2 0 3 1 3 3v2.5c0 1.2.8 2.5 2.5 2.5-1.7 0-2.5 1.3-2.5 2.5V17c0 2-1 3-3 3"/></g>
+  <text class="name mid" x="380" y="118">Your endpoint</text>
+  <text class="note mid" x="380" y="136">receives webhooks</text>
+  <rect class="box green" x="576" y="72" width="160" height="76" rx="8"/>
+  <g class="icon green" transform="translate(646 82) scale(0.833333)"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g>
+  <text class="name mid" x="656" y="118">Your database</text>
+  <text class="note mid" x="656" y="136">stores events</text>
+  <g class="line"><path d="M104 196H378" marker-end="url(#webhook-signature-b-arrow)"/></g>
+  <text class="small mid" x="242" y="188">1 POST event, signed and timestamped</text>
+  <rect class="key" x="255" y="212" width="250" height="48" rx="8"/>
+  <text class="small strong mid" x="380" y="232">2 Checks signature and age</text>
+  <text class="small mid" x="380" y="248">rejects anything older than 5 minutes</text>
+  <g class="line"><path d="M380 292H654" marker-end="url(#webhook-signature-b-arrow)"/></g>
+  <text class="small mid" x="518" y="284">3 Saves it once, by event ID</text>
+  <g class="line"><path d="M380 340H106" marker-end="url(#webhook-signature-b-arrow)"/></g>
+  <text class="small mid" x="242" y="332">4 200 OK, process later</text>
+  <rect class="callout" x="24" y="384" width="712" height="56" rx="8"/>
+  <text class="name" x="40" y="406">Replays and forgeries both fail</text>
+  <text class="small" x="40" y="426">A copied request fails the age check, and a forged one fails the signature check</text>
+</svg>

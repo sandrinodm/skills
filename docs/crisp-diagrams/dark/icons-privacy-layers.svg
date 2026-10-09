@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="408" viewBox="0 0 760 408" role="img" aria-label="Your data is protected at five layers, from the device to the cloud">
+  <style>
+/* crisp-diagrams theme: zones: colored washes on areas, white boxes inside. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--key-fill:#e3eefa;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#7a7872;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--key-fill:#1e2f45;--blue:#1f3350;--blue-line:#4a76b0;--green:#1e3a2a;--green-line:#4c8a60;--violet:#2f2a50;--violet-line:#7464b4;--amber:#3e3120;--amber-line:#a07e45;--rose:#3f2532;--rose-line:#a65b72;--teal:#1a3a38;--teal-line:#3e908a;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505;--blue-ink:#8fb8ef;--green-ink:#8fd0a6;--violet-ink:#b6a8f0;--amber-ink:#e6bd73;--rose-ink:#eda3b4;--teal-ink:#85d0c8}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--key-fill);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:var(--tint)}
+.box.blue,.chip.blue{stroke:var(--blue-line)}
+.box.green,.chip.green{stroke:var(--green-line)}
+.box.violet,.chip.violet{stroke:var(--violet-line)}
+.box.amber,.chip.amber{stroke:var(--amber-line)}
+.box.rose,.chip.rose{stroke:var(--rose-line)}
+.box.teal,.chip.teal{stroke:var(--teal-line)}
+.box.zone.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.zone.green{fill:var(--green);stroke:var(--green-line)}
+.box.zone.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.zone.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.zone.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.zone.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{stroke:var(--blue-line)}
+.device.green{stroke:var(--green-line)}
+.device.violet{stroke:var(--violet-line)}
+.device.amber{stroke:var(--amber-line)}
+.device.rose{stroke:var(--rose-line)}
+.device.teal{stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--blue)}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--green)}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--violet)}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--amber)}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--rose)}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--teal)}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="icons-privacy-layers-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Your data is protected at five layers, from the device to the cloud</text>
+  <text class="note" x="24" y="54">Where each protection sits in a typical consumer app</text>
+  <rect class="box teal" x="24" y="72" width="712" height="56" rx="8"/>
+  <rect class="badge teal" x="36" y="84" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(42 90) scale(0.833333)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <text class="name" x="80" y="94">Device</text>
+  <text class="small" x="80" y="114">Encrypted storage behind a passcode</text>
+  <rect class="chip amber" x="606" y="87" width="114" height="26" rx="13"/>
+  <text class="small mid" x="663" y="104">Secure enclave</text>
+  <rect class="box teal" x="24" y="136" width="712" height="56" rx="8"/>
+  <rect class="badge teal" x="36" y="148" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(42 154) scale(0.833333)"><path d="M3 9.5a13 13 0 0 1 18 0M6 13a8.5 8.5 0 0 1 12 0M9 16.5a4 4 0 0 1 6 0M12 19.5v.2"/></g>
+  <text class="name" x="80" y="158">Network</text>
+  <text class="small" x="80" y="178">Encrypted in transit, everywhere</text>
+  <rect class="chip amber" x="651" y="151" width="69" height="26" rx="13"/>
+  <text class="small mid" x="685.5" y="168">TLS 1.3</text>
+  <rect class="key" x="24" y="200" width="712" height="56" rx="8"/>
+  <g class="icon accent" transform="translate(40 218) scale(0.833333)"><path d="M7 11a5 5 0 0 1 10 0c0 3-.5 5.5-1.5 7.5"/><path d="M9.5 11a2.5 2.5 0 0 1 5 0c0 3.5-.8 6-2 8.5"/><path d="M12 11c0 3-.6 6-2 9"/><path d="M4.5 14c-.3-1-.5-2-.5-3a8 8 0 0 1 14.5-4.6"/><path d="M7 18.5c.7-1.2 1-2.6 1-4"/></g>
+  <text class="name" x="72" y="222">Identity</text>
+  <text class="small" x="72" y="242">Proves it's really you</text>
+  <rect class="chip amber" x="594" y="215" width="75" height="26" rx="13"/>
+  <text class="small mid" x="631.5" y="232">Passkeys</text>
+  <rect class="chip amber" x="677" y="215" width="43" height="26" rx="13"/>
+  <text class="small mid" x="698.5" y="232">MFA</text>
+  <rect class="box teal" x="24" y="264" width="712" height="56" rx="8"/>
+  <rect class="badge teal" x="36" y="276" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(42 282) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="name" x="80" y="286">Service</text>
+  <text class="small" x="80" y="306">Each service sees only what it needs</text>
+  <rect class="chip amber" x="600" y="279" width="120" height="26" rx="13"/>
+  <text class="small mid" x="660" y="296">Least privilege</text>
+  <rect class="box teal" x="24" y="328" width="712" height="56" rx="8"/>
+  <rect class="badge teal" x="36" y="340" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(42 346) scale(0.833333)"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g>
+  <text class="name" x="80" y="350">Data</text>
+  <text class="small" x="80" y="370">Encrypted at rest, deleted on request</text>
+  <rect class="chip amber" x="587" y="343" width="43" height="26" rx="13"/>
+  <text class="small mid" x="608.5" y="360">KMS</text>
+  <rect class="chip amber" x="638" y="343" width="82" height="26" rx="13"/>
+  <text class="small mid" x="679" y="360">Retention</text>
+</svg>

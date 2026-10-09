@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="378" viewBox="0 0 760 378" role="img" aria-label="The platform team owns the systems every product team builds on">
+  <style>
+/* crisp-diagrams theme: pastel: flat soft fills per group. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.16;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue,.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.green,.chip.green{fill:var(--green);stroke:var(--green-line)}
+.box.violet,.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.amber,.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.rose,.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.teal,.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:var(--blue);stroke:var(--blue-line)}
+.device.green{fill:var(--green);stroke:var(--green-line)}
+.device.violet{fill:var(--violet);stroke:var(--violet-line)}
+.device.amber{fill:var(--amber);stroke:var(--amber-line)}
+.device.rose{fill:var(--rose);stroke:var(--rose-line)}
+.device.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="tree-org-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The platform team owns the systems every product team builds on</text>
+  <text class="note" x="24" y="54">Organization chart, engineering and the teams around it</text>
+  <rect class="box violet" x="260" y="72" width="240" height="56" rx="8"/>
+  <rect class="badge violet" x="272" y="84" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(278 90) scale(0.833333)"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></g>
+  <text class="name" x="316" y="96">CEO</text>
+  <text class="note" x="316" y="112">Sets the company goals</text>
+  <rect class="box teal" x="24" y="176" width="166" height="40" rx="8"/>
+  <g class="icon teal" transform="translate(36 186) scale(0.833333)"><path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5M13.5 5l-3 14"/></g>
+  <text class="name" x="66" y="200">Engineering</text>
+  <rect class="key" x="44" y="232" width="146" height="34" rx="8"/>
+  <g class="icon accent" transform="translate(54 241) scale(0.666667)"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/></g>
+  <text class="small" x="78" y="253">Platform</text>
+  <rect class="box teal" x="44" y="276" width="146" height="34" rx="8"/>
+  <g class="icon teal" transform="translate(54 285) scale(0.666667)"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></g>
+  <text class="small" x="78" y="297">Product</text>
+  <rect class="box teal" x="44" y="320" width="146" height="34" rx="8"/>
+  <g class="icon teal" transform="translate(54 329) scale(0.666667)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/></g>
+  <text class="small" x="78" y="341">Security</text>
+  <rect class="box amber" x="206" y="176" width="166" height="40" rx="8"/>
+  <g class="icon amber" transform="translate(218 186) scale(0.833333)"><rect x="2.5" y="6.5" width="19" height="11" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9.5v5M18 9.5v5"/></g>
+  <text class="name" x="248" y="200">Finance</text>
+  <rect class="box amber" x="226" y="232" width="146" height="34" rx="8"/>
+  <g class="icon amber" transform="translate(236 241) scale(0.666667)"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></g>
+  <text class="small" x="260" y="253">Payments ops</text>
+  <rect class="box amber" x="226" y="276" width="146" height="34" rx="8"/>
+  <g class="icon amber" transform="translate(236 285) scale(0.666667)"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></g>
+  <text class="small" x="260" y="297">Accounting</text>
+  <rect class="box green" x="388" y="176" width="166" height="40" rx="8"/>
+  <g class="icon green" transform="translate(400 186) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="name" x="430" y="200">Customers</text>
+  <rect class="box green" x="408" y="232" width="146" height="34" rx="8"/>
+  <g class="icon green" transform="translate(418 241) scale(0.666667)"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H5.5A1.5 1.5 0 0 1 4 17.5zM20 14h-3v5h1.5a1.5 1.5 0 0 0 1.5-1.5zM17 19c0 1.5-2 2.5-5 2.5"/></g>
+  <text class="small" x="442" y="253">Support</text>
+  <rect class="box green" x="408" y="276" width="146" height="34" rx="8"/>
+  <g class="icon green" transform="translate(418 285) scale(0.666667)"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/></g>
+  <text class="small" x="442" y="297">Success</text>
+  <rect class="box rose" x="570" y="176" width="166" height="40" rx="8"/>
+  <g class="icon rose" transform="translate(582 186) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="name" x="612" y="200">People</text>
+  <rect class="box rose" x="590" y="232" width="146" height="34" rx="8"/>
+  <g class="icon rose" transform="translate(600 241) scale(0.666667)"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></g>
+  <text class="small" x="624" y="253">Recruiting</text>
+  <g class="line"><path d="M380 128V152"/></g>
+  <g class="line"><path d="M107 152H653"/></g>
+  <g class="line"><path d="M107 152V176"/></g>
+  <g class="line"><path d="M34 216V249H44"/></g>
+  <g class="line"><path d="M34 216V293H44"/></g>
+  <g class="line"><path d="M34 216V337H44"/></g>
+  <g class="line"><path d="M289 152V176"/></g>
+  <g class="line"><path d="M216 216V249H226"/></g>
+  <g class="line"><path d="M216 216V293H226"/></g>
+  <g class="line"><path d="M471 152V176"/></g>
+  <g class="line"><path d="M398 216V249H408"/></g>
+  <g class="line"><path d="M398 216V293H408"/></g>
+  <g class="line"><path d="M653 152V176"/></g>
+  <g class="line"><path d="M580 216V249H590"/></g>
+</svg>

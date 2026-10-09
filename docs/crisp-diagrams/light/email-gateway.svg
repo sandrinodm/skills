@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="572" viewBox="0 0 760 572" role="img" aria-label="Every email passes a sender check before it reaches an inbox">
+  <style>
+/* crisp-diagrams theme: gradient: light top-to-bottom gradients in boxes (needs gradient-defs.svg, added by theme.py). Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--paper-0:#ffffff;--paper-1:#f1f0eb;--key-0:#eef5ff;--key-1:#d3e4fb;--blue-0:#f3f8ff;--blue-1:#dbe8fc;--green-0:#f2faf5;--green-1:#d7efdf;--violet-0:#f7f4ff;--violet-1:#e4dcfa;--amber-0:#fffaf1;--amber-1:#f9e6c4;--rose-0:#fff5f7;--rose-1:#f8dbe2;--teal-0:#f0faf9;--teal-1:#d3eeeb;--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:url(#cd-paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:url(#cd-key);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.box.green{fill:url(#cd-green);stroke:var(--green-line)}
+.box.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.box.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.box.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.box.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.chip.green{fill:var(--green);stroke:var(--green-line)}
+.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.device.green{fill:url(#cd-green);stroke:var(--green-line)}
+.device.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.device.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.device.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.device.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <linearGradient id="cd-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--paper-0)"/><stop offset="1" style="stop-color:var(--paper-1)"/></linearGradient>
+    <linearGradient id="cd-key" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--key-0)"/><stop offset="1" style="stop-color:var(--key-1)"/></linearGradient>
+    <linearGradient id="cd-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue-0)"/><stop offset="1" style="stop-color:var(--blue-1)"/></linearGradient>
+    <linearGradient id="cd-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--green-0)"/><stop offset="1" style="stop-color:var(--green-1)"/></linearGradient>
+    <linearGradient id="cd-violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--violet-0)"/><stop offset="1" style="stop-color:var(--violet-1)"/></linearGradient>
+    <linearGradient id="cd-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber-0)"/><stop offset="1" style="stop-color:var(--amber-1)"/></linearGradient>
+    <linearGradient id="cd-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--rose-0)"/><stop offset="1" style="stop-color:var(--rose-1)"/></linearGradient>
+    <linearGradient id="cd-teal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--teal-0)"/><stop offset="1" style="stop-color:var(--teal-1)"/></linearGradient>
+    <marker id="email-gateway-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Every email passes a sender check before it reaches an inbox</text>
+  <text class="note" x="24" y="54">The parts of an email security gateway</text>
+  <rect class="box violet" x="200" y="76" width="360" height="56" rx="8"/>
+  <text class="name mid" x="380" y="100">Incoming email</text>
+  <text class="note mid" x="380" y="116">From anyone on the internet</text>
+  <g class="line"><path d="M340 132V172" marker-end="url(#email-gateway-arrow)"/></g>
+  <g class="line"><path d="M420 172V132" marker-end="url(#email-gateway-arrow)"/></g>
+  <text class="note end" x="332" y="156">messages</text>
+  <text class="note" x="428" y="156">bounces and notices</text>
+  <rect class="box zone teal" x="24" y="172" width="712" height="272" rx="8"/>
+  <text class="name" x="40" y="196">Email security gateway</text>
+  <rect class="key" x="40" y="212" width="680" height="40" rx="8"/>
+  <text class="name" x="56" y="236">Sender check</text>
+  <text x="154" y="236">SPF, DKIM and DMARC prove who really sent it</text>
+  <rect class="box teal" x="40" y="268" width="216" height="72" rx="8"/>
+  <text class="name" x="52" y="292">Spam filter</text>
+  <text class="note" x="52" y="308">Scores each message on content</text>
+  <text class="note" x="52" y="324">and history</text>
+  <rect class="box teal" x="272" y="268" width="216" height="72" rx="8"/>
+  <text class="name" x="284" y="292">Attachment sandbox</text>
+  <text class="note" x="284" y="308">Opens files in isolation first</text>
+  <rect class="box teal" x="504" y="268" width="216" height="72" rx="8"/>
+  <text class="name" x="516" y="292">Link checker</text>
+  <text class="note" x="516" y="308">Rewrites links and checks them</text>
+  <text class="note" x="516" y="324">on click</text>
+  <rect class="box teal" x="40" y="356" width="216" height="72" rx="8"/>
+  <text class="name" x="52" y="380">Impersonation check</text>
+  <text class="note" x="52" y="396">Spots look-alike senders and</text>
+  <text class="note" x="52" y="412">domains</text>
+  <rect class="box teal" x="272" y="356" width="216" height="72" rx="8"/>
+  <text class="name" x="284" y="380">Quarantine</text>
+  <text class="note" x="284" y="396">Holds suspicious mail for review</text>
+  <rect class="box teal" x="504" y="356" width="216" height="72" rx="8"/>
+  <text class="name" x="516" y="380">Reports</text>
+  <text class="note" x="516" y="396">What was blocked, and why</text>
+  <g class="line"><path d="M132 444V492" marker-end="url(#email-gateway-arrow)"/></g>
+  <rect class="box green" x="24" y="492" width="216" height="56" rx="8"/>
+  <text class="name" x="36" y="516">Mailboxes</text>
+  <text class="note" x="36" y="532">Get only the mail that passed</text>
+  <g class="line"><path d="M380 444V492" marker-end="url(#email-gateway-arrow)"/></g>
+  <rect class="box green" x="272" y="492" width="216" height="56" rx="8"/>
+  <text class="name" x="284" y="516">Security team</text>
+  <text class="note" x="284" y="532">Reviews the quarantine</text>
+  <g class="line"><path d="M628 444V492" marker-end="url(#email-gateway-arrow)"/></g>
+  <rect class="box green" x="520" y="492" width="216" height="56" rx="8"/>
+  <text class="name" x="532" y="516">Archive</text>
+  <text class="note" x="532" y="532">Keeps a copy for compliance</text>
+  <text class="note" x="388" y="472">clean mail</text>
+</svg>

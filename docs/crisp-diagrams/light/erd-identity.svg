@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="406" viewBox="0 0 760 406" role="img" aria-label="A membership ties a user to an organization, with a role">
+  <style>
+/* crisp-diagrams theme: pastel: flat soft fills per group. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.16;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue,.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.green,.chip.green{fill:var(--green);stroke:var(--green-line)}
+.box.violet,.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.amber,.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.rose,.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.teal,.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:var(--blue);stroke:var(--blue-line)}
+.device.green{fill:var(--green);stroke:var(--green-line)}
+.device.violet{fill:var(--violet);stroke:var(--violet-line)}
+.device.amber{fill:var(--amber);stroke:var(--amber-line)}
+.device.rose{fill:var(--rose);stroke:var(--rose-line)}
+.device.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="erd-identity-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">A membership ties a user to an organization, with a role</text>
+  <text class="note" x="24" y="54">Data model for multi-tenant identity</text>
+  <rect class="box violet" x="24" y="80" width="200" height="112" rx="8"/>
+  <g class="icon violet" transform="translate(36 90) scale(0.833333)"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></g>
+  <text class="name" x="64" y="105">User</text>
+  <g class="line"><path d="M24 118H224"/></g>
+  <text class="small strong" x="36" y="135">id</text>
+  <text class="note code end" x="212" y="135">uuid</text>
+  <text class="small" x="36" y="157">email</text>
+  <text class="note code end" x="212" y="157">text</text>
+  <text class="small" x="36" y="179">mfa</text>
+  <text class="note code end" x="212" y="179">bool</text>
+  <rect class="key" x="280" y="80" width="200" height="134" rx="8"/>
+  <g class="icon accent" transform="translate(292 90) scale(0.833333)"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></g>
+  <text class="name" x="320" y="105">Membership</text>
+  <g class="line"><path d="M280 118H480"/></g>
+  <text class="small strong" x="292" y="135">id</text>
+  <text class="note code end" x="468" y="135">uuid</text>
+  <text class="small" x="292" y="157">user_id</text>
+  <text class="note code end" x="468" y="157">→ user</text>
+  <text class="small" x="292" y="179">org_id</text>
+  <text class="note code end" x="468" y="179">→ org</text>
+  <text class="small" x="292" y="201">role_id</text>
+  <text class="note code end" x="468" y="201">→ role</text>
+  <rect class="box green" x="536" y="80" width="200" height="112" rx="8"/>
+  <g class="icon green" transform="translate(548 90) scale(0.833333)"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10.5 21v-3h3v3"/></g>
+  <text class="name" x="576" y="105">Organization</text>
+  <g class="line"><path d="M536 118H736"/></g>
+  <text class="small strong" x="548" y="135">id</text>
+  <text class="note code end" x="724" y="135">uuid</text>
+  <text class="small" x="548" y="157">name</text>
+  <text class="note code end" x="724" y="157">text</text>
+  <text class="small" x="548" y="179">plan</text>
+  <text class="note code end" x="724" y="179">enum</text>
+  <rect class="box violet" x="24" y="270" width="200" height="112" rx="8"/>
+  <g class="icon violet" transform="translate(36 280) scale(0.833333)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.5-1.5 1.7-2.3 3-2.3s2.5.8 3 2.3M14 10h4M14 13.5h4"/></g>
+  <text class="name" x="64" y="295">Identity</text>
+  <g class="line"><path d="M24 308H224"/></g>
+  <text class="small strong" x="36" y="325">id</text>
+  <text class="note code end" x="212" y="325">uuid</text>
+  <text class="small" x="36" y="347">user_id</text>
+  <text class="note code end" x="212" y="347">→ user</text>
+  <text class="small" x="36" y="369">provider</text>
+  <text class="note code end" x="212" y="369">text</text>
+  <rect class="box amber" x="280" y="270" width="200" height="112" rx="8"/>
+  <g class="icon amber" transform="translate(292 280) scale(0.833333)"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14.5 8.5l2 2"/></g>
+  <text class="name" x="320" y="295">Role</text>
+  <g class="line"><path d="M280 308H480"/></g>
+  <text class="small strong" x="292" y="325">id</text>
+  <text class="note code end" x="468" y="325">uuid</text>
+  <text class="small" x="292" y="347">name</text>
+  <text class="note code end" x="468" y="347">text</text>
+  <text class="small" x="292" y="369">scopes</text>
+  <text class="note code end" x="468" y="369">text[]</text>
+  <rect class="box teal" x="536" y="270" width="200" height="112" rx="8"/>
+  <g class="icon teal" transform="translate(548 280) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></g>
+  <text class="name" x="576" y="295">Session</text>
+  <g class="line"><path d="M536 308H736"/></g>
+  <text class="small strong" x="548" y="325">id</text>
+  <text class="note code end" x="724" y="325">uuid</text>
+  <text class="small" x="548" y="347">user_id</text>
+  <text class="note code end" x="724" y="347">→ user</text>
+  <text class="small" x="548" y="369">expires</text>
+  <text class="note code end" x="724" y="369">time</text>
+  <g class="line"><path d="M224 99H280"/></g>
+  <text class="small" x="230" y="93">1</text>
+  <text class="small end" x="274" y="93">n</text>
+  <g class="line"><path d="M480 99H536"/></g>
+  <text class="small" x="486" y="93">n</text>
+  <text class="small end" x="530" y="93">1</text>
+  <g class="line"><path d="M124 192V270"/></g>
+  <text class="small" x="130" y="208">1</text>
+  <text class="small" x="130" y="264">n</text>
+  <g class="line"><path d="M380 214V270"/></g>
+  <text class="small" x="386" y="230">n</text>
+  <text class="small" x="386" y="264">1</text>
+  <g class="line"><path d="M164 192V220H596V270"/></g>
+  <text class="small" x="170" y="206">1</text>
+  <text class="small" x="602" y="264">n</text>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="464" viewBox="0 0 760 464" role="img" aria-label="The agent shops, but nothing is bought until the person approves on their phone">
+  <style>
+/* crisp-diagrams theme: zones: colored washes on areas, white boxes inside. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--key-fill:#e3eefa;--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:var(--paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--key-fill);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:var(--tint)}
+.box.blue,.chip.blue{stroke:var(--blue-line)}
+.box.green,.chip.green{stroke:var(--green-line)}
+.box.violet,.chip.violet{stroke:var(--violet-line)}
+.box.amber,.chip.amber{stroke:var(--amber-line)}
+.box.rose,.chip.rose{stroke:var(--rose-line)}
+.box.teal,.chip.teal{stroke:var(--teal-line)}
+.box.zone.blue{fill:var(--blue);stroke:var(--blue-line)}
+.box.zone.green{fill:var(--green);stroke:var(--green-line)}
+.box.zone.violet{fill:var(--violet);stroke:var(--violet-line)}
+.box.zone.amber{fill:var(--amber);stroke:var(--amber-line)}
+.box.zone.rose{fill:var(--rose);stroke:var(--rose-line)}
+.box.zone.teal{fill:var(--teal);stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{stroke:var(--blue-line)}
+.device.green{stroke:var(--green-line)}
+.device.violet{stroke:var(--violet-line)}
+.device.amber{stroke:var(--amber-line)}
+.device.rose{stroke:var(--rose-line)}
+.device.teal{stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--blue)}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--green)}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--violet)}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--amber)}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--rose)}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--teal)}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <marker id="swimlane-agent-purchase-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">The agent shops, but nothing is bought until the person approves on their phone</text>
+  <text class="note" x="24" y="54">Who does what when an agent buys something</text>
+  <rect class="box zone violet" x="24" y="72" width="712" height="92" rx="8"/>
+  <rect class="badge violet" x="40" y="86" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(46 92) scale(0.833333)"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></g>
+  <text class="name" x="40" y="140">Person</text>
+  <rect class="box zone teal" x="24" y="164" width="712" height="92" rx="8"/>
+  <rect class="badge teal" x="40" y="178" width="32" height="32" rx="9"/><g class="icon teal" transform="translate(46 184) scale(0.833333)"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4.5V8M3 12.5v3M21 12.5v3M9.5 13v1M14.5 13v1"/><circle cx="12" cy="3.5" r="1"/></g>
+  <text class="name" x="40" y="232">Agent</text>
+  <rect class="box zone amber" x="24" y="256" width="712" height="92" rx="8"/>
+  <rect class="badge amber" x="40" y="270" width="32" height="32" rx="9"/><g class="icon amber" transform="translate(46 276) scale(0.833333)"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10.5 21v-3h3v3"/></g>
+  <text class="name" x="40" y="324">Bank</text>
+  <rect class="box zone green" x="24" y="348" width="712" height="92" rx="8"/>
+  <rect class="badge green" x="40" y="362" width="32" height="32" rx="9"/><g class="icon green" transform="translate(46 368) scale(0.833333)"><path d="M4 9.5V20h16V9.5M3 9.5l2-5.5h14l2 5.5zM9.5 20v-5h5v5"/></g>
+  <text class="name" x="40" y="416">Merchant</text>
+  <g class="line"><path d="M152 72V440"/></g>
+  <rect class="box violet" x="164" y="94" width="92" height="48" rx="8"/>
+  <text class="small mid" x="210" y="114">Asks for</text>
+  <text class="small mid" x="210" y="130">shoes</text>
+  <rect class="box teal" x="280" y="186" width="92" height="48" rx="8"/>
+  <text class="small mid" x="326" y="206">Compares</text>
+  <text class="small mid" x="326" y="222">stores</text>
+  <rect class="box teal" x="396" y="186" width="92" height="48" rx="8"/>
+  <text class="small mid" x="442" y="206">Proposes a</text>
+  <text class="small mid" x="442" y="222">cart</text>
+  <rect class="key" x="512" y="94" width="92" height="48" rx="8"/>
+  <text class="small mid" x="558" y="114">Approves on</text>
+  <text class="small mid" x="558" y="130">phone</text>
+  <rect class="box amber" x="512" y="278" width="92" height="48" rx="8"/>
+  <text class="small mid" x="558" y="298">Authorizes</text>
+  <text class="small mid" x="558" y="314">payment</text>
+  <rect class="box green" x="628" y="370" width="92" height="48" rx="8"/>
+  <text class="small mid" x="674" y="390">Ships the</text>
+  <text class="small mid" x="674" y="406">order</text>
+  <g class="line"><path d="M256 118H268V210H280" marker-end="url(#swimlane-agent-purchase-arrow)"/></g>
+  <g class="line"><path d="M372 210H396" marker-end="url(#swimlane-agent-purchase-arrow)"/></g>
+  <g class="line"><path d="M488 210H500V118H512" marker-end="url(#swimlane-agent-purchase-arrow)"/></g>
+  <g class="line"><path d="M558 142V278" marker-end="url(#swimlane-agent-purchase-arrow)"/></g>
+  <g class="line"><path d="M604 302H616V394H628" marker-end="url(#swimlane-agent-purchase-arrow)"/></g>
+</svg>

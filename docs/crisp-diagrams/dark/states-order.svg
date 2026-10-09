@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="288" viewBox="0 0 760 288" role="img" aria-label="An order can be cancelled until it ships; after that, only refunded">
+  <style>
+/* crisp-diagrams theme: quiet (default): outlines only, one blue accent. Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b}
+svg{--ink:#f0efec;--quiet:#c3c2b7;--edge:#383835;--grid:rgba(255,255,255,.1);--accent:#3987e5;--tint:rgba(151,149,141,.15);--paper:#262624;--screen:#1b1b1a;--ui:#3d3c39;--island:#050505}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:none;stroke:var(--edge);stroke-width:1.25}
+.key{fill:var(--accent);fill-opacity:.12;stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+</style>
+  <defs>
+    <marker id="states-order-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">An order can be cancelled until it ships; after that, only refunded</text>
+  <text class="note" x="24" y="54">The states an order moves through</text>
+  <rect class="box teal" x="72" y="110" width="104" height="44" rx="22"/>
+  <text class="name mid" x="124" y="137">Created</text>
+  <rect class="box teal" x="240" y="110" width="104" height="44" rx="22"/>
+  <text class="name mid" x="292" y="137">Paid</text>
+  <rect class="key" x="408" y="110" width="104" height="44" rx="22"/>
+  <text class="name mid" x="460" y="137">Shipped</text>
+  <rect class="box teal" x="576" y="110" width="104" height="44" rx="22"/>
+  <text class="name mid" x="628" y="137">Delivered</text>
+  <rect class="box rose" x="132" y="220" width="104" height="44" rx="22"/>
+  <text class="name mid" x="184" y="247">Cancelled</text>
+  <rect class="box rose" x="576" y="220" width="104" height="44" rx="22"/>
+  <text class="name mid" x="628" y="247">Refunded</text>
+  <circle class="btn" cx="36" cy="132" r="6"/>
+  <circle class="glyph" cx="722" cy="132" r="9"/><circle class="btn" cx="722" cy="132" r="4.5"/>
+  <g class="line"><path d="M42 132H72" marker-end="url(#states-order-arrow)"/></g>
+  <g class="line"><path d="M680 132H713" marker-end="url(#states-order-arrow)"/></g>
+  <g class="line"><path d="M176 132H240" marker-end="url(#states-order-arrow)"/></g>
+  <text class="note mid" x="208" y="124">pay</text>
+  <g class="line"><path d="M344 132H408" marker-end="url(#states-order-arrow)"/></g>
+  <text class="note mid" x="376" y="124">ship</text>
+  <g class="line"><path d="M512 132H576" marker-end="url(#states-order-arrow)"/></g>
+  <text class="note mid" x="544" y="124">deliver</text>
+  <g class="line"><path d="M124 154V242H132" marker-end="url(#states-order-arrow)"/></g>
+  <text class="note" x="132" y="200">cancel</text>
+  <g class="line"><path d="M292 154V242H236" marker-end="url(#states-order-arrow)"/></g>
+  <g class="line"><path d="M628 154V220" marker-end="url(#states-order-arrow)"/></g>
+  <text class="note" x="636" y="200">refund</text>
+</svg>

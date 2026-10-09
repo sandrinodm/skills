@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="796" viewBox="0 0 760 796" role="img" aria-label="Each customer&#x27;s data lives in its own zone, behind a tenant check">
+  <style>
+/* crisp-diagrams theme: gradient: light top-to-bottom gradients in boxes (needs gradient-defs.svg, added by theme.py). Swap themes with scripts/theme.py; never edit a diagram's colors by hand. */
+svg{--ink:#0b0b0b;--quiet:#52514e;--edge:#c3c2b7;--grid:rgba(11,11,11,.1);--accent:#2a78d6;--tint:rgba(137,135,129,.15);--blue:#dfeafc;--blue-line:#93b8ec;--green:#dcf1e3;--green-line:#8fcaa1;--violet:#e9e3fb;--violet-line:#b4a3ec;--amber:#fcecd0;--amber-line:#e3b766;--rose:#fbe1e7;--rose-line:#e89fb0;--teal:#d8f0ee;--teal-line:#84c7c1;--paper-0:#ffffff;--paper-1:#f1f0eb;--key-0:#eef5ff;--key-1:#d3e4fb;--blue-0:#f3f8ff;--blue-1:#dbe8fc;--green-0:#f2faf5;--green-1:#d7efdf;--violet-0:#f7f4ff;--violet-1:#e4dcfa;--amber-0:#fffaf1;--amber-1:#f9e6c4;--rose-0:#fff5f7;--rose-1:#f8dbe2;--teal-0:#f0faf9;--teal-1:#d3eeeb;--paper:#ffffff;--screen:#f7f6f3;--ui:#e4e2db;--island:#0b0b0b;--blue-ink:#2f6db5;--green-ink:#2f7d4f;--violet-ink:#6450b8;--amber-ink:#94620f;--rose-ink:#b04760;--teal-ink:#1f7a73}
+text{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:13px;fill:var(--ink)}
+.title{font-size:15px;font-weight:600}
+.name{font-weight:600}
+.note{font-size:11.5px;fill:var(--quiet)}
+.small{font-size:11.5px}
+.strong{font-weight:600}
+.mid{text-anchor:middle}
+.end{text-anchor:end}
+.line{fill:none;stroke:var(--edge);stroke-width:1.25}
+.life{fill:none;stroke:var(--grid);stroke-width:1.25;stroke-dasharray:4 4}
+.head{fill:var(--edge)}
+.box{fill:url(#cd-paper);stroke:var(--edge);stroke-width:1.25}
+.key{fill:url(#cd-key);stroke:var(--accent);stroke-width:2}
+.chip{fill:var(--tint);stroke:var(--edge);stroke-width:1}
+.callout{fill:var(--tint);stroke:var(--edge);stroke-width:1.25}
+.box.zone{fill:none}
+.box.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.box.green{fill:url(#cd-green);stroke:var(--green-line)}
+.box.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.box.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.box.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.box.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+.chip.blue{fill:var(--blue);stroke:var(--blue-line)}
+.chip.green{fill:var(--green);stroke:var(--green-line)}
+.chip.violet{fill:var(--violet);stroke:var(--violet-line)}
+.chip.amber{fill:var(--amber);stroke:var(--amber-line)}
+.chip.rose{fill:var(--rose);stroke:var(--rose-line)}
+.chip.teal{fill:var(--teal);stroke:var(--teal-line)}
+.box.zone.blue{fill:none;stroke:var(--blue-line)}
+.box.zone.green{fill:none;stroke:var(--green-line)}
+.box.zone.violet{fill:none;stroke:var(--violet-line)}
+.box.zone.amber{fill:none;stroke:var(--amber-line)}
+.box.zone.rose{fill:none;stroke:var(--rose-line)}
+.box.zone.teal{fill:none;stroke:var(--teal-line)}
+/* device mockups and glyphs (references/visuals.md) */
+.device{fill:var(--paper);stroke:var(--quiet);stroke-width:1.5}
+.screen{fill:var(--screen)}
+.ui{fill:var(--ui)}
+.field{fill:var(--paper);stroke:var(--edge);stroke-width:1}
+.btn{fill:var(--ink)}
+.island{fill:var(--island)}
+.glyph{fill:none;stroke:var(--quiet);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tick{fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.uitext{font-size:10px}
+.uinote{font-size:10px;fill:var(--quiet)}
+.btn-text{font-size:10px;font-weight:600;fill:var(--paper)}
+.inv{fill:var(--paper)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.device.blue{fill:url(#cd-blue);stroke:var(--blue-line)}
+.device.green{fill:url(#cd-green);stroke:var(--green-line)}
+.device.violet{fill:url(#cd-violet);stroke:var(--violet-line)}
+.device.amber{fill:url(#cd-amber);stroke:var(--amber-line)}
+.device.rose{fill:url(#cd-rose);stroke:var(--rose-line)}
+.device.teal{fill:url(#cd-teal);stroke:var(--teal-line)}
+/* icons (scripts/icons.py) */
+.icon{fill:none;stroke:var(--quiet);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon.accent{stroke:var(--accent)}
+.badge{fill:var(--tint)}
+.badge.blue{fill:var(--paper);stroke:var(--blue-line);stroke-width:1}
+.icon.blue{stroke:var(--blue-ink)}
+.badge.green{fill:var(--paper);stroke:var(--green-line);stroke-width:1}
+.icon.green{stroke:var(--green-ink)}
+.badge.violet{fill:var(--paper);stroke:var(--violet-line);stroke-width:1}
+.icon.violet{stroke:var(--violet-ink)}
+.badge.amber{fill:var(--paper);stroke:var(--amber-line);stroke-width:1}
+.icon.amber{stroke:var(--amber-ink)}
+.badge.rose{fill:var(--paper);stroke:var(--rose-line);stroke-width:1}
+.icon.rose{stroke:var(--rose-ink)}
+.badge.teal{fill:var(--paper);stroke:var(--teal-line);stroke-width:1}
+.icon.teal{stroke:var(--teal-ink)}
+</style>
+  <defs>
+    <linearGradient id="cd-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--paper-0)"/><stop offset="1" style="stop-color:var(--paper-1)"/></linearGradient>
+    <linearGradient id="cd-key" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--key-0)"/><stop offset="1" style="stop-color:var(--key-1)"/></linearGradient>
+    <linearGradient id="cd-blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue-0)"/><stop offset="1" style="stop-color:var(--blue-1)"/></linearGradient>
+    <linearGradient id="cd-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--green-0)"/><stop offset="1" style="stop-color:var(--green-1)"/></linearGradient>
+    <linearGradient id="cd-violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--violet-0)"/><stop offset="1" style="stop-color:var(--violet-1)"/></linearGradient>
+    <linearGradient id="cd-amber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--amber-0)"/><stop offset="1" style="stop-color:var(--amber-1)"/></linearGradient>
+    <linearGradient id="cd-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--rose-0)"/><stop offset="1" style="stop-color:var(--rose-1)"/></linearGradient>
+    <linearGradient id="cd-teal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--teal-0)"/><stop offset="1" style="stop-color:var(--teal-1)"/></linearGradient>
+    <marker id="tenant-isolation-a-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path class="head" d="M0 0L10 5L0 10z"/>
+    </marker>
+  </defs>
+  <text class="title" x="24" y="34">Each customer's data lives in its own zone, behind a tenant check</text>
+  <text class="note" x="24" y="54">How a multi-tenant SaaS keeps one customer's data away from another's</text>
+  <rect class="box violet" x="232" y="76" width="488" height="56" rx="8"/>
+  <rect class="badge violet" x="246" y="88" width="32" height="32" rx="9"/><g class="icon violet" transform="translate(252 94) scale(0.833333)"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.2c3 .3 5 2.5 5 5.8"/></g>
+  <text class="name" x="290" y="100">Customers</text>
+  <text class="note" x="290" y="116">People from Acme and Globex sign in</text>
+  <rect class="box zone violet" x="24" y="180" width="712" height="176" rx="8"/>
+  <text class="name" x="40" y="220">Shared edge</text>
+  <text class="note" x="40" y="240">Same for every customer</text>
+  <text class="note" x="40" y="256">Stores no customer data</text>
+  <rect class="box violet" x="232" y="196" width="488" height="40" rx="8"/>
+  <g class="icon violet" transform="translate(246 206) scale(0.833333)"><circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M7 11l10-5M7 13l10 5"/></g>
+  <text class="name" x="274" y="220">Load balancer</text>
+  <text x="378" y="220">TLS ends here</text>
+  <rect class="box violet" x="232" y="268" width="232" height="72" rx="8"/>
+  <g class="icon violet" transform="translate(244 279) scale(0.833333)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></g>
+  <text class="name" x="274" y="292">Web app</text>
+  <text class="note" x="274" y="308">Shows each user their own</text>
+  <text class="note" x="274" y="324">data</text>
+  <rect class="box violet" x="488" y="268" width="232" height="72" rx="8"/>
+  <g class="icon violet" transform="translate(500 279) scale(0.833333)"><path d="M9 4c-2 0-3 1-3 3v2.5c0 1.2-.8 2.5-2.5 2.5 1.7 0 2.5 1.3 2.5 2.5V17c0 2 1 3 3 3"/><path d="M15 4c2 0 3 1 3 3v2.5c0 1.2.8 2.5 2.5 2.5-1.7 0-2.5 1.3-2.5 2.5V17c0 2-1 3-3 3"/></g>
+  <text class="name" x="530" y="292">API</text>
+  <text class="note" x="530" y="308">Every call carries a tenant</text>
+  <text class="note" x="530" y="324">ID</text>
+  <g class="line"><path d="M348 236V268" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <g class="line"><path d="M604 236V268" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <g class="line"><path d="M476 132V196" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <text class="note" x="488" y="160">requests</text>
+  <rect class="box zone teal" x="24" y="404" width="712" height="160" rx="8"/>
+  <text class="name" x="40" y="444">Shared services</text>
+  <text class="note" x="40" y="464">Code is shared</text>
+  <text class="note" x="40" y="480">Data is never mixed</text>
+  <rect class="key" x="232" y="420" width="488" height="40" rx="8"/>
+  <g class="icon accent" transform="translate(246 430) scale(0.833333)"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></g>
+  <text class="name" x="274" y="444">Tenant check</text>
+  <text x="378" y="444">every query is scoped to the caller's tenant</text>
+  <rect class="box teal" x="232" y="492" width="232" height="56" rx="8"/>
+  <g class="icon teal" transform="translate(244 503) scale(0.833333)"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h1.5M7.5 17h1.5"/></g>
+  <text class="name" x="274" y="516">App servers</text>
+  <text class="note" x="274" y="532">Business logic</text>
+  <rect class="box teal" x="488" y="492" width="232" height="56" rx="8"/>
+  <g class="icon teal" transform="translate(500 503) scale(0.833333)"><path d="M5.5 5h13L21 13v6H3v-6z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></g>
+  <text class="name" x="530" y="516">Job workers</text>
+  <text class="note" x="530" y="532">Background tasks, also scoped</text>
+  <g class="line"><path d="M348 460V492" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <g class="line"><path d="M604 460V492" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <g class="line"><path d="M604 340V420" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <text class="note" x="616" y="384">calls with a tenant ID</text>
+  <rect class="box zone green" x="24" y="612" width="712" height="160" rx="8"/>
+  <text class="name" x="40" y="652">Customer data</text>
+  <text class="note" x="40" y="672">One database per tenant</text>
+  <text class="note" x="40" y="688">Separate encryption keys</text>
+  <rect class="box green" x="232" y="628" width="488" height="40" rx="8"/>
+  <g class="icon green" transform="translate(246 638) scale(0.833333)"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></g>
+  <text class="name" x="274" y="652">Data access</text>
+  <text x="378" y="652">per-tenant credentials only</text>
+  <rect class="box green" x="232" y="700" width="232" height="56" rx="8"/>
+  <g class="icon green" transform="translate(244 711) scale(0.833333)"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g>
+  <text class="name" x="274" y="724">Acme database</text>
+  <text class="note" x="274" y="740">Encrypted with Acme's key</text>
+  <rect class="box green" x="488" y="700" width="232" height="56" rx="8"/>
+  <g class="icon green" transform="translate(500 711) scale(0.833333)"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></g>
+  <text class="name" x="530" y="724">Globex database</text>
+  <text class="note" x="530" y="740">Encrypted with Globex's key</text>
+  <g class="line"><path d="M348 668V700" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <g class="line"><path d="M604 668V700" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <g class="line"><path d="M348 548V628" marker-end="url(#tenant-isolation-a-arrow)"/></g>
+  <text class="note" x="360" y="592">scoped queries</text>
+</svg>
