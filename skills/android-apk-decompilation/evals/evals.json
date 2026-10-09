@@ -5,19 +5,53 @@
       "id": 1,
       "prompt": "I have an Android package id com.vendor.router and I do not want to install adb, jadx, or apktool with Homebrew. Create a Docker-based runbook to pull the Play-installed split APKs from my phone and decompile them.",
       "expected_output": "Explains authorized scope, wireless ADB pairing, Docker ADB shell, pull-package-apks, no-network analysis shell, signature/hash verification, jadx with all split APKs, apktool on base.apk, and artifact hygiene.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "Limits the work to apps and devices the user owns or is authorized to inspect",
+        "Runs adb, jadx and apktool in Docker, with no Homebrew or other host installs",
+        "Connects to the phone over wireless debugging (adb pair, then adb connect)",
+        "Pulls every split APK for com.vendor.router (all paths from pm path), not just base.apk",
+        "Runs static analysis in a separate container with networking disabled and the APKs mounted read-only",
+        "Records SHA-256 hashes and verifies signing certificates with apksigner",
+        "Decompiles the code from every split that contains code (jadx over all APKs, or merging the splits first) and decodes resources with apktool",
+        "Keeps APKs and decompiled source out of git",
+        "Every delivered search command and script runs as written (for example, no grep-only flags such as rg -E or rg -I that change ripgrep's meaning)",
+        "The Docker setup works on Apple Silicon Macs (pins linux/amd64 for the x86-only Android platform-tools, or explains the choice)"
+      ]
     },
     {
       "id": 2,
       "prompt": "I downloaded a .xapk file from APKPure for an app I own. How should I verify it and decompile it without trusting it blindly?",
       "expected_output": "Provides APKPure search/detail/download/version URL patterns, treats XAPK as an untrusted ZIP bundle, rejects HTML challenge pages, verifies APKs with apksigner, hashes the bundle and splits, recommends signer comparison against a Play-installed copy, runs jadx over all APKs, apktool on base.apk, and warns not to commit APK/decompiled source.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "Treats the XAPK as an untrusted ZIP bundle and extracts it before using anything inside",
+        "Checks the download is a real archive and not an HTML challenge or error page (for example with file or unzip -t)",
+        "Hashes the bundle and every extracted APK",
+        "Verifies each APK's signature with apksigner and inspects the signer certificate",
+        "Anchors trust in the real signing key: compares the signer with a Play-installed copy from the user's device or the Play Console app-signing certificate",
+        "Decompiles in an isolated environment without network access",
+        "Decompiles the code from every split that contains code (jadx over all APKs, or merging the splits first) and decodes resources with apktool",
+        "Warns against committing APKs or decompiled source",
+        "Every delivered search command and script runs as written (for example, no grep-only flags such as rg -E or rg -I that change ripgrep's meaning)"
+      ]
     },
     {
       "id": 3,
       "prompt": "Use the APK artifacts from a previous session to write a static-analysis checklist for finding local API endpoints and auth clues.",
       "expected_output": "Uses the generic artifact trail without vendor-specific references, keeps the Docker split between ADB and analysis, searches manifest/network config/native strings/JADX/apktool output, looks for endpoint/auth/token clues, and distinguishes static candidates from observed endpoints.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "Looks for the earlier artifacts and says plainly that it found none (or names what it found) before writing the checklist, and doesn't invent findings",
+        "Keeps analysis in a no-network container, separate from ADB acquisition",
+        "Covers the manifest: permissions, exported components, deep links and backup or debuggable flags",
+        "Covers the network security config, cleartext traffic and certificate-pinning clues",
+        "Covers JADX output, apktool resources or smali, and strings from native .so libraries",
+        "Gives concrete search commands (rg or grep patterns) for endpoints, hosts, tokens and auth headers",
+        "Separates static candidates from endpoints confirmed by observed traffic (confidence levels)",
+        "Says to keep secrets and raw artifacts out of git and the notes",
+        "Every delivered search command and script runs as written (for example, no grep-only flags such as rg -E or rg -I that change ripgrep's meaning)"
+      ]
     }
   ]
 }

@@ -1,0 +1,88 @@
+{
+  "skill_name": "product-name-finder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're building an AI tool that reconciles bank transactions for small accounting firms in the Netherlands and Belgium, and we'll expand to the rest of Europe later. We need a company name. It should feel trustworthy but not boring. Main competitors are Exact, Twinfield and Moneybird.",
+      "expected_output": "A naming brief with stated assumptions, several naming territories, a broad candidate list, a scored shortlist, and a final recommendation of three names plus backups and a wild card, with rationale, risks and next-step checks such as trademark and Dutch/French linguistic review.",
+      "files": [],
+      "assertions": [
+        "States its assumptions explicitly",
+        "Frames a brief: audience, category, differentiator, markets and future stretch",
+        "Maps the competitors (Exact, Twinfield, Moneybird) and avoids names that sound like them",
+        "Explores at least 8 distinct naming territories, each with a rationale",
+        "Generates at least 150 candidates before narrowing down, and the shortlist is drawn from that pool",
+        "Scores a shortlist against explicit criteria such as distinctiveness, memorability, trademark promise and cross-language safety",
+        "Considers how the names sound or what they mean in Dutch and French",
+        "Recommends a top 3, 2 backups and a wild card, with rationale and risks",
+        "Distinguishes the safest pick from the highest-upside pick",
+        "Lists next-step checks: trademark counsel, domains or handles, and native-speaker review",
+        "Checks each finalist for existing companies, products or well-known projects with the same name, including what sits at its exact-name .com and .ai domains, and states what it found",
+        "Finalists are specific to this brief: none are generic names that would fit any company",
+        "Checks domains with Vercel's registrar API (the skill's scripts/check_domains.py, or POST https://api.vercel.com/v1/registrar/domains/search) and quotes availability and price from it",
+        "Every .nl and .be status it reports is correct (the grader re-checks with DNS or the registry's whois), and none is reported as taken only because Vercel's API said unavailable",
+        "Quotes any non-.com price per year correctly, including minimum terms (for example .ai is sold as 2 years: $160 for the term is $80 a year)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Can you name a new feature in our project management app? The app is called Tandem, and the feature automatically writes weekly status updates from tickets and pull requests. The name has to sit nicely next to the Tandem brand. A quick sprint is fine, 30 to 50 candidates.",
+      "expected_output": "A short brief, 30 to 50 candidates grouped by territory, consideration of how each sits beside Tandem (descriptive feature name vs branded sub-name), a scored shortlist and a recommendation with usage lines.",
+      "files": [],
+      "assertions": [
+        "States its assumptions explicitly",
+        "Keeps to the requested sprint size of 30 to 50 candidates",
+        "Addresses how the names sit beside Tandem (descriptive feature name versus branded sub-name)",
+        "Groups candidates by territory or theme",
+        "Scores or ranks a shortlist against explicit criteria",
+        "Shows finalists in context, such as example UI copy or usage lines",
+        "Gives a clear recommendation",
+        "Checks each finalist for existing companies, products or well-known projects with the same name, including what sits at its exact-name .com and .ai domains, and states what it found",
+        "Finalists are specific to this brief: none are generic names that would fit any company",
+        "Checks finalists for unfortunate sound-alikes or meanings (for example, Stoker heard as stalker)",
+        "Keeps the quick sprint compact: under about 2,000 words"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're renaming our startup. It's called CodeCheckr right now, which feels cheap, and we can't get the .com. We do static analysis for infrastructure as code (Terraform, Pulumi) and sell to platform engineers. The new name needs to work as we grow beyond IaC security.",
+      "expected_output": "Explains what is wrong with the current name, frames the rename brief, explores territories that stretch beyond IaC security, generates broadly, scores a shortlist and recommends top names with trade-offs between the safe pick and the highest-upside pick, plus next-step checks.",
+      "files": [],
+      "assertions": [
+        "Explains what is wrong with CodeCheckr (feels cheap, too literal or narrow, domain problem)",
+        "Frames the brief around growing beyond IaC security",
+        "Explores at least 8 distinct naming territories, each with a rationale",
+        "Generates at least 150 candidates before narrowing down, and the shortlist is drawn from that pool",
+        "Scores a shortlist against explicit criteria",
+        "Avoids names tied too narrowly to Terraform, IaC or checking",
+        "Recommends a top 3, 2 backups and a wild card, with rationale and risks",
+        "Distinguishes the safest pick from the highest-upside pick",
+        "Lists next-step checks: trademark counsel, domains or handles, and native-speaker review",
+        "Checks each finalist for existing companies, products or well-known projects with the same name, including what sits at its exact-name .com and .ai domains, and states what it found",
+        "Finalists are specific to this brief: none are generic names that would fit any company",
+        "Deals with the .com problem the user raised: checks domain availability for the finalists and weighs it in the recommendation",
+        "Checks domains with Vercel's registrar API (the skill's scripts/check_domains.py, or POST https://api.vercel.com/v1/registrar/domains/search) and quotes availability and price from it",
+        "Each top-3 pick has a realistic path to its .com: available at a quoted registrar price, or a named aftermarket listing with its asking price",
+        "Quotes any non-.com price per year correctly, including minimum terms (for example .ai is sold as 2 years: $160 for the term is $80 a year)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "We're launching a budgeting app for students in Germany and Austria. We want a short, brandable name where we can register the .com today at the normal price, not from a broker or a premium listing. Give us your top names with the exact domain and what it costs per year.",
+      "expected_output": "Screens many candidates' .com in bulk through Vercel's registrar API, recommends only names whose .com is available now at a standard (non-premium) price with first-year and renewal prices, checks .de and .at through the registries, and runs a conflict check on the finalists.",
+      "files": [],
+      "assertions": [
+        "Checks domains with Vercel's registrar API (the skill's scripts/check_domains.py, or POST https://api.vercel.com/v1/registrar/domains/search) and quotes availability and price from it",
+        "Screens at least 50 candidate .com domains before building the shortlist",
+        "Every recommended name's .com is available right now at a standard, non-premium price (the grader re-checks with the API)",
+        "Quotes the first-year and renewal price for each recommended .com",
+        "Checks the .de and .at domains for the finalists, and every status it reports is correct (the grader re-checks with DNS or the registry's whois)",
+        "Checks each finalist for existing companies or apps with the same name in budgeting or student finance",
+        "Considers how the names sound and what they mean in German",
+        "Finalists are specific to this brief: none are generic names that would fit any company",
+        "Opens with the recommendation",
+        "Quotes any non-.com price per year correctly, including minimum terms (for example .ai is sold as 2 years: $160 for the term is $80 a year)"
+      ]
+    }
+  ]
+}

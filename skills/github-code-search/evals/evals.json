@@ -1,0 +1,56 @@
+{
+  "skill_name": "github-code-search",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm adding rate limiting to a Hono API that runs on Cloudflare Workers. Find a few real open-source projects that do this and show me the common patterns before I pick one.",
+      "expected_output": "Searches GitHub with focused, filtered queries; cites several real repositories with file paths; compares the rate-limiting approaches they use (for example the Workers Rate Limiting binding, Durable Objects, KV or a middleware package) and recommends how to choose.",
+      "files": [],
+      "assertions": [
+        "Runs real GitHub code searches (ghx or gh search code) and saves the commands in searches.txt",
+        "Narrows searches with filters such as language, extension, filename, path or repo",
+        "Cites at least 3 distinct real repositories with file paths or links",
+        "The cited files exist on GitHub (spot-check two of them)",
+        "Compares the rate-limiting approaches found (for example the Workers Rate Limiting binding, Durable Objects, KV, Upstash or hono-rate-limiter) with trade-offs",
+        "Gives guidance for choosing one approach, and doesn't recommend @hono-rate-limiter/cloudflare (unmaintained since 2024-12) without saying so",
+        "Summarizes patterns instead of pasting copied code: no single excerpt longer than about 10 lines",
+        "Checks that the packages or repos it recommends are maintained (last release, archived status or deprecation) and says so when one isn't",
+        "Reads the cited code closely enough to flag at least one bug, anti-pattern or caveat in it, rather than presenting every hit as correct"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How are people configuring Vitest workspaces (vitest.workspace.ts) in monorepos? Find real examples on GitHub and summarize the patterns.",
+      "expected_output": "Finds real vitest.workspace.ts (or projects config) files with filename-filtered searches, cites the repositories, and summarizes the common patterns such as globs over packages, inline project configs and shared settings.",
+      "files": [],
+      "assertions": [
+        "Runs real GitHub code searches (ghx or gh search code) and saves the commands in searches.txt",
+        "Uses a filename or path filter to find vitest.workspace files",
+        "Cites at least 3 distinct real repositories with file paths or links",
+        "The cited files exist on GitHub (spot-check two of them)",
+        "Summarizes the common patterns, such as globs over package folders, inline project configs and shared settings",
+        "Gives the timeline: vitest.workspace.ts was deprecated in Vitest 3.2 and removed in 4.0 in favor of test.projects",
+        "Summarizes patterns instead of pasting copied code: no single excerpt longer than about 10 lines",
+        "Checks that the packages or repos it recommends are maintained (last release, archived status or deprecation) and says so when one isn't",
+        "Reads the cited code closely enough to flag at least one bug, anti-pattern or caveat in it, rather than presenting every hit as correct"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Show me how real projects use Bun.serve websockets with pub/sub (server.publish) and what the typical structure looks like.",
+      "expected_output": "Finds real Bun.serve code using websocket handlers with subscribe and publish, cites the repositories, and describes the typical structure: upgrade in fetch, open/message/close handlers, topic naming and server.publish.",
+      "files": [],
+      "assertions": [
+        "Runs real GitHub code searches (ghx or gh search code) and saves the commands in searches.txt",
+        "Narrows searches with filters such as language, extension, filename, path or repo",
+        "Cites at least 3 distinct real repositories with file paths or links",
+        "The cited files exist on GitHub (spot-check two of them)",
+        "Describes the typical structure: server.upgrade in fetch, websocket open/message/close handlers, ws.subscribe to topics and server.publish to broadcast",
+        "Summarizes patterns instead of pasting copied code: no single excerpt longer than about 10 lines",
+        "Checks that the packages or repos it recommends are maintained (last release, archived status or deprecation) and says so when one isn't",
+        "Reads the cited code closely enough to flag at least one bug, anti-pattern or caveat in it, rather than presenting every hit as correct",
+        "Explains how pub/sub behaves across multiple server processes (server.publish only reaches sockets in the same process)"
+      ]
+    }
+  ]
+}
