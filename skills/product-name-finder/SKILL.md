@@ -81,6 +81,7 @@ Write a concise naming brief with these headings:
 - How do competitors sound?
 - What should this name make people assume?
 - What would be a naming mistake?
+- What did the user say is wrong today? (A missing .com, a name that feels cheap, a clash with a competitor.) Treat it as a hard requirement: the recommendation has to fix it, and the finalists get checked against it.
 
 Then write:
 - `Win definition`
@@ -135,6 +136,9 @@ Use multiple constructions:
 Do not stop at 20 names. Start with a raw pool of at least:
 - 150 candidates for a founder-grade sprint
 - 300+ candidates for a serious naming project
+- the number the user asked for, when they asked for a quick sprint (for example 30 to 50)
+
+Generate from this brief's territories, not from a stock naming vocabulary. Words that would fit any company (Aplomb, Nova, Apex, Vertex, Lumen and the like) are the AI default, not a choice: keep one only if it earns its place in a territory, and say why it fits this brief better than another. If a name would work equally well for an accounting tool and a DevOps tool, it isn't doing any work.
 
 For each territory, produce names in different structures.
 
@@ -230,6 +234,14 @@ Then ask:
 - Does it create intrigue without confusion?
 - Would this be stronger than a literal category label?
 
+Before anything becomes a finalist, run a quick conflict check, because a name you haven't checked can't be recommended:
+- Search the web for the name plus the category: same-name companies, products, features in competing tools, and well-known open-source projects in the audience's world (a developer audience knows Cadence as Uber's workflow engine).
+- Listen to it: what does it sound like spoken aloud in English and in the target languages, and what can it be misheard as? ("Stoker" is a short hop from "stalker", which hurts a feature that reads everyone's work.)
+- Check the exact-name domains for every finalist, even when the user didn't mention domains: `python3 <skill-dir>/scripts/check_domains.py Name1 Name2 --tlds com,ai,<country>` (the main market's country domain, such as `nl` or `be`). See "Domain Checks" below.
+- A taken domain is where same-name companies show up. Open it (`curl -sIL https://name.com | head -20`, or a web search for the domain) and say whether it's a live company in or near the category, a parked page, or listed for sale.
+- When the user raised domains, also check one or two realistic alternatives (`getname.com`, `name.app`) and say for each finalist whether it meets the requirement, and at what price.
+Drop names that fail, or keep them with the risk stated plainly. Say what you checked and that it isn't legal clearance.
+
 ### Phase 10: Make the Recommendation
 
 Recommend:
@@ -246,6 +258,19 @@ For each recommendation include:
 - strongest use case
 - biggest risk
 - what copy or design must do to support it
+
+## Domain Checks
+
+`scripts/check_domains.py` checks availability and price for many names at once. For the TLDs Vercel's registrar sells (`.com`, `.ai`, `.app`, `.io`, `.dev` and about 550 more), it uses Vercel's registrar API (https://vercel.com/docs/domains/registrar-api): free, no account, up to 200 domains per request, with prices in USD and a premium flag. Some TLDs are only sold for a minimum term (`.ai`: 2 years), so the script shows prices per year next to the term and what it costs up front. Vercel reports TLDs it doesn't sell (`.nl`, `.be`, `.de`, `.eu`, `.co.uk`, ...) as unavailable whether or not anyone owns them, so the script asks those registries directly (RDAP, then DNS, then whois) and reports registered or not registered, without a price. Never read a Vercel "unavailable" for those TLDs as taken.
+
+```bash
+python3 <skill-dir>/scripts/check_domains.py Stevin Paceline --tlds com,ai,nl,be
+python3 <skill-dir>/scripts/check_domains.py --file raw-pool.txt --tlds com --json > domains.json
+```
+
+Statuses: `available` (registrable now at the quoted price), `premium` (registrable at a premium price: quote it, it's often hundreds or thousands), `taken` or `registered` (someone holds it), `not registered` (free at a registry Vercel doesn't sell), `unknown` (no answer: say so).
+
+When the user named domains as a requirement, screen the whole raw pool's `.com` in one run before scoring, so domain fit is a scoring input rather than an afterthought. Otherwise check the shortlist. Quote prices per year as the script shows them, mention a minimum term when there is one (".ai: $80 a year, sold as 2 years for $160"), and say that a domain's status can change before it's bought.
 
 ## Naming Style Guidance
 
@@ -343,12 +368,15 @@ Include:
 ## Output Behavior
 
 When using this skill, always:
-1. Write down assumptions.
-2. Show the naming logic.
-3. Produce breadth before narrowing.
-4. Explain tradeoffs.
-5. Distinguish best safe option from highest-upside option.
-6. End with a recommendation, not just a list.
+1. Open with the answer in a few lines: the top pick, the safest alternative and the boldest one, each with one sentence of why. Then show the work.
+2. Write down assumptions.
+3. Show the naming logic.
+4. Produce breadth before narrowing.
+5. Explain tradeoffs.
+6. Distinguish best safe option from highest-upside option.
+7. Close with the full recommendation, not just a list.
+
+Scale the deliverable to the request. A quick sprint or a feature name gets a compact answer of roughly 1,000 to 1,500 words: a short brief, the candidates grouped by territory, a ranked shortlist of 5 to 8 with one line each, and the top 3 in context. Skip the 12-criterion score table there. Keep the full A to F report for company and product naming projects.
 
 ## Starter Prompt for Reuse
 
