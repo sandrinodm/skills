@@ -114,12 +114,7 @@ Hash immediately:
 sha256sum artifacts/apk/<app-slug>/mirror/* > reverse/reports/<app-slug>-mirror-SHA256SUMS
 ```
 
-Extract bundle formats as ZIPs:
-
-```sh
-mkdir -p artifacts/apk/<app-slug>/mirror-extracted
-unzip artifacts/apk/<app-slug>/mirror/<filename>.xapk -d artifacts/apk/<app-slug>/mirror-extracted
-```
+Extract bundle formats as ZIPs in the analysis container (next section). `artifacts/` is mounted read-only there, so extract into `reverse/extracted/`, which is writable and never committed.
 
 ## Decompile Workflow
 
@@ -140,17 +135,19 @@ jadx -d reverse/jadx/my-app artifacts/apk/my-app/play/*.apk
 apktool d -f -o reverse/apktool/my-app artifacts/apk/my-app/play/base.apk
 ```
 
-For APKM/XAPK/APKS bundles:
+For APKM/XAPK/APKS bundles, extract into `reverse/extracted/` (the analysis container mounts `artifacts/` read-only):
 
 ```sh
-mkdir -p artifacts/apk/my-app/mirror-extracted
-unzip "artifacts/apk/my-app/mirror/my-app.xapk" -d artifacts/apk/my-app/mirror-extracted
-for apk in artifacts/apk/my-app/mirror-extracted/*.apk; do
+mkdir -p reverse/extracted/my-app-mirror
+unzip "artifacts/apk/my-app/mirror/my-app.xapk" -d reverse/extracted/my-app-mirror
+for apk in reverse/extracted/my-app-mirror/*.apk; do
   apksigner verify --verbose --print-certs "$apk" > "reverse/reports/my-app-mirror-$(basename "$apk").certs.txt"
 done
-jadx -d reverse/jadx/my-app-mirror artifacts/apk/my-app/mirror-extracted/*.apk
-apktool d -f -o reverse/apktool/my-app-mirror artifacts/apk/my-app/mirror-extracted/base.apk
+jadx -d reverse/jadx/my-app-mirror reverse/extracted/my-app-mirror/*.apk
+apktool d -f -o reverse/apktool/my-app-mirror reverse/extracted/my-app-mirror/base.apk
 ```
+
+Config splits usually declare no minSdk and carry only v2+ signatures, so `apksigner verify` may reject a genuine split unless you pass the base APK's minSdk with `--min-sdk-version` (read it with `aapt2 dump badging base.apk`). Every split must have the same signer as `base.apk`.
 
 Compare Play and mirror signer reports before trusting mirror evidence:
 
@@ -169,12 +166,16 @@ rg -n "token|authorization|cookie|session|login|logout|refresh" reverse/jadx/my-
 rg -n "certificate|pinning|trustmanager|hostnameverifier|network_security_config" reverse/jadx/my-app reverse/apktool/my-app
 ```
 
-For native-heavy apps, extract strings from `.so` files inside the APK or apktool output and search for endpoint-like evidence:
+For native-heavy apps, extract strings from the `.so` files and search for endpoint-like evidence. On a Play split install the libraries live in the ABI split (`split_config.arm64_v8a.apk`), not in `base.apk`, so apktool's output of `base.apk` won't have them; unzip them from every APK instead:
 
 ```sh
-find reverse/apktool/my-app -name '*.so' -print
-strings reverse/apktool/my-app/lib/arm64-v8a/libSomething.so | rg "http|api|login|token|/v[0-9]/"
+mkdir -p reverse/native/my-app
+for apk in artifacts/apk/my-app/play/*.apk; do unzip -oq "$apk" 'lib/*' -d reverse/native/my-app 2>/dev/null; done
+find reverse/native/my-app -name '*.so' -print
+strings reverse/native/my-app/lib/arm64-v8a/libSomething.so | rg "http|api|login|token|/v[0-9]/"
 ```
+
+These are ripgrep commands, and ripgrep differs from grep: patterns are already extended regex (alternation with `|` works as is), `-E` sets the text *encoding* and `-I` *hides file names*. So `rg -E "..."` errors out and `rg -nI` loses the paths you need to record. Run any search you hand over once against a small test file first; a script that swallows errors will report "no matches" when the search never ran.
 
 ## Beyond Static Decompilation
 
@@ -196,7 +197,9 @@ Do not commit:
 - Device, app, account, or network credentials.
 - Session cookies, bearer tokens, refresh tokens, API keys, private keys, serial numbers, MAC addresses, or public IPs.
 
-Commit only sanitized notes:
+`reverse/jadx/`, `reverse/apktool/`, `reverse/extracted/` and `reverse/native/` hold raw decompiled output: keep them out of git. Raw search output belongs there too, not in `reverse/reports/`.
+
+Commit only sanitized notes (in `reverse/reports/`):
 
 - Source, version, package id, hashes, and certificate fingerprints.
 - Endpoint candidates and confidence levels.

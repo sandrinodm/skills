@@ -17,6 +17,7 @@ Use this only for apps, devices, and accounts the user owns or is explicitly aut
 2. Prefer a Google Play installed copy pulled from an owned Android device. Use APK mirrors only as fallback static evidence.
 3. Keep APKs, decompiled source, traffic captures, credentials, tokens, IPs, MACs, account ids, and app secrets out of git unless the user explicitly asks for sanitized artifacts.
 4. If TLS pinning, attestation, DRM, anti-tamper, account protection, or terms-of-service boundaries block inspection, pause and reassess instead of treating bypass as the default next step.
+5. If the user refers to artifacts or notes from earlier work, look for them first (`artifacts/apk/`, `reverse/`) and say plainly what you found, or that you found nothing, before writing anything that assumes a layout.
 
 ## Quick Workflow
 
@@ -40,13 +41,16 @@ Use this only for apps, devices, and accounts the user owns or is explicitly aut
    jadx -d reverse/jadx/my-app artifacts/apk/my-app/play/*.apk
    apktool d -f -o reverse/apktool/my-app artifacts/apk/my-app/play/base.apk
    ```
-4. For `.apkm`, `.xapk`, or `.apks` files, treat the bundle as a ZIP, extract it to `artifacts/apk/<slug>/mirror-extracted/`, verify `base.apk`, pass all split APKs to `jadx`, and decode `base.apk` with `apktool`.
+4. For `.apkm`, `.xapk`, or `.apks` files, treat the bundle as an untrusted ZIP: inside the analysis shell, extract it to `reverse/extracted/<slug>-mirror/` (`artifacts/` is mounted read-only there), verify every APK's signer, pass all split APKs to `jadx`, and decode `base.apk` with `apktool`.
 5. Search for evidence, not final truth. Useful first searches:
    ```sh
    rg -n "http|https|okhttp|retrofit|websocket|certificate|pinning|trustmanager|hostnameverifier" reverse/jadx/my-app reverse/apktool/my-app
    rg -n "login|token|authorization|cookie|api|graphql|grpc|webview" reverse/jadx/my-app reverse/apktool/my-app
    rg -n "uses-permission|networkSecurityConfig|usesCleartextTraffic|exported=" reverse/apktool/my-app/AndroidManifest.xml reverse/apktool/my-app/res
    ```
+   These patterns already use alternation: ripgrep's default regex is extended. Don't add grep habits (`rg -E` sets the encoding, `rg -I` hides file names), and run any search you hand over once on a small test file, so a broken search can't pass as "no matches".
+6. Config splits (`split_config.*.apk`) usually declare no minSdk and carry only v2+ signatures, so plain `apksigner verify` can reject a genuine split. Pass the base APK's minSdk: `apksigner verify --min-sdk-version "$(aapt2 dump badging base.apk | sed -n "s/.*sdkVersion:'\([0-9]*\)'.*/\1/p")" --print-certs split.apk`, and compare every split's signer with `base.apk`'s.
+7. Native libraries on a Play split install live in the ABI split (`split_config.arm64_v8a.apk`), not in `base.apk`: unzip `lib/*` from every APK into `reverse/native/<slug>/` before running `strings`.
 
 ## What To Document
 
@@ -69,7 +73,7 @@ Create sanitized notes that let future engineering work proceed without re-openi
 - Decompiling only `base.apk` with `jadx` when the app uses split APKs.
 - Treating JADX output as authoritative control flow; verify important findings with apktool/smali, runtime behavior, or traffic captures.
 - Trusting an APK mirror because the filename looks right; compare signer certificates against a Play-installed copy.
-- Committing APKs or decompiled proprietary source instead of sanitized reports.
+- Committing APKs or decompiled proprietary source instead of sanitized reports, or writing raw search output into `reverse/reports/` (the folder meant for sanitized, committable notes).
 
 ## Detailed README
 
