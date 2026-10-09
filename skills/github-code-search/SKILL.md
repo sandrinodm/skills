@@ -40,8 +40,18 @@ After install, run `ghx --help` because available short flags can vary by instal
 2. Prefer targeted searches over broad searches. Add repo, language, extension, filename, or path filters when they materially improve signal.
 3. Use `--pipe` when you need output in the terminal for analysis.
 4. Start with a small result limit, then broaden only if results are weak.
-5. Summarize patterns from multiple repositories. Do not copy code blindly.
-6. When applying findings to the local codebase, adapt to local architecture, dependencies, and style.
+5. Read the files behind the best hits, not just the matching lines, and check them before you cite them (next section). Search results show what people wrote, not what works.
+6. Summarize patterns from multiple repositories. Do not copy code blindly.
+7. When applying findings to the local codebase, adapt to local architecture, dependencies, and style.
+
+## Check Before You Recommend
+
+A pattern that shows up in ten repos can still be abandoned, outdated or broken. Before a repo, package or snippet goes into your answer:
+
+- **Is it maintained?** For a package you recommend, check when it was last published and whether it's deprecated (`npm view <pkg> time.modified deprecated`, or the registry for other ecosystems). For a repo, check `gh repo view owner/repo --json isArchived,pushedAt`. Say so when something is unmaintained, archived or replaced by a newer API, and prefer the maintained alternative.
+- **Does the code do what you say?** Read the relevant function, not just the matching line. Call out bugs and anti-patterns you spot (a rate limiter whose handler never rejects, a pub/sub setup that breaks with more than one process) instead of presenting every hit as good practice.
+- **Is it current?** Code on GitHub is often written against older versions. When versions matter, check the project's current docs or release notes, and say which version a pattern applies to.
+- **Can you confirm the claim cheaply?** When a claim about runtime behavior decides the recommendation and a tiny snippet can settle it, run it.
 
 ## Common Commands
 
@@ -146,10 +156,12 @@ Avoid generic queries such as `button`, `auth`, or `database` unless paired with
 
 When reporting findings:
 
-- name the repositories or files that shaped the conclusion
-- distinguish observed patterns from recommendations
+- name the repositories or files that shaped the conclusion, and link to them with permalinks pinned to a commit (`https://github.com/owner/repo/blob/<sha>/path#L10-L24`) so the links don't drift
+- group the results into patterns: for each, who uses it, when to choose it, and its caveats
+- distinguish observed patterns from recommendations, and say what you checked (maintenance, versions, code read, anything you ran)
+- end with a recommendation and the conditions under which you'd pick a different pattern
 - explain how the pattern should be adapted locally
-- avoid long verbatim code excerpts; use short snippets only when needed
+- keep excerpts short (about 10 lines at most) and link to the rest instead of pasting it
 
 `ghx` saves markdown result files under the user config directory, for example on macOS:
 
