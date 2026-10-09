@@ -1,0 +1,23 @@
+{
+  "skill_name": "android-apk-decompilation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have an Android package id com.vendor.router and I do not want to install adb, jadx, or apktool with Homebrew. Create a Docker-based runbook to pull the Play-installed split APKs from my phone and decompile them.",
+      "expected_output": "Explains authorized scope, wireless ADB pairing, Docker ADB shell, pull-package-apks, no-network analysis shell, signature/hash verification, jadx with all split APKs, apktool on base.apk, and artifact hygiene.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I downloaded a .xapk file from APKPure for an app I own. How should I verify it and decompile it without trusting it blindly?",
+      "expected_output": "Provides APKPure search/detail/download/version URL patterns, treats XAPK as an untrusted ZIP bundle, rejects HTML challenge pages, verifies APKs with apksigner, hashes the bundle and splits, recommends signer comparison against a Play-installed copy, runs jadx over all APKs, apktool on base.apk, and warns not to commit APK/decompiled source.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Use the APK artifacts from a previous session to write a static-analysis checklist for finding local API endpoints and auth clues.",
+      "expected_output": "Uses the generic artifact trail without vendor-specific references, keeps the Docker split between ADB and analysis, searches manifest/network config/native strings/JADX/apktool output, looks for endpoint/auth/token clues, and distinguishes static candidates from observed endpoints.",
+      "files": []
+    }
+  ]
+}
