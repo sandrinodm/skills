@@ -1,0 +1,4 @@
+interface:
+  display_name: "TypeScript Code Style"
+  short_description: "Write and refactor readable, well-structured TypeScript."
+  default_prompt: "Use $ts-code-style to clean up, review or write TypeScript for readability: blank lines between steps, named constants, single-source errors, short functions, no nested ternaries or long conditions, options objects, framework mechanisms over wrappers, plain-English comments without banners or plan references, kebab-case files with tests beside them, sound type design with Effect Schema validation, and a safe, behavior-preserving cleanup workflow."

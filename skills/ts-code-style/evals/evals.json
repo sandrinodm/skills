@@ -1,0 +1,304 @@
+{
+  "skill_name": "ts-code-style",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Codex wrote src/orders.ts in this little order service and I can't read it. Clean it up: better formatting, structure and readability. Don't change what it does.",
+      "expected_output": "A rewritten src/orders.ts with named constants, shared error factories, small named helpers, no nested ternaries, doc comments on the exports, and readable receipt and retry code. Exported signatures are unchanged, with an options object for total() proposed rather than imposed. The original test suite passes unchanged, every error message and receipt string is byte-identical, and any observable difference is reported.",
+      "files": [
+        "evals/files/order-service"
+      ],
+      "assertions": [
+        "Runs the existing tests (npm test or node --test) before editing and reports the baseline result in the answer to the user",
+        "The original src/orders.test.ts still passes; assertions and expected values in the test file are not changed (calls to total() may be updated only if its signature changed)",
+        "Every error message, error code and status is preserved byte for byte (checked with scripts/string-diff.mjs or an equivalent comparison against a copy of the original)",
+        "Magic numbers become named constants with units where relevant: MAX_ITEMS = 50, MAX_QUANTITY = 999, MAX_GIFT_NOTE_LENGTH = 280, FREE_SHIPPING_THRESHOLD_CENTS = 5000, the shipping prices, the tax rates, the coupon discounts (0.1, 500, 0.2), the retry base delay and the default number of attempts",
+        "The 'invalid_order' error, repeated three times, is built in one place (a factory, constant or helper)",
+        "The allowed-fields list becomes a named Set and the customer regex a named constant",
+        "No nested ternaries remain anywhere in the file, including the shipping price: the coupon discount, the shipping price and the currency handling use helpers, switch statements or early returns",
+        "The inline throwing IIFE in parseOrder's currency spread is removed",
+        "total() keeps its exported positional signature, because the request is a readability pass that must not change behavior, and the answer proposes an options object as a follow-up",
+        "receipt() builds its text from an array of lines, or from clearly named pieces, instead of one long template literal",
+        "submit() delegates to separately named express and standard submission functions; no ternary between multi-line promise chains remains (a one-line choice between the two named functions is fine)",
+        "All if bodies are braced and no line exceeds 100 columns except unavoidable long string literals",
+        "Comments explain why rather than restating code: '// compute total' is removed or replaced, and the telegraphic 'Strict order subset' comment is rewritten as plain English; no section-banner comments (`// ---- Types ----`) are added",
+        "New and rewritten functions follow the blank-line rule: one blank line after each closed block (if/for/try) when more code follows in the same block, and no blank line between a value and the check that uses it, a comment and its code, or a result and its return",
+        "Exported names and their behavior are unchanged (OrderError, parseOrder, total, receipt, submit), and the summary lists what changed and anything deliberately left alone",
+        "Every exported function (parseOrder, total, receipt, submit) has a doc comment describing its behavior and what it rejects or throws",
+        "The answer reports every observable behavior difference it introduced (for example total.length changing, or express submit now accepting a send() that returns a plain value), or states that it checked and found none"
+      ],
+      "regression_only": [
+        "The original src/orders.test.ts still passes; assertions and expected values in the test file are not changed (calls to total() may be updated only if its signature changed)",
+        "Every error message, error code and status is preserved byte for byte (checked with scripts/string-diff.mjs or an equivalent comparison against a copy of the original)",
+        "The 'invalid_order' error, repeated three times, is built in one place (a factory, constant or helper)",
+        "The inline throwing IIFE in parseOrder's currency spread is removed",
+        "total() keeps its exported positional signature, because the request is a readability pass that must not change behavior, and the answer proposes an options object as a follow-up",
+        "receipt() builds its text from an array of lines, or from clearly named pieces, instead of one long template literal",
+        "submit() delegates to separately named express and standard submission functions; no ternary between multi-line promise chains remains (a one-line choice between the two named functions is fine)",
+        "All if bodies are braced and no line exceeds 100 columns except unavoidable long string literals"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Can you do a code-style review of src/orders.ts? Just tell me what you'd change and why, don't edit anything yet.",
+      "expected_output": "A ranked list of readability findings with file:line references and a short before/after sketch for the biggest ones, with no files modified.",
+      "files": [
+        "evals/files/order-service"
+      ],
+      "assertions": [
+        "Does not modify any file",
+        "At least five findings cite line numbers in the form src/orders.ts:<line>",
+        "Findings are ranked by how much they hurt comprehension, with the dense parseOrder return expression, the nested coupon ternary or the submit() pipeline near the top",
+        "Flags the duplicated invalid_order error, the magic numbers, the positional undefined parameters of total() and the throwing IIFE",
+        "Gives a concrete fix for each major finding (named constant, helper, options object, switch or early return), with at least two before/after sketches that show both the current code (quoted or excerpted) and the proposed code",
+        "Notes that the refactor must keep error messages and the receipt text byte-identical, and says how that is verified (the existing tests that pin those strings, a string comparison, or both)",
+        "Lists at least one thing it would deliberately leave alone and why (for example the single conditional spread or another idiomatic one-liner)",
+        "Treats changing total() to an options object as a change to an exported signature: offered as optional or asked about, not presented as a plain style fix",
+        "Quotes at least one measurement, and every measurement it quotes is checkable: counts (clauses, repeated errors, parameters) are exact, and line lengths are within 10%",
+        "Flags behavior changes that its own proposals would introduce (for example the empty-items receipt losing its blank line, or express submit starting to accept a send() that returns a plain value)"
+      ],
+      "regression_only": [
+        "Does not modify any file",
+        "Findings are ranked by how much they hurt comprehension, with the dense parseOrder return expression, the nested coupon ternary or the submit() pipeline near the top",
+        "Flags the duplicated invalid_order error, the magic numbers, the positional undefined parameters of total() and the throwing IIFE",
+        "Lists at least one thing it would deliberately leave alone and why (for example the single conditional spread or another idiomatic one-liner)",
+        "Treats changing total() to an options object as a change to an exported signature: offered as optional or asked about, not presented as a plain style fix"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write me a small TypeScript module that parses HTTP rate-limit response headers (Retry-After as seconds or an HTTP date, plus RateLimit-Remaining and RateLimit-Reset) into one object, and a function that turns that into how long a client should wait before retrying, with jitter and a cap. Add tests with node:test.",
+      "expected_output": "A clean, well-structured TypeScript module plus node:test tests that pass, written to the ts-code-style rules.",
+      "files": [],
+      "assertions": [
+        "Produces a TypeScript source module and a node:test test file, and the tests pass when run",
+        "Limits and defaults are named constants with units in their names (for example MAX_RETRY_DELAY_MS, DEFAULT_JITTER_RATIO)",
+        "Optional settings for the delay function (cap, jitter, random source, clock) are passed as an options object; the parser may take its clock as a single optional trailing parameter",
+        "The randomness and the current time are injectable, so tests are deterministic and don't depend on real timing",
+        "Parsing is split into small named functions (for example one per header) rather than one long function",
+        "No nested ternaries; all if bodies are braced",
+        "Every exported function and exported type or interface has its own doc comment",
+        "Lines stay within 100 columns (there is no formatter config, so the 100-column default applies)",
+        "Invalid or missing headers are handled explicitly and covered by tests",
+        "New and rewritten functions follow the blank-line rule: one blank line after each closed block (if/for/try) when more code follows in the same block, and no blank line between a value and the check that uses it, a comment and its code, or a result and its return",
+        "Doc comments on the exported functions, or on the types they return, say how invalid or missing headers, dates in the past and the cap are handled",
+        "Retry-After values that are neither a non-negative integer number of seconds nor a valid HTTP-date are treated as invalid, including 'foo 2020', '1.5', '-5', an ISO 8601 timestamp and a day-prefixed junk value such as 'Mon 2020'; tests cover at least two of them",
+        "asctime-format dates are read as UTC regardless of the machine's time zone, or are rejected; an implementation that passes them straight to Date.parse fails this"
+      ],
+      "regression_only": [
+        "Produces a TypeScript source module and a node:test test file, and the tests pass when run",
+        "The randomness and the current time are injectable, so tests are deterministic and don't depend on real timing",
+        "Parsing is split into small named functions (for example one per header) rather than one long function",
+        "Invalid or missing headers are handled explicitly and covered by tests",
+        "asctime-format dates are read as UTC regardless of the machine's time zone, or are rejected; an implementation that passes them straight to Date.parse fails this"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I don't like the code formatting of this project, a lot of it was written by Codex. Can you review it and improve the code quality, formatting and readability across the codebase?",
+      "expected_output": "Follows the cleanup workflow: baseline checks, a snapshot of the working tree, a question about line width and depth (or a clearly stated default), a separate mechanical formatting step, a hand readability pass, behavior verification, and a report.",
+      "files": [
+        "evals/files/order-service"
+      ],
+      "assertions": [
+        "Runs the project's tests before changing anything and records the baseline result",
+        "Snapshots the working tree, or confirms it is clean, before editing, without stashing, resetting or committing the user's work",
+        "Asks the user about line width and refactor depth in one question round, or states the defaults it chose (100 columns, readability refactors) if it proceeds without asking",
+        "Sets up or adjusts a formatter configuration (for example a Vite+ vite.config.ts whose fmt block sets printWidth 100), or explains that none is installed and recommends one with the settings from references/formatter.md",
+        "Keeps the mechanical formatting change separate from the hand refactor (a checkpoint copy, or clearly separated steps in the report)",
+        "Magic numbers become named constants, including the coupon values and the retry timing",
+        "Errors are constructed in one place per error (factories or a catalog helper), not only their message strings: no `new OrderError(400, 'invalid_order', \u2026)` written out more than once",
+        "No nested ternaries remain; the coupon, shipping and currency logic use helpers, switch statements or early returns",
+        "Verifies afterwards: tests pass with the real exit code checked, and user-facing strings are compared before and after with scripts/string-diff.mjs or an equivalent comparison of string literals or rendered output",
+        "The final report lists the substantive changes, anything deliberately left alone with a reason, which checks couldn't run (or that all available ones ran), and where the snapshot is, and offers rather than performs a commit",
+        "Exported signatures and types are unchanged (the original src/orders.test.ts passes unmodified against the new src/orders.ts, and exported classes and types keep their shape, for example no fields made readonly). Proposed signature changes such as an options object for total() appear as recommendations",
+        "The report names every behavior difference it introduced (for example how total() treats explicit null arguments, or the empty-items receipt), or states that it checked and found none"
+      ],
+      "regression_only": [
+        "Runs the project's tests before changing anything and records the baseline result",
+        "Snapshots the working tree, or confirms it is clean, before editing, without stashing, resetting or committing the user's work",
+        "Asks the user about line width and refactor depth in one question round, or states the defaults it chose (100 columns, readability refactors) if it proceeds without asking",
+        "Sets up or adjusts a formatter configuration (for example a Vite+ vite.config.ts whose fmt block sets printWidth 100), or explains that none is installed and recommends one with the settings from references/formatter.md",
+        "No nested ternaries remain; the coupon, shipping and currency logic use helpers, switch statements or early returns",
+        "Verifies afterwards: tests pass with the real exit code checked, and user-facing strings are compared before and after with scripts/string-diff.mjs or an equivalent comparison of string literals or rendered output"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "parseRefundRequest in src/refunds.ts just casts JSON.parse to any. Add real validation for the refund request body (orderId as a non-empty string, amountCents as a positive integer, currency EUR or USD, an optional reason of at most 500 characters) and tighten the types in that file while you're at it. Keep the tests and typecheck passing.",
+      "expected_output": "src/refunds.ts validates the body with Effect Schema (the project depends on effect and src/server.ts uses it, although refunds.ts itself doesn't import it), derives the request type from the schema, removes every any, models RefundState as a discriminated union, and keeps npm test and npm run typecheck green.",
+      "files": [
+        "evals/files/refund-service"
+      ],
+      "assertions": [
+        "Notices that the project uses Effect (effect in package.json, used by src/server.ts) and validates the body with Schema imported from 'effect', even though src/refunds.ts didn't import Effect before",
+        "Does not add zod or any other validation library to package.json or the source",
+        "Uses Effect 4 Schema APIs that exist in the installed version (for example Schema.Literals, .check(Schema.isGreaterThan(0)) or Schema.isMaxLength), and the code typechecks",
+        "Derives the request type from the schema (typeof RefundRequest.Type or Schema.Schema.Type) instead of writing a separate interface by hand",
+        "The 500-character limit is a named constant (for example MAX_REFUND_REASON_LENGTH) used by the schema",
+        "No explicit any remains in src/refunds.ts: parseRefundRequest returns the decoded type, and RefundStore.save takes the decoded request type",
+        "RefundState becomes a discriminated union so approvedAt exists only on approved refunds and rejectionReason only on rejected ones, and the non-null assertion in describeRefund is removed",
+        "RefundStore.save uses property syntax (save: (refund: RefundRequest) => Promise<void>) rather than method shorthand, or the file declares it with type rather than interface",
+        "Decodes the untrusted body with Schema.decodeUnknownSync, Schema.decodeUnknownEffect or a JSON-string schema, not decodeSync on an any value, and invalid input fails with a SchemaError",
+        "npm test and npm run typecheck pass afterwards (run after npm install), with existing test assertions unchanged, src/server.ts still compiling, and new tests for invalid bodies added"
+      ],
+      "regression_only": [
+        "Notices that the project uses Effect (effect in package.json, used by src/server.ts) and validates the body with Schema imported from 'effect', even though src/refunds.ts didn't import Effect before",
+        "Does not add zod or any other validation library to package.json or the source",
+        "Uses Effect 4 Schema APIs that exist in the installed version (for example Schema.Literals, .check(Schema.isGreaterThan(0)) or Schema.isMaxLength), and the code typechecks",
+        "Derives the request type from the schema (typeof RefundRequest.Type or Schema.Schema.Type) instead of writing a separate interface by hand",
+        "The 500-character limit is a named constant (for example MAX_REFUND_REASON_LENGTH) used by the schema",
+        "No explicit any remains in src/refunds.ts: parseRefundRequest returns the decoded type, and RefundStore.save takes the decoded request type",
+        "RefundState becomes a discriminated union so approvedAt exists only on approved refunds and rejectionReason only on rejected ones, and the non-null assertion in describeRefund is removed",
+        "Decodes the untrusted body with Schema.decodeUnknownSync, Schema.decodeUnknownEffect or a JSON-string schema, not decodeSync on an any value, and invalid input fails with a SchemaError",
+        "npm test and npm run typecheck pass afterwards (run after npm install), with existing test assertions unchanged, src/server.ts still compiling, and new tests for invalid bodies added"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "The spacing in src/bundle.ts is not good, it's all lumped together. Can you fix it?",
+      "expected_output": "src/bundle.ts changes only in blank lines: one after each closed block when more code follows, none between a value and its check, a comment and its code, or a result and its return. Nothing else changes and no style guide is written into the repo.",
+      "files": [
+        "evals/files/bundle-service"
+      ],
+      "assertions": [
+        "Only blank lines change in src/bundle.ts: `diff -B` against the original fixture shows no differences",
+        "In readBundle, the two guard clauses at the top are separated by one blank line, and there is one blank line after the paths check, after the path-escape check and after the size check inside the loop, and after the for loop",
+        "No blank line between `const paths = \u2026` and the `if (paths.length > \u2026)` check, between `const value = values[source];` and its `if`, or between `let lines = 0;` and the loop that counts",
+        "No blank line between the 'Bundles only read inside the app root' comment and the if statement below it",
+        "No blank line between `const bundle = \u2026` and `return bundle;`, nor between `const trimmed = \u2026` and `return trimmed;`",
+        "No double blank lines and no blank line directly after an opening { or directly before a closing }",
+        "src/bundle.test.ts is unchanged and npm test passes",
+        "Does not add a code-style or readability section to README.md and does not create a style guide file"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Can we do something about these weird ifs in src/compose-check.ts?",
+      "expected_output": "The nine-clause connector condition becomes sequential checks grouped by purpose, each failing with a TemplateError that names the requirement (ideally with an allowlist replacing the deny-list of forbidden fields); the short three-clause token check stays; tests pass and the reply says the error messages changed.",
+      "files": [
+        "evals/files/compose-check"
+      ],
+      "assertions": [
+        "No condition in checkConnector or in a helper it calls joins more than three clauses (moving the chain into && predicate helpers doesn't count as splitting it)",
+        "Each isolation requirement fails separately with a TemplateError whose message names the requirement (for example read-only filesystem, privileged mode, dropped capabilities, no-new-privileges), instead of the single 'Invalid connector template'",
+        "The forbidden-field checks (ports, volumes, build, network_mode, privileged, cap_add) are either an allowlist of permitted settings or individual named checks",
+        "The three-clause token check about one value stays a single condition, or the reply gives a reason for changing it",
+        "Checks are grouped by purpose with short plain-English comments or read clearly through a small assertion helper; no banner or separator comments are added",
+        "The rewritten function follows the blank-line rule (a blank line after each closed block when code follows; a value directly above its check)",
+        "npm test passes and the test file's assertions are unchanged",
+        "If any error message changed, the reply says so and that it was intended"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "I don't like these separators in src/store.ts, could imply the file is too big. Also clean up the comments while you're at it.",
+      "expected_output": "The banners are gone (the file is split only if its sections are separate concerns), comments that point at the ADR, the plan, dates and review rounds are rewritten as plain why-comments, placeholder JSDoc is replaced with real descriptions, and the deliberate token logging gets a demo-only comment.",
+      "files": [
+        "evals/files/order-store"
+      ],
+      "assertions": [
+        "No `// \u2500\u2500` (or similar separator) comment lines remain anywhere in src/",
+        "The banners are handled with a stated reason: either the file is split along concerns (imports, including the test's, updated or re-exported; exported names unchanged), or it stays one file because the sections only sorted one concern's declarations by kind, and the reply says so",
+        "Any new file names are kebab-case or single lowercase words (for example order-queries.ts, queries.ts), not camelCase or PascalCase (passes trivially if no file is added)",
+        "No comment mentions ADR, the plan, a phase, a date, a review round, 'now', 'instead of' or 'the old'",
+        "The reasons survive in plain English: soft deletes keep deleted orders readable, and the retry count has a stated reason or a named constant",
+        "The placeholder JSDoc on the exported functions ('Gets the order.', 'Lists the orders.', 'Deletes the order.') is replaced with JSDoc that says something the name doesn't (soft-deleted orders included, retries, what deletion does); the one on the private toOrder helper may be replaced or deleted",
+        "The token console.log stays and gets a comment saying it is for the workshop demo only and must not be used in production; no environment flag is added for it",
+        "npm test passes with the test assertions unchanged"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Can you check if src/sync.ts uses Effect properly? Like here, do we not need actual effect errors to throw?",
+      "expected_output": "The thrown Error becomes a tagged error in the error channel, console.log becomes Effect logging with annotations, the runEffect pass-through goes away, dependencies become an Effect service (or the answer explains keeping Deps), and tests and typecheck pass without new libraries.",
+      "files": [
+        "evals/files/feed-sync"
+      ],
+      "assertions": [
+        "No `throw new Error` remains inside Effect.gen; the unavailable feed is a tagged error class (Schema.TaggedError or Data.TaggedError) that is yielded or failed",
+        "The failures of the promise calls are mapped to typed errors rather than left as the default tryPromise error",
+        "syncFeed's type shows the error type (an annotated Effect.Effect<\u2026> return type or Effect.fn.Return), not unknown or never",
+        "console.log calls become Effect.log* calls with readable messages, with the URL or item count as annotations or structured fields",
+        "The one-line runEffect pass-through wrapper is inlined and deleted",
+        "The hand-passed Deps object becomes an Effect service provided through a Layer, or the reply explains why it stays",
+        "No zod or other validation or logging library is added",
+        "npm test and npm run typecheck pass (after npm install); test assertions are unchanged, though test setup may change to provide a Layer"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Add a countdown to this React app: a useCountdown hook that counts down to a deadline once a second and stops at zero, and a CountdownBadge component that shows \"mm:ss left\" or \"Expired\". Show it in the app for the sale deadline and add tests.",
+      "expected_output": "New files use kebab-case names (use-countdown.ts, countdown-badge.tsx) with tests beside them, tests use describe/it with behavior sentences and fake timers, and the code follows the spacing and naming rules.",
+      "files": [
+        "evals/files/countdown-app"
+      ],
+      "assertions": [
+        "The hook lives in a kebab-case file named use-countdown.ts (or .tsx) and the component in countdown-badge.tsx; no file is named useCountdown.ts or CountdownBadge.tsx",
+        "The exported identifiers keep their own case: useCountdown and CountdownBadge",
+        "Each test file sits beside the file it tests (use-countdown.test.ts(x) next to use-countdown.ts, countdown-badge.test.tsx next to countdown-badge.tsx); there is no __tests__ folder or top-level tests folder",
+        "Tests use describe per unit and it per behavior, named as present-tense sentences about the behavior, with no it('should \u2026') names",
+        "Tests control time (vi.useFakeTimers or an injected clock) rather than waiting in real time",
+        "The one-second tick interval is a named constant (for example TICK_INTERVAL_MS) and the hook clears its interval on unmount and at zero",
+        "New code follows the blank-line rule and braces every if body",
+        "npm test and npm run typecheck pass (after npm install)"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Set up a new TypeScript service on Node with Effect for two features, orders and refunds. Each needs a repository (in-memory is fine for now), a create handler that validates its request body, and tests. I only want a skeleton with one working path per feature, but lay it out the way you'd want a real codebase to grow.",
+      "expected_output": "A small Effect project organized by feature, with kebab-case files, tests beside their sources, one service per file, Effect Schema request validation, a thin entry point that composes layers, a strict tsconfig, and passing tests and typecheck.",
+      "files": [],
+      "assertions": [
+        "Every file and folder name the agent created under src/ is kebab-case or a single lowercase word, apart from framework-required names",
+        "src/ is organized by feature (orders/, refunds/, plus a shared folder only if both use it), not by file type (no services/, controllers/, handlers/, utils/ or helpers/ folders at the top of src/)",
+        "Tests sit beside the files they test as *.test.ts, with no __tests__/ folder or top-level tests/ folder",
+        "The entry point (main.ts, server.ts or similar) only reads config, composes the Layers and starts the program; handlers, validation and repository logic live in the feature folders",
+        "Each repository is an Effect service in a file of its own, provided through a Layer, rather than an object passed by hand",
+        "Request bodies are validated with Effect Schema, the request types are derived from the schemas (typeof X.Type), and package.json has no zod or other validation library",
+        "Expected failures (for example an invalid request body or a missing record) are tagged errors in the Effect error channel, not thrown Errors",
+        "Modules import from the file that owns the code rather than through index.ts barrels, and nothing in refunds/ imports orders/ internals such as its handlers or HTTP wiring (orders' domain types and repository count as its public surface)",
+        "tsconfig.json enables strict and noUncheckedIndexedAccess (verbatimModuleSyntax and erasableSyntaxOnly are a plus)",
+        "Exported functions and services have doc comments",
+        "npm test and the typecheck both pass when run"
+      ],
+      "regression_only": [
+        "src/ is organized by feature (orders/, refunds/, plus a shared folder only if both use it), not by file type (no services/, controllers/, handlers/, utils/ or helpers/ folders at the top of src/)",
+        "Tests sit beside the files they test as *.test.ts, with no __tests__/ folder or top-level tests/ folder",
+        "The entry point (main.ts, server.ts or similar) only reads config, composes the Layers and starts the program; handlers, validation and repository logic live in the feature folders",
+        "Each repository is an Effect service in a file of its own, provided through a Layer, rather than an object passed by hand",
+        "Request bodies are validated with Effect Schema, the request types are derived from the schemas (typeof X.Type), and package.json has no zod or other validation library",
+        "Modules import from the file that owns the code rather than through index.ts barrels, and nothing in refunds/ imports orders/ internals such as its handlers or HTTP wiring (orders' domain types and repository count as its public surface)",
+        "tsconfig.json enables strict and noUncheckedIndexedAccess (verbatimModuleSyntax and erasableSyntaxOnly are a plus)",
+        "npm test and the typecheck both pass when run"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "handleSignup in src/signup.ts trusts whatever JSON it gets. Add proper validation of the signup body: email must look like an email, password at least 12 characters, plan optional and either 'free' or 'pro'. Bad input should get a 400 that says what's wrong. Pick whatever validation approach you think is best and add tests.",
+      "expected_output": "The body is validated with Effect Schema (effect added as a dependency, no Zod), the request type is derived from the schema, invalid bodies return a 400 naming the failing field, limits are named constants, and tests and typecheck pass.",
+      "files": [
+        "evals/files/signup-service"
+      ],
+      "assertions": [
+        "Validates the body with Effect Schema: effect is added to package.json and Schema is imported from 'effect'",
+        "Does not add zod, valibot, yup, ajv, superstruct or any other validation library",
+        "The answer says in a sentence why it chose Effect Schema (or a schema library at all) over the alternatives",
+        "The request type, and the account's plan type, are derived from the schema (typeof X.Type or z.infer) rather than written by hand a second time",
+        "The body is handled as unknown until validated: no `any` or unchecked `as` cast remains in src/signup.ts, and with Effect Schema it is decoded with a decodeUnknown* function or a JSON-string schema",
+        "The minimum password length is a named constant (for example MIN_PASSWORD_LENGTH = 12), and the email pattern, if any, is a named constant",
+        "Malformed JSON and invalid fields return status 400 with a body that names the failing field or requirement, instead of throwing or returning 500",
+        "The original src/signup.test.ts passes unmodified against the new src/signup.ts (restructuring the test file is fine), and new tests cover at least an invalid email, a short password, an unknown plan and malformed JSON",
+        "npm test and npm run typecheck pass afterwards (after npm install)",
+        "Exported functions have doc comments that say what they return for invalid input",
+        "Every 400 response uses one body shape (for example { error, issues }), including malformed JSON and non-object bodies"
+      ],
+      "regression_only": [
+        "The answer says in a sentence why it chose Effect Schema (or a schema library at all) over the alternatives",
+        "The minimum password length is a named constant (for example MIN_PASSWORD_LENGTH = 12), and the email pattern, if any, is a named constant",
+        "Malformed JSON and invalid fields return status 400 with a body that names the failing field or requirement, instead of throwing or returning 500",
+        "npm test and npm run typecheck pass afterwards (after npm install)"
+      ]
+    }
+  ]
+}
