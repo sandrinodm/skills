@@ -334,6 +334,49 @@ footer a:hover { color: var(--accent); }
             <p>Generate strong, scalable company, product, platform, feature, sub-brand, or rename candidates using a professional naming workflow. Use when the user asks to name or rename a startup, company, product, app, AI product, platform, feature, service, brand architecture element, or when they request naming territories, raw name candidates, scored shortlists, naming rationale, product-name brainstorming, or final naming recommendations.</p>
           </details>
         </li>
+        <li class="card" id="ts-code-style">
+          <div class="card-body">
+            <h3>TypeScript Code Style</h3>
+            <p>Write, review and refactor TypeScript that reads like careful human work and whose types rule out invalid states, from spacing and naming to file layout and Effect Schema validation, with a safe workflow for cleaning up a whole codebase without changing its behavior.</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd><ul>
+                  <li>Fixes the usual problems in dense, AI-written code: code lumped together without blank lines, magic numbers, repeated error messages, nested ternaries and long conditions, positional <code>undefined</code> arguments, home-made wrappers, banner comments and comments that restate the code or point at plans.</li>
+                  <li>Lays out new code the same way every time: kebab-case file names (<code>use-countdown.ts</code>), tests beside the file they test, one folder per variant.</li>
+                  <li>Designs types the Total TypeScript way: a strict tsconfig, discriminated unions instead of optional bags, no enums or <code>any</code>, and request validation with Effect Schema rather than Zod.</li>
+                  <li>Sets the formatter to a readable line width (100 columns by default) and keeps that mechanical change separate from the hand refactor.</li>
+                  <li>Snapshots your uncommitted work, records a test baseline, and splits large codebases into areas with separate file ownership.</li>
+                  <li>Proves behavior didn't change: full checks with real exit codes, plus a script that compares every user-facing string before and after.</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Try asking</dt>
+                <dd><ul class="asks">
+                  <li>Codex wrote most of this repo and I can't read it. Clean it up without changing behavior.</li>
+                  <li>Do a code-style review of src/server.ts</li>
+                  <li>The spacing in these files is all lumped together, can you fix it?</li>
+                  <li>Write a retry helper with jitter in clean, well-structured TypeScript</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Needs</dt>
+                <dd>Node.js 18 or later for the string-diff script. Uses the project's own formatter, linter and tests.</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="install">
+            <div class="cmd-row">
+              <code class="cmd">pnpx skills add sandrinodm/skills --skill ts-code-style</code>
+              <button class="copy" type="button"><span class="copy-label">Copy</span><span class="sr-only"> install command for TypeScript Code Style</span></button>
+            </div>
+            <a class="link" href="https://github.com/sandrinodm/skills/blob/main/skills/ts-code-style/SKILL.md">SKILL.md</a>
+          </div>
+          <details class="prompt">
+            <summary><span class="pt">Agent description</span><span class="ph" aria-hidden="true"></span></summary>
+            <p>The user's TypeScript and JavaScript conventions: formatting, readability, type design, validation, tsconfig and project layout. TRIGGER: read this BEFORE opening any file, and don't skip it because the task looks routine. Use it whenever TS/JS work changes how code looks or is organized without adding features: cleaning up or restyling messy, cramped or AI-written code; splitting large functions or nested ternaries; fixing blank lines or spacing across files; quality reviews of a file, folder or PR; replacing enums; choosing type or interface; choosing a schema or validation library (Zod, Effect Schema); writing or tightening tsconfig; naming files and placing tests; writing new production TS. Several of these conventions break common defaults (no enums, Effect Schema over Zod), so generic answers will be wrong. SKIP: runtime bugs, profiling, explaining tsc errors, CI or lint pipelines, git history, UI features, other languages.</p>
+          </details>
+        </li>
       </ul>
     </section>
   </main>
