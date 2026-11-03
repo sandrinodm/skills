@@ -248,8 +248,9 @@ Leave these unchanged and say so in the report:
   trees, binding types, lockfiles). Change behavior at the call site or in a wrapper, never in the
   vendored file.
 - Conventions the codebase already applies consistently (`Array<T>` versus `T[]`, `interface`
-  versus `type`, PascalCase component files). Match them in new code; don't churn them in a
-  readability pass.
+  versus `type`). Match them in new code; don't churn them in a readability pass. File names are
+  the exception: PascalCase or camelCase files are renamed to kebab-case when the user chooses
+  that in cleanup step 3 (the recommended answer), and listed as a recommendation when they don't.
 - Type-level changes that alter runtime values or the public API (replacing an enum, adding
   brands, switching validation libraries, enabling new strict flags) unless the user chose
   deeper restructuring. List them in the report as recommendations instead.

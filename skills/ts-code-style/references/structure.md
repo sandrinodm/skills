@@ -1,8 +1,9 @@
 # Files, folders and tests
 
-How to name files, lay out folders and place tests. In an existing project, match the conventions
-it applies consistently and rename only when the user asks; use these for new code and new
-projects.
+How to name files, lay out folders and place tests. Use these for new code and new projects. In
+an existing project, move files and folders only when the user asks. File names are different:
+renaming them to kebab-case is a mechanical step that the cleanup workflow offers (and
+recommends) on its own, with [a script](cleanup-workflow.md#renaming-files-to-kebab-case).
 
 ## Contents
 
@@ -33,7 +34,9 @@ projects.
   case-only renames, which case-insensitive file systems (macOS, Windows) handle badly, and it
   reads the same in imports, URLs and shell commands.
 - **Framework names win.** Route and convention files keep the names the framework needs:
-  `__root.tsx`, `_layout.tsx`, `$id.tsx`, `[slug].tsx`, `+page.svelte`, `route.ts`.
+  `__root.tsx`, `_layout.tsx`, `$id.tsx`, `[slug].tsx`, `+page.svelte`, `route.ts`. This is the
+  only exception. A project that happens to use PascalCase component files isn't one, so a
+  cleanup pass renames them unless the user chooses to keep them.
 - **A dot suffix names the file's role**, so the base name stays the concept:
   `session.server.ts` (server-only code), `vite.config.ts`, `orders.types.ts`,
   `server.fixture.ts`, `orders.test.ts`.

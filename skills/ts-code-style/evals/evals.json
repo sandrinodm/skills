@@ -299,6 +299,24 @@
         "Malformed JSON and invalid fields return status 400 with a body that names the failing field or requirement, instead of throwing or returning 500",
         "npm test and npm run typecheck pass afterwards (after npm install)"
       ]
+    },
+    {
+      "id": 12,
+      "prompt": "This little React status panel was mostly written by an agent and it's hard to read. Can you clean up the whole codebase: formatting, readability, file layout? Keep the behavior the same.",
+      "expected_output": "Follows the cleanup workflow and offers renaming the PascalCase and camelCase files to kebab-case as its own recommended choice (or states that default), renames them with scripts/rename-kebab.mjs or an equivalent two-step rename, updates every import and the README, keeps exported identifiers unchanged, and reports the renames with a file count.",
+      "files": [
+        "evals/files/status-panel"
+      ],
+      "assertions": [
+        "Asks about file names as its own choice, with renaming to kebab-case as the recommended option, or states that it is renaming them by default; it does not treat the project's PascalCase file names as a convention to keep",
+        "Every renamed source file uses kebab-case: app.tsx, components/status-badge.tsx, components/status-badge.test.tsx, lib/format-uptime.ts, lib/format-uptime.test.ts and lib/service-types.ts; no App.tsx, StatusBadge.tsx, formatUptime.ts or serviceTypes.ts remains (main.tsx keeps its name)",
+        "Exported identifiers keep their case: App, StatusBadge, formatUptime and the Service type",
+        "Every import points at the new paths, and the README names the new file paths",
+        "If the workspace is a git repository, git sees each file as renamed (git mv or a two-step rename), not only changed on a case-insensitive file system",
+        "The nested ternaries in formatUptime and StatusBadge are replaced with early returns or a small helper, and the time and threshold numbers become named constants",
+        "The original tests still pass with the same assertions and test names (only import paths may change), and npm run typecheck passes",
+        "The report states how many files were renamed and how many imports changed, alongside the other changes, and offers rather than performs a commit"
+      ]
     }
   ]
 }

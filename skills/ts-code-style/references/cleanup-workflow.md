@@ -36,7 +36,9 @@ user's repository state, and stash doesn't include untracked files by default.
 
 ## 3. Agree on scope
 
-Unless the user has already said, ask two questions in one prompt:
+Count the source files whose names aren't kebab-case (`node <skill>/scripts/rename-kebab.mjs .`
+prints them without changing anything). Then, unless the user has already said, ask these
+questions in one prompt, leaving out the third when the count is zero:
 
 1. **Line width**: 100 (recommended), 80, or keep the current setting. Explain that a wide width
    is usually why formatted code still feels dense, and that changing it touches most files.
@@ -46,6 +48,12 @@ Unless the user has already said, ask two questions in one prompt:
    - *Readability refactors* (recommended): named constants, shared helpers, split functions,
      options objects; behavior and public API unchanged.
    - *Deeper restructuring*: also split and move modules.
+3. **File names**: rename the N files to kebab-case (recommended), or keep them. Say that exported
+   names (`AppShell`, `Pg`) don't change, only file names and import paths. This choice doesn't
+   depend on depth: a rename is mechanical and the type checker proves it, like a formatter run.
+
+If you state defaults instead of asking, the defaults are 100 columns, readability refactors, and
+renaming to kebab-case.
 
 ## 4. Mechanical pass
 
@@ -55,20 +63,48 @@ Unless the user has already said, ask two questions in one prompt:
 3. Count what the formatter could not fix:
    `awk 'length > 100' $(git ls-files '*.ts')`. Those lines are usually comments and strings, which
    formatters don't wrap. They're part of the hand pass.
-4. **Checkpoint** the tree, for example
+4. If the user chose kebab-case file names, rename them now (see
+   [below](#renaming-files-to-kebab-case)), so the hand pass works on the final paths.
+5. **Checkpoint** the tree, for example
    `rsync -a --exclude node_modules --exclude dist --exclude .git ./ "$SCRATCH/after-fmt/"`.
    This lets you, and the user, review the hand edits separately from the mechanical reflow, and
    it's the "before" tree for `string-diff.mjs`.
 
-## 5. Hand pass
+### Renaming files to kebab-case
+
+`scripts/rename-kebab.mjs` does the mechanical part:
+
+1. **Plan**: `node <skill>/scripts/rename-kebab.mjs .` prints every `old -> new` pair and the
+   files it skipped. It never renames route files (anything under `routes/`, `pages/` or `app/`),
+   generated `*.gen.*` files, declaration files, or names starting with `_` or `$`. Pass
+   `--skip=<prefix>` for vendored folders and anything else whose name a tool owns. It refuses
+   to run when two files would get the same name.
+2. **Rename**: run it again with `--write`. It rewrites only the relative specifiers that resolve
+   to a renamed file (`./AppShell`, `./AppShell.js` and `./AppShell.tsx` all count) and keeps
+   each specifier's form, so an import of an unrelated `./Config` folder is left alone. It moves
+   tracked files with `git mv` through a temporary name. A plain rename on a case-insensitive
+   file system (macOS, Windows) leaves git's index on the old name, so the build passes locally
+   and fails in a Linux container or CI.
+3. **Fix the leftovers** it lists: alias imports (`#components/AppShell`, `@/lib/Pg`), docs
+   (`CLAUDE.md`, READMEs), configs and test globs that name the old files. Then grep once more,
+   case-sensitively, for each old name to confirm nothing is left.
+4. **Regenerate** anything generated from file paths (TanStack's `routeTree.gen.ts`, codegen
+   outputs) and confirm the output didn't change, or that it changed only in the renamed paths.
+5. **Verify**: run the formatter (it re-sorts the changed imports), then typecheck, lint, build
+   and tests. Apart from the renames, the diff should hold only import paths and their new sort
+   order. `git status` should show each file as renamed (`R`), not as a deleted file plus an
+   untracked one.
+
+Exported identifiers keep their case: `app-shell.tsx` still exports `AppShell`.
 
 Read each file in full before editing it. Apply the rules in `SKILL.md`, using
 `references/patterns.md` for judgment calls. Fix vertical spacing (rule 1) in every file you
 edit; it's the most visible difference between agent-written and hand-written code, and the
 formatter won't do it. Finish each file with the blank-line check from rule 1. Skip vendored and generated files entirely.
 
-Don't rename files or move folders to match [the structure conventions](structure.md) in a
-readability pass unless the user chose deeper restructuring. Report them as recommendations.
+File names were settled in the mechanical pass. Don't move files between folders, merge folders
+or split modules to match [the structure conventions](structure.md) unless the user chose deeper
+restructuring. Note each one you see as a recommendation for the report.
 
 ### Splitting a large codebase
 
@@ -137,9 +173,14 @@ Lead with the outcome and the verification results, stated against the baseline 
 "7/7 tests passed before the change and pass after it"), then:
 
 - the formatter change, and how many files it reflowed;
+- the file renames, if any: how many files and import specifiers changed, and which leftover
+  mentions you fixed by hand;
 - substantive hand changes, grouped by area, with any new shared helpers or modules named;
 - signature changes, and confirmation that every caller was updated;
 - what was deliberately left alone, and why;
+- structure and naming recommendations you didn't apply, each with a file count (for example
+  "27 files still use PascalCase names; you chose to keep them", or "providers/ mixes three
+  variants in one folder; splitting it needs deeper restructuring");
 - every observable behavior difference, however small, or that you checked and found none;
 - what couldn't be run;
 - where the snapshot and checkpoint are, and how to review the hand edits on their own

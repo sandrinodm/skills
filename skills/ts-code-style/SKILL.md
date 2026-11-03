@@ -41,7 +41,9 @@ For the biggest findings, show the current code next to the proposed code. Measu
 quote (line lengths, counts) instead of estimating it, and skip idiomatic one-offs.
 
 **Changing a few files**: restyle only the files you touch, match how their neighbours are written,
-then run the project's checks (format, lint, JSDoc lint, typecheck, tests).
+then run the project's checks (format, lint, JSDoc lint, typecheck, tests). If the project's file
+names aren't kebab-case, name new files the way their neighbours are named so the tree isn't
+mixed, and recommend renaming everything with `scripts/rename-kebab.mjs` in your answer.
 
 Don't write these rules into the project's README or docs unless the user asks. The formatter and
 lint config are the project's style documentation.
@@ -103,8 +105,9 @@ before/after examples are in [references/patterns.md](references/patterns.md).
     fixtures, extract repeated fixtures, and give timing-sensitive fixtures generous headroom.
 13. **Know what to leave alone**, and say so in the report: code that would need an import cycle to
     deduplicate, subtle state machines, text executed elsewhere (SQL, child-process scripts),
-    vendored and generated files, conventions the codebase applies consistently, and type-level or
-    API changes (enums, brands, validation libraries, strict flags) unless the user chose deeper
+    vendored and generated files, conventions the codebase applies consistently (except file
+    names, which follow the file-names answer from cleanup step 3), and type-level or API changes
+    (enums, brands, validation libraries, strict flags) unless the user chose deeper
     restructuring.
     In a refactor, watch for rewrites that look equivalent but aren't: `a && a.b()` versus
     `a?.b()` and `||` versus `??` (they differ for `0`, `''` and `false`), default parameters
@@ -142,8 +145,11 @@ Details, examples and sources (mostly Matt Pocock's
 Details and an example tree are in [references/structure.md](references/structure.md).
 
 - **kebab-case file and folder names**, React included (`order-summary.tsx` exports
-  `OrderSummary`), except names a framework requires or a convention the project already uses.
-  Dot suffixes name a file's role: `.server.ts`, `.types.ts`, `.fixture.ts`, `.test.ts`.
+  `OrderSummary`). The only exception is a name the framework requires (TanStack or Next.js route
+  files, `__root.tsx`, `[slug].tsx`). A project that uses PascalCase or camelCase file names
+  doesn't count as an exception: a readability pass renames them (see
+  [cleanup step 3](#cleanup-workflow)). Dot suffixes name a file's role: `.server.ts`, `.types.ts`,
+  `.fixture.ts`, `.test.ts`.
 - **Group by domain concept, not file type**: `orders/`, `refunds/`, not `services/`, `utils/`.
   One concern per file; one folder per variant (provider, source, tool). Code with one consumer
   lives in that consumer, and a type used by one file stays in it (shared types go in a
@@ -180,19 +186,35 @@ For a readability pass over an existing codebase, follow
 1. **Baseline**: run typecheck, lint and tests and record the exact results.
 2. **Snapshot** the working tree into a scratch directory. Never stash, reset or commit the user's
    work unasked.
-3. **Ask** about line width (100 recommended) and depth (cosmetic, readability refactors
-   (recommended), or deeper restructuring), or state the defaults you chose.
-4. **Mechanical pass**: formatter config and a format run, then checkpoint a copy of the tree.
+3. **Ask** about line width (100 recommended), depth (cosmetic, readability refactors
+   (recommended), or deeper restructuring) and, when any file names aren't kebab-case, file names
+   (rename to kebab-case (recommended), or keep), or state the defaults you chose.
+4. **Mechanical pass**: formatter config and a format run, then the renames with
+   `scripts/rename-kebab.mjs` if the user chose them, then checkpoint a copy of the tree.
 5. **Hand pass**: apply the rules file by file, reading each file fully first.
 6. **Verify**: rerun every check with real exit codes, run the original tests against the new code,
    run the string-diff script, and probe edge cases (`null` arguments, empty lists, non-promise
    callbacks) on the old and new code.
 7. **Report** against the baseline ("7/7 tests passed before and after"): the substantive changes,
    **every** observable behavior difference however small (or that you checked and found none),
-   what you left alone and why, what couldn't run, and where the snapshots are. Offer a commit
-   instead of making one.
+   what you left alone and why, structure and naming recommendations you didn't apply (with a
+   file count), what couldn't run, and where the snapshots are. Offer a commit instead of making
+   one.
 
-## Verification script
+## Scripts
+
+`scripts/rename-kebab.mjs` renames PascalCase and camelCase source files to kebab-case and
+rewrites the relative imports that resolve to them. It skips route folders and generated files,
+uses `git mv` so case-only renames reach git on macOS, and after `--write` lists the mentions it
+couldn't rewrite (alias imports, docs). The recipe is in
+[cleanup-workflow.md](references/cleanup-workflow.md#renaming-files-to-kebab-case).
+
+```bash
+node scripts/rename-kebab.mjs .           # print the plan
+node scripts/rename-kebab.mjs . --write   # rename, rewrite imports, list leftovers
+```
+
+### Verification script
 
 `scripts/string-diff.mjs` compares the string literals in two source trees, so you can prove that
 error messages, CLI output and prompts survived a refactor. It joins literals concatenated with
