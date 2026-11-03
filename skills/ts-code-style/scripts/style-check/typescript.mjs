@@ -8,23 +8,26 @@ import { UsageError } from './usage-error.mjs';
 /** @typedef {typeof import('typescript')} TypeScript */
 
 /**
- * Loads a `typescript` package that has the JavaScript compiler API (5.x or 6.x): the copy next to
- * the checked files first, then the current directory's, then one put on PATH by `npx -p
- * typescript@6`. Throws a UsageError naming the `npx` command to run when none is found,
- * including when the project only has TypeScript 7.
+ * Loads a `typescript` package that has the JavaScript compiler API (5.x or 6.x). Loading a package
+ * runs its code, so it's only looked up where the person running the script chose: the folder
+ * given with `--typescript`, or else the current directory, then a copy put on PATH by `npx -p
+ * typescript@6`. Never from inside the checked folders, so checking code you don't trust doesn't
+ * run its `node_modules`. Throws a UsageError naming the `npx` command to run when none is
+ * found, including when the only copy is TypeScript 7.
  *
- * @param {string[]} targets the paths being checked
+ * @param {string | null} explicitDir the `--typescript` folder, or null
  * @returns {TypeScript}
  */
-export function loadTypeScript(targets) {
-  const bases = [
-    ...targets.map((target) => path.resolve(target)),
-    process.cwd(),
-    ...(process.env.PATH ?? '')
-      .split(path.delimiter)
-      .filter((entry) => entry.endsWith(path.join('node_modules', '.bin')))
-      .map((entry) => path.dirname(entry)),
-  ];
+export function loadTypeScript(explicitDir) {
+  const bases = explicitDir
+    ? [path.resolve(explicitDir)]
+    : [
+        process.cwd(),
+        ...(process.env.PATH ?? '')
+          .split(path.delimiter)
+          .filter((entry) => entry.endsWith(path.join('node_modules', '.bin')))
+          .map((entry) => path.dirname(entry)),
+      ];
 
   let nativeVersion = null;
 
@@ -46,8 +49,7 @@ export function loadTypeScript(targets) {
 
   const rerun = `npx -y -p typescript@6 node ${process.argv.slice(1).join(' ')}`;
   const reason = nativeVersion
-    ? `the project's typescript ${nativeVersion} is the native compiler, ` +
-      'which has no JavaScript parser API'
-    : 'the typescript package was not found';
+    ? `typescript ${nativeVersion} is the native compiler, which has no JavaScript parser API`
+    : 'no typescript package was found from the current directory';
   throw new UsageError(`style-check: ${reason}. Run it with TypeScript 6 instead:\n  ${rerun}`);
 }

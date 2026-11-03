@@ -74,10 +74,12 @@ move and no template literal or comment would change; it re-parses the result an
 a file it would break. What it can't fix stays in the report. `--rules=1,5` limits the report
 to some rules.
 
-The script needs the `typescript` package (5.x or 6.x), which it loads from the project, so in a
-new project install dependencies first. TypeScript 7 is the native compiler and has no
-JavaScript parser API; with it, the script prints the `npx -y -p typescript@6 …` command to run
-instead.
+The script needs the `typescript` package (5.x or 6.x). Loading a package runs its code, so it
+loads `typescript` only from the current directory (run it from the project root, after
+installing dependencies) or the folder given with `--typescript=<dir>`, never from the folders it
+checks. To check code you don't trust, run it from outside that code with your own copy:
+`npx -y -p typescript@6 node <skill>/scripts/style-check.mjs <path>`. TypeScript 7 is the native
+compiler and has no JavaScript parser API; with it, the script prints that `npx` command.
 
 **Reviews** rank findings by how much they hurt comprehension and cite each one as `path:line`.
 For the biggest findings, show the current code next to the proposed code. Measure anything you

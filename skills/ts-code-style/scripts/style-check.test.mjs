@@ -309,6 +309,34 @@ describe('types and files', { skip }, () => {
   });
 });
 
+describe('loading TypeScript', { skip }, () => {
+  it('never runs a typescript package from inside the checked folder', () => {
+    const dir = fixture({
+      'src/clean.ts': ['/** One. */', 'export const ONE = 1;'],
+      'node_modules/typescript/package.json': ['{ "name": "typescript", "main": "index.js" }'],
+      'node_modules/typescript/index.js': [
+        "require('node:fs').writeFileSync(require('node:path').join(__dirname, 'loaded'), '');",
+      ],
+    });
+    const { status } = run([path.join(dir, 'src')]);
+    assert.equal(status, 0);
+    assert.equal(fs.existsSync(path.join(dir, 'node_modules/typescript/loaded')), false);
+  });
+
+  it('loads typescript from the folder given with --typescript', () => {
+    const dir = fixture({ 'src/clean.ts': ['/** One. */', 'export const ONE = 1;'] });
+    const elsewhere = fs.mkdtempSync(path.join(os.tmpdir(), 'style-check-cwd-'));
+    const found = spawnSync(process.execPath, [CLI, dir, `--typescript=${TYPESCRIPT_DIR}`], {
+      cwd: elsewhere,
+    });
+    const missing = spawnSync(process.execPath, [CLI, dir], { cwd: elsewhere, encoding: 'utf8' });
+
+    assert.equal(found.status, 0);
+    assert.equal(missing.status, 2);
+    assert.match(missing.stderr, /npx -y -p typescript@6/);
+  });
+});
+
 describe('command line', { skip }, () => {
   it('exits 2 with every problem listed for bad options', () => {
     const { status, stderr } = run(['src', '--rules=typo', '--bogus', '--width=']);
