@@ -334,6 +334,50 @@ footer a:hover { color: var(--accent); }
             <p>Generate strong, scalable company, product, platform, feature, sub-brand, or rename candidates using a professional naming workflow. Use when the user asks to name or rename a startup, company, product, app, AI product, platform, feature, service, brand architecture element, or when they request naming territories, raw name candidates, scored shortlists, naming rationale, product-name brainstorming, or final naming recommendations.</p>
           </details>
         </li>
+        <li class="card" id="readme-writer">
+          <div class="card-body">
+            <h3>README Writer</h3>
+            <p>Write, rewrite and review READMEs that read like a maintainer wrote them: what the project is in the first sentence, a working example on the first screen, and every command, name, port and link checked against the repo. Covers root READMEs and the root, package and app READMEs of a monorepo.</p>
+            <dl class="facts">
+              <div>
+                <dt>What it does</dt>
+                <dd><ul>
+                  <li>Reads the repo first (manifests, lockfile, exports, tests, <code>--help</code>, <code>.env.example</code>) and writes only facts it can trace to a file or a command it ran.</li>
+                  <li>Picks a skeleton by project type: library, small utility, CLI, framework, app or internal service.</li>
+                  <li>Drops the habits that make a README read as generated: emoji headings, badge walls, bold-label feature lists, marketing words, empty Contributing sections, invented benchmarks and sign-offs.</li>
+                  <li>Gives every npm package a real badge row (npm version, CI from an existing workflow, license, then downloads, bundle size or Node version where they fit), built from the manifest and the workflow files.</li>
+                  <li>Writes each monorepo README for its own reader: a package table at the root, npm-ready package READMEs with the exact scoped name, peers and badges, app READMEs with the real filter, port and env vars, and nothing for config packages.</li>
+                  <li>Replaces create-next-app and create-turbo boilerplate, and reviews an existing README with findings ranked from wrong facts to wording.</li>
+                  <li>Ships a checker that catches broken links and anchors, missing scripts, filters and turbo tasks, the wrong package manager, wrong ports and package names, badges for another package or a missing workflow, imports the package doesn't export, license mismatches and common slop.</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Try asking</dt>
+                <dd><ul class="asks">
+                  <li>Write a README for this CLI, we're publishing it to npm next week</li>
+                  <li>The READMEs in this monorepo are all create-turbo leftovers. Write proper ones.</li>
+                  <li>This README sounds AI-generated. Rewrite it so it reads like a maintainer wrote it.</li>
+                  <li>Review our README and tell me what's wrong with it</li>
+                </ul></dd>
+              </div>
+              <div>
+                <dt>Needs</dt>
+                <dd>Node.js 18 or later for the checker script. Uses the project's own package manager to run examples.</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="install">
+            <div class="cmd-row">
+              <code class="cmd">pnpx skills add sandrinodm/skills --skill readme-writer</code>
+              <button class="copy" type="button"><span class="copy-label">Copy</span><span class="sr-only"> install command for README Writer</span></button>
+            </div>
+            <a class="link" href="https://github.com/sandrinodm/skills/blob/main/skills/readme-writer/SKILL.md">SKILL.md</a>
+          </div>
+          <details class="prompt">
+            <summary><span class="pt">Agent description</span><span class="ph" aria-hidden="true"></span></summary>
+            <p>Write, rewrite and review README files that read like a maintainer wrote them instead of a template or a model: every command run, every claim traced to the code, a real npm badge row instead of a badge wall, no emoji headings, adjective feature lists or invented benchmarks. Covers root READMEs for libraries, CLIs, frameworks, apps and internal services, and READMEs inside monorepos (the root, published packages that become the npm page, internal packages, and apps like apps/web or apps/api). Use it whenever the user asks to write, create, improve, clean up, fix or review a README or package README; to document a new package or app in a workspace; to replace create-next-app, create-turbo or other scaffolder READMEs; to prepare a package for publishing; or when a README sounds AI-generated or out of date. Includes a checker script for broken links, missing scripts, wrong ports and package names, and common slop. SKIP: docs-site pages, API reference generation, CHANGELOGs, blog posts, code comments.</p>
+          </details>
+        </li>
         <li class="card" id="ts-code-style">
           <div class="card-body">
             <h3>TypeScript Code Style</h3>
