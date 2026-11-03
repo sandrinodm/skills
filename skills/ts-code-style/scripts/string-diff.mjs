@@ -276,7 +276,6 @@ class Lexer {
     while (this.index < source.length) {
       const char = source[this.index];
       const next = source[this.index + 1];
-
       if (WHITESPACE.test(char)) {
         this.index++;
       } else if (char === '/' && next === '/') {

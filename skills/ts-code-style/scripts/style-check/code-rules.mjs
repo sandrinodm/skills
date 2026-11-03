@@ -61,7 +61,6 @@ const ASSERTION_CALLEE = new RegExp(
 export function checkMagicNumber(ts, file, node, add) {
   const value = Number(node.text);
   const parent = node.parent;
-
   if (file.isTest || ALLOWED_NUMBERS.has(value)) {
     return;
   }
@@ -138,7 +137,6 @@ function constantDeclaration(ts, node) {
 function isStatusCode(ts, node) {
   const value = Number(node.text);
   const parent = node.parent;
-
   if (!Number.isInteger(value) || value < HTTP_STATUS_MIN || value > HTTP_STATUS_MAX) {
     return false;
   }

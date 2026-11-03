@@ -47,6 +47,36 @@ describe('rule 1: spacing', { skip }, () => {
     assert.deepEqual(ids(findings, '1'), [['split-step', 3]]);
   });
 
+  it('treats declarations written together as one step with the statement that uses them', () => {
+    const { findings } = check({
+      'src/uptime.ts': [
+        'export function label(seconds: number): string {',
+        '  const days = Math.floor(seconds / 86_400);',
+        '  const hours = Math.floor(seconds / 3600);',
+        '',
+        '  if (days > 0) {',
+        '    return `${days}d`;',
+        '  }',
+        '',
+        '  return `${hours}h`;',
+        '}',
+      ],
+      'src/setup.ts': [
+        'export function run(args: string[]): number {',
+        '  const options = parse(args);',
+        '  const files = list(options.targets);',
+        '',
+        '  if (options.write) {',
+        '    return files.length;',
+        '  }',
+        '',
+        '  return 0;',
+        '}',
+      ],
+    });
+    assert.deepEqual(ids(findings, '1'), [['split-step', 4]]);
+  });
+
   it('leaves a name used only inside a callback alone', () => {
     const { findings } = check({
       'src/fixture.ts': [

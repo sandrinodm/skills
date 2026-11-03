@@ -83,12 +83,9 @@ function checkStatementSpacing(context, statements, isModule) {
     // A comment between a value and its use belongs with both: `const x = …;`, the comment,
     // then the `if` that checks `x`.
     if (previous && !isModule && ts.isVariableStatement(previous)) {
-      checkSplitStep(
-        context,
-        previous,
-        statement,
-        comment ? firstCommentStart(ts, text, statement) : start,
-      );
+      const group = declarationGroup(ts, text, statements, index - 1);
+      const nextStart = comment ? firstCommentStart(ts, text, statement) : start;
+      checkSplitStep(context, group, statement, nextStart);
     }
 
     if (previous && isBlockStatement(ts, previous)) {
@@ -97,13 +94,51 @@ function checkStatementSpacing(context, statements, isModule) {
   }
 }
 
-function checkSplitStep(context, declaration, statement, nextStart) {
+// Reports a blank line between a declaration and the statement that uses it. `group` ends with the
+// declaration right above the blank line. An earlier one counts only when the statement is an `if`
+// and no later line of the run reads it: `days` and `hours` are values the condition picks
+// from, while `options` that `ts` and `files` are built from starts a setup paragraph, and so
+// does a run of service lookups (`const orders = yield* Orders;` …) followed by the work.
+function checkSplitStep(context, group, statement, nextStart) {
   const { ts, file } = context;
-  const used = usedDeclaredName(ts, declaration, statement);
-  if (used && BLANK_LINE.test(file.text.slice(declaration.end, nextStart))) {
-    const message = `blank line between \`${used}\` and the statement that uses it`;
-    reportBlankLines(context, { id: 'split-step', from: declaration.end, to: nextStart, message });
+  const last = group.at(-1);
+  if (!BLANK_LINE.test(file.text.slice(last.end, nextStart))) {
+    return;
   }
+
+  const candidates = ts.isIfStatement(statement)
+    ? group.filter((declaration, index) => !readByLater(ts, declaration, group.slice(index + 1)))
+    : [last];
+  const used = candidates
+    .map((declaration) => usedDeclaredName(ts, declaration, statement))
+    .find(Boolean);
+  if (used) {
+    const message = `blank line between \`${used}\` and the statement that uses it`;
+    reportBlankLines(context, { id: 'split-step', from: last.end, to: nextStart, message });
+  }
+}
+
+function readByLater(ts, declaration, later) {
+  return later.some((statement) => usedDeclaredName(ts, declaration, statement));
+}
+
+// The run of variable statements that ends at `index`, with no blank line inside it. Declarations
+// written together prepare one step, so a use of any of them belongs to that step:
+// `const days = …; const hours = …;`, then `if (days > 0)`.
+function declarationGroup(ts, text, statements, index) {
+  const group = [statements[index]];
+
+  for (let earlier = index - 1; earlier >= 0; earlier--) {
+    const candidate = statements[earlier];
+    const between = text.slice(candidate.end, group[0].getStart());
+    if (!ts.isVariableStatement(candidate) || BLANK_LINE.test(between)) {
+      break;
+    }
+
+    group.unshift(candidate);
+  }
+
+  return group;
 }
 
 function checkBlankAfterBlock(context, block, nextStart) {

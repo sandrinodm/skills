@@ -114,13 +114,14 @@ before/after examples are in [references/patterns.md](references/patterns.md).
 
    That holds when computing the value took several lines (a multi-line
    `const response = await fetch(url, { … });` then `if (!response.ok)`, or `const tax = …` then
-   `return { …, tax }`), and for a table of test cases and the loop over them. Keep a comment
-   with its code too. The blank lines go *after* a closing `}` when more code follows in the same
-   block, which includes between two guard clauses, but not before `else`, `catch`, `finally` or
-   the enclosing `}`, and never between a value and its own guard. Never two blank lines in a
-   row, or a blank line at the start or end of a block. Before you finish, run
-   [`scripts/style-check.mjs`](#style-check) on every file you wrote or changed; `--write` fixes
-   the spacing it reports.
+   `return { …, tax }`), for declarations written together that an `if` picks from
+   (`const days = …; const hours = …;` then `if (days > 0)`), and for a table of test cases and
+   the loop over them. Keep a comment with its code too. The blank lines go *after* a closing `}`
+   when more code follows in the same block, which includes between two guard clauses, but not
+   before `else`, `catch`, `finally` or the enclosing `}`, and never between a value and its own
+   guard. Never two blank lines in a row, or a blank line at the start or end of a block. Before
+   you finish, run [`scripts/style-check.mjs`](#style-check) on every file you wrote or changed;
+   `--write` fixes the spacing it reports.
 2. **Name every magic number, pattern and repeated literal** as a `SCREAMING_SNAKE` constant with
    units (`MAX_CREDENTIAL_FILE_BYTES`, `TOKEN_REFRESH_MARGIN_MS`): limits, prices, rates, retry
    counts and delays, coupon values. Interpolate limits into their error messages. Use a `Set`
@@ -172,8 +173,10 @@ before/after examples are in [references/patterns.md](references/patterns.md).
     In a refactor, watch for rewrites that look equivalent but aren't: `a && a.b()` versus
     `a?.b()` and `||` versus `??` (they differ for `0`, `''` and `false`), default parameters
     versus `??` (they differ for `null`), `.then()` versus `await` (they differ for a value
-    that isn't a promise), and adding or removing parameter defaults (`now = undefined` versus
-    `now?`), which changes the function's `.length`. Keep the original form or report the
+    that isn't a promise), adding or removing parameter defaults (`now = undefined` versus
+    `now?`), which changes the function's `.length`, and replacing a truthiness guard
+    (`!x || typeof x.sku …`) with a type guard such as `typeof x === 'object'`, which changes
+    whether functions, arrays and boxed values pass. Keep the original form or report the
     difference.
 
 ## Types and boundaries
@@ -196,7 +199,10 @@ Details, examples and sources (mostly Matt Pocock's
   (`Schema.decodeUnknownSync`). Keep Zod only where an existing codebase already standardized on
   it. Derive types from schemas (`typeof X.Type`) and decode with the `decodeUnknown*` functions.
   A schema is for structured input (JSON bodies, config, messages); a single header or flag with
-  a fixed grammar needs only a small, well-tested parser.
+  a fixed grammar needs only a small, well-tested parser. Match the whole grammar before handing
+  the value to a lenient built-in (`Date.parse` accepts `'Mon 2020'`; `Number` and `parseInt`
+  accept more than they look like they do), and test inputs the built-in takes but the grammar
+  rejects.
 - **Brand validated primitives** that are easy to mix up or security-relevant (`UserId`, `Email`).
 - **Declare return types on exported top-level functions**, including `Effect.Effect<A, E, R>`.
 - **Deep modules**: a small interface over a lot of behavior. Inject dependencies, return results
@@ -266,11 +272,13 @@ For a readability pass over an existing codebase, follow
    string-diff script, and probe edge cases (`null` arguments, empty lists, non-promise
    callbacks) on the old and new code.
 7. **Report** against the baseline ("7/7 tests passed before and after", style-check counts per
-   rule before and after): the substantive changes, the renames (how many files and import
-   specifiers changed, and the leftovers fixed by hand), **every** observable behavior difference
-   however small (or that you checked and found none), what you left alone and why, structure
-   and naming recommendations you didn't apply (with a file count), what couldn't run, and where
-   the snapshots are. Offer a commit instead of making one.
+   rule before and after): the substantive changes, the renames as numbers ("6 files renamed, 7
+   import specifiers rewritten", and the leftovers fixed by hand), **every** observable behavior
+   difference however small (or that you checked and found none), what you left alone and why,
+   structure and naming recommendations you didn't apply (with a file count), what couldn't run,
+   and where the snapshots are. End by offering to commit (for example a formatting-and-renames
+   commit, then a readability commit), and don't commit until the user says so. Being told not to
+   commit limits what you do, not what you offer: still close with the split you'd use.
 
 ## Scripts
 
