@@ -1,0 +1,19 @@
+{
+  "name": "acme",
+  "private": true,
+  "description": "Acme Invoices: send invoices and collect card payments",
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "db:up": "docker compose up -d db",
+    "db:migrate": "pnpm --filter @acme/api db:migrate"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "README Writer"
+  short_description: "Write and review READMEs that read like a maintainer wrote them."
+  default_prompt: "Use $readme-writer to write, rewrite or review a README: read the repo first, verify every command, name, port and link against the code, open with what the project is and a working example, drop template sections and marketing language, and handle monorepo root, package and app READMEs for their own readers. Run scripts/check-readme.mjs on every README you touch."

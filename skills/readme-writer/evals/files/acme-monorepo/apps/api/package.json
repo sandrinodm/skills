@@ -1,0 +1,23 @@
+{
+  "name": "@acme/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file=.env src/server.ts",
+    "build": "tsc",
+    "start": "node --env-file=.env dist/server.js",
+    "db:migrate": "tsx --env-file=.env src/migrate.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "hono": "^4.10.0",
+    "postgres": "^3.4.0",
+    "stripe": "^19.0.0"
+  },
+  "devDependencies": {
+    "@acme/tsconfig": "workspace:*",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

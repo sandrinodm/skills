@@ -1,0 +1,17 @@
+{
+  "name": "env-drift",
+  "version": "0.2.0",
+  "description": "Compare a .env file against .env.example and report missing, extra and empty keys",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "env-drift": "./bin/env-drift.js"
+  },
+  "files": ["bin/env-drift.js"],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

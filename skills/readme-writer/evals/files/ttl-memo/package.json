@@ -1,0 +1,19 @@
+{
+  "name": "ttl-memo",
+  "version": "1.3.0",
+  "description": "Memoize async functions with a time-to-live",
+  "license": "ISC",
+  "type": "module",
+  "exports": "./src/index.js",
+  "files": ["src/index.js", "src/index.d.ts"],
+  "types": "./src/index.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "quick-lru": "^7.0.0"
+  }
+}

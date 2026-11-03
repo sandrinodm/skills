@@ -1,0 +1,100 @@
+{
+  "skill_name": "readme-writer",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "The READMEs in this monorepo are all leftovers from create-turbo and create-next-app. Write proper ones for the root and for each app and package that needs one. We're about to publish @acme/sdk to npm.",
+      "expected_output": "A root README that says what Acme Invoices is and how to run it locally with the real pnpm scripts, Postgres via docker compose, and a table of the apps and packages that exist. apps/web gets a README with the real port (3001), its env vars and the run command from the root; apps/api is documented with PORT 8787, DATABASE_URL, API_KEY, STRIPE_SECRET_KEY and the migration step, and the READMEs say that the dashboard's ACME_API_KEY must match the API's API_KEY. packages/sdk gets an npm-ready README for @acme/sdk with a working example of createClient and invoices.list/create/pay. The tsconfig boilerplate is replaced or removed, and private packages are never shown with npm install. The checker reports no errors.",
+      "files": [
+        "evals/files/acme-monorepo"
+      ],
+      "assertions": [
+        "Every scaffolder README is gone: no 'Turborepo starter', 'create-turbo', 'bootstrapped with create-next-app', or 'base shared tsconfig.json' text remains in any README",
+        "The root README says what the project is (invoicing / sending invoices and collecting card payments) in its opening lines, not a slogan",
+        "The root README's local development commands use pnpm only and use scripts that exist in the root package.json (pnpm install, pnpm db:up, pnpm db:migrate, pnpm dev, pnpm build, pnpm typecheck); no pnpm lint or pnpm test, which don't exist",
+        "The root README lists the real apps and packages (apps/web, apps/api, packages/sdk, packages/ui, packages/tsconfig) and none that don't exist (no 'docs' app, no @repo/eslint-config)",
+        "The web app's documented local URL uses port 3001 (from its dev script), not 3000",
+        "The web app's env vars NEXT_PUBLIC_API_URL and ACME_API_KEY are documented, from apps/web/.env.example",
+        "apps/api is documented (its own README or a section in the root): port 8787, DATABASE_URL, API_KEY and STRIPE_SECRET_KEY from .env.example, Postgres from docker compose, and the db:migrate step",
+        "States the cross-app constraint that apps/web's ACME_API_KEY must equal apps/api's API_KEY (the API rejects other bearer tokens with 401)",
+        "packages/sdk/README.md exists, its H1 or install line uses the exact name @acme/sdk, and it shows npm install @acme/sdk",
+        "packages/sdk/README.md has an npm version badge for @acme/sdk (img.shields.io/npm/v/@acme/sdk linking npmjs.com/package/@acme/sdk); it has no CI badge because the repo has no .github/workflows, and every badge URL names @acme/sdk",
+        "The root README and the app and private-package READMEs have no npm badges",
+        "The SDK README's example uses the real API: createClient({ apiKey, baseUrl? }) and invoices.list / invoices.create({ customerId, amountCents, currency }) / invoices.pay(id); no invented methods or options",
+        "The SDK README states the Node 20+ requirement (from engines) and documents AcmeError or non-2xx behaviour, or at least doesn't contradict them",
+        "The SDK README has no workspace setup steps (no 'clone the repo', no pnpm install of the whole monorepo) and no relative links that leave packages/sdk",
+        "No README shows npm install / pnpm add of the private packages @acme/ui or @acme/tsconfig",
+        "packages/tsconfig's README is either deleted or replaced with how to extend it (extends @acme/tsconfig/base.json or nextjs.json)",
+        "No invented facts across the READMEs: no benchmarks, badges for services that don't exist, Discord/support links, roadmap, or deploy targets not present in the repo",
+        "Running scripts/check-readme.mjs on all written READMEs reports 0 errors, and any remaining slop findings are explained",
+        "The final report lists what was verified (commands run or files read) and what couldn't be, such as running the apps without Postgres or Stripe keys"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Someone generated this README with AI and it shows. Rewrite it so it reads like a maintainer wrote it.",
+      "expected_output": "A short, plain README for ttl-memo: what it does in one sentence (memoize async functions with a TTL), npm install ttl-memo, an example using memo() with the real options (ttl, maxSize, key) and the .clear()/.delete() methods, the real behaviours (shared in-flight promise, rejections not cached, RangeError for non-positive ttl), Node 18+, and an npm version badge for ttl-memo instead of the fake badge wall. The invented claims (10x faster, zero dependencies, Redis, cacheErrors, expire) are removed, the license is fixed to ISC, and the missing LICENSE file is raised with the user.",
+      "files": [
+        "evals/files/ttl-memo"
+      ],
+      "assertions": [
+        "The install command uses the real package name: npm install ttl-memo (not ttlmemo)",
+        "The example imports memo (the real export), not memoize",
+        "Options documented are only the real ones (ttl, maxSize, key), with the real defaults (60000 ms, 1000); expire, cacheErrors and redis are gone",
+        "Documents the real behaviours read from the code: concurrent calls share one in-flight promise, rejected promises are not cached, and/or .clear() and .delete()",
+        "Removes the false 'zero dependencies' claim (the package depends on quick-lru) and the unbacked '10x faster than p-memoize' claim",
+        "Removes the invented Redis support and the invented roadmap",
+        "The license line matches package.json (ISC), and the report tells the user there is no LICENSE file instead of linking one that doesn't exist",
+        "No emoji headings, no static build/coverage/PRs-welcome/'made with' badges, no star badge, no bold-label feature list, no 'Happy coding' or 'Made with ❤️'",
+        "Has an npm version badge for ttl-memo (img.shields.io/npm/v/ttl-memo linking npmjs.com/package/ttl-memo) under the H1, and no CI badge because the repo has no workflow",
+        "The opening sentence says what the package does specifically (memoizes async functions with a time-to-live), not a generic tagline",
+        "The example was run (the agent installed the package or ran the tests/an example script) or the report says it couldn't be run",
+        "Running scripts/check-readme.mjs on the result reports 0 errors and 0 slop findings, or explains each one kept",
+        "The report lists what was removed and why (wrong name, invented options, false claims)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a README for this CLI. We're publishing it to npm next week.",
+      "expected_output": "A README for env-drift that says what it does (compares .env with .env.example and reports missing, extra and empty keys), shows npx env-drift / npm install -g env-drift, shows a real run with its actual output, documents the real flags (-e/--env, -x/--example, --strict, --json, -h, -v) and exit codes (0, 1, 2), notes Node 20+, has an npm version and MIT license badge row, and links the MIT LICENSE. Nothing invented.",
+      "files": [
+        "evals/files/env-drift"
+      ],
+      "assertions": [
+        "The opening says what the tool does specifically: compares a .env file against .env.example and reports missing / extra / empty keys",
+        "Shows how to run or install it with the real package name: npx env-drift and/or npm install -g env-drift (or as a devDependency)",
+        "Documents every real flag and only real flags: -e/--env, -x/--example, --strict, --json, -h/--help, -v/--version, with the real defaults (.env, .env.example)",
+        "Documents the real exit codes: 0 no drift, 1 drift found (missing keys, or extra keys with --strict), 2 unreadable file or bad arguments",
+        "Explains that extra keys are reported but only fail the run with --strict",
+        "Shows example output that matches what the CLI actually prints (e.g. 'missing  STRIPE_SECRET_KEY  in .env.example, not in .env' style rows or '.env matches .env.example'), captured by running it",
+        "States the Node 20+ requirement from engines",
+        "License line says MIT and links the existing LICENSE file",
+        "Invents no features (no auto-fix, no watch mode, no config file, no CI integration claims beyond what the exit codes allow, no benchmarks)",
+        "Has a badge row under the H1 with an npm version badge for env-drift and a license badge (MIT), all URLs naming env-drift; no CI badge because the repo has no workflow",
+        "No emoji headings, no badge wall, no bold-label feature list, no Contributing section with only 'PRs welcome'",
+        "Running scripts/check-readme.mjs on the result reports 0 errors and 0 slop findings, or explains each one kept"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Can you review the README in this repo? Don't change anything yet, just tell me what's wrong with it.",
+      "expected_output": "A review that leaves README.md untouched and ranks findings with line references: first the factual errors (wrong package name ttlmemo, memoize instead of memo, invented options expire/cacheErrors/redis, false zero-dependencies and 10x claims, MIT vs ISC with no LICENSE file, invented Redis support and roadmap), then structure and slop (badge wall with fake static badges, emoji headings, bold-label feature list, TOC in a short README, empty Contributing, sign-off). Top findings come with proposed rewrites, and it offers to apply them.",
+      "files": [
+        "evals/files/ttl-memo"
+      ],
+      "assertions": [
+        "README.md is not modified",
+        "Findings cite line numbers or quote the offending lines",
+        "Factual errors are ranked before style issues",
+        "Flags the wrong package name in the install command (ttlmemo vs ttl-memo from package.json)",
+        "Flags that the example imports memoize but the package exports memo",
+        "Flags the invented options (expire, cacheErrors, redis) by comparing with src/index.js or src/index.d.ts, and names the real ones (ttl, maxSize, key)",
+        "Flags the false 'zero dependencies' claim (quick-lru) and the unbacked '10x faster' benchmark",
+        "Flags the license mismatch (README says MIT, package.json says ISC) and the missing LICENSE file",
+        "Flags the fake static badges (build passing, coverage 100%, PRs welcome, made with TypeScript) and the star badge, and suggests a real npm version badge for ttl-memo instead",
+        "Flags at least three formatting or wording tells: emoji headings, bold-label feature list, table of contents in a short README, 'Whether you're...', empty Contributing section, 'Happy coding' sign-off",
+        "Shows a proposed rewrite for at least the opening or the example, and offers to apply the changes"
+      ]
+    }
+  ]
+}
