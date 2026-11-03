@@ -3,15 +3,15 @@ name: readme-writer
 description: >-
   Write, rewrite and review README files that read like a maintainer wrote them instead of a
   template or a model: every command run, every claim traced to the code, a real npm badge row
-  instead of a badge wall, no emoji headings, adjective feature lists or invented benchmarks. Covers root READMEs for libraries, CLIs,
-  frameworks, apps and internal services, and READMEs inside monorepos (the root, published
-  packages that become the npm page, internal packages, and apps like apps/web or apps/api). Use it
-  whenever the user asks to write, create, improve, clean up, fix or review a README or
-  package README; to document a new package or app in a workspace; to replace create-next-app,
-  create-turbo or other scaffolder READMEs; to prepare a package for publishing; or when a README
-  sounds AI-generated or out of date. Includes a checker script for broken links, missing scripts,
-  wrong ports and package names, and common slop. SKIP: docs-site pages, API reference
-  generation, CHANGELOGs, blog posts, code comments.
+  instead of a badge wall, no emoji headings, adjective feature lists or invented benchmarks. Covers
+  root READMEs for libraries, CLIs, frameworks, apps and internal services, and READMEs inside
+  monorepos (the root, published packages that become the npm page, internal packages, and apps like
+  apps/web or apps/api). Use it whenever the user asks to write, create, improve, clean up, fix or
+  review a README or package README; to document a new package or app in a workspace; to replace
+  create-next-app, create-turbo or other scaffolder READMEs; to prepare a package for publishing; or
+  when a README sounds AI-generated or out of date. Includes a checker script for broken links,
+  missing scripts, wrong ports and package names, and common slop. SKIP: docs-site pages, API
+  reference generation, CHANGELOGs, blog posts, code comments.
 ---
 
 # README Writer
@@ -126,7 +126,9 @@ text: a docs site that includes it, tests that grep it, a `files` entry, a symli
 11. **Write package READMEs for the registry page.** A published package README is read on npm,
     crates.io or PyPI without the repo around it. Put the exact manifest name in the H1 and the
     install line, install required peers in the same command, and use absolute URLs for
-    images and for links that leave the package directory.
+    images and for links that leave the package directory. npm only resolves relative links
+    (`LICENSE`, `docs/usage.md`) through the manifest's `repository` field; when it's missing,
+    make every link absolute and ask the maintainer to add the field.
 12. **Give every npm package a badge row.** One line directly under the H1, in this order:
     the npm version (always, even before the first publish), then CI if a workflow in
     `.github/workflows` runs the tests, then the license if the manifest declares one. After

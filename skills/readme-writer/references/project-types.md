@@ -370,7 +370,10 @@ How to fill them in:
   workflow, there is no CI badge.
 - **Link targets**: the version and downloads badges link to the npm page, CI to the workflow
   runs, license to the LICENSE file. A package README is shown on npm, so make the LICENSE link
-  absolute there (`https://github.com/OWNER/REPO/blob/main/packages/pkg/LICENSE`).
+  absolute there (`https://github.com/OWNER/REPO/blob/main/packages/pkg/LICENSE`). npm turns a
+  relative link into a repo link only when the manifest has a `repository` field; without one,
+  `(LICENSE)` and `(package.json)` are broken on the npm page. Then link the license badge to
+  the npm page too, and say in the report that the field is missing.
 - **Before the first publish** the npm badges render as "package not found". Add them anyway:
   they fix themselves on publish. Say so in your report.
 - **Dynamic beats static** when both exist (`npm/l/NAME` reads the license from the registry).
