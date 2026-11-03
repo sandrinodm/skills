@@ -127,8 +127,9 @@ text: a docs site that includes it, tests that grep it, a `files` entry, a symli
     crates.io or PyPI without the repo around it. Put the exact manifest name in the H1 and the
     install line, install required peers in the same command, and use absolute URLs for
     images and for links that leave the package directory. npm only resolves relative links
-    (`LICENSE`, `docs/usage.md`) through the manifest's `repository` field; when it's missing,
-    make every link absolute and ask the maintainer to add the field.
+    (`LICENSE`, `docs/usage.md`) through the manifest's `repository` field. When it's missing,
+    link badges to the npm page, keep the License line's relative `[LICENSE](LICENSE)` link (it
+    works on GitHub and in the installed package), and ask the maintainer to add the field.
 12. **Give every npm package a badge row.** One line directly under the H1, in this order:
     the npm version (always, even before the first publish), then CI if a workflow in
     `.github/workflows` runs the tests, then the license if the manifest declares one. After
