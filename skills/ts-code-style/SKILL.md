@@ -81,9 +81,11 @@ checks. To check code you don't trust, run it from outside that code with your o
 `npx -y -p typescript@6 node <skill>/scripts/style-check.mjs <path>`. TypeScript 7 is the native
 compiler and has no JavaScript parser API; with it, the script prints that `npx` command.
 
-**Reviews** rank findings by how much they hurt comprehension and cite each one as `path:line`.
-For the biggest findings, show the current code next to the proposed code. Measure anything you
-quote (line lengths, counts) instead of estimating it, and skip idiomatic one-offs.
+**Reviews** rank findings by how much they hurt comprehension and cite every one as `path:line`
+(`src/orders.ts:24`, not "line 24"). For at least the top two findings, show the current code
+next to the proposed code. Measure anything you quote (line lengths, counts) instead of
+estimating it, flag any behavior change a proposal would cause (rule 13), and skip idiomatic
+one-offs.
 
 **Changing a few files**: restyle only the files you touch, match how their neighbours are written,
 then run the project's checks (format, lint, JSDoc lint, typecheck, tests) and
@@ -169,8 +171,10 @@ before/after examples are in [references/patterns.md](references/patterns.md).
     restructuring.
     In a refactor, watch for rewrites that look equivalent but aren't: `a && a.b()` versus
     `a?.b()` and `||` versus `??` (they differ for `0`, `''` and `false`), default parameters
-    versus `??` (they differ for `null`), and `.then()` versus `await` (they differ for a value
-    that isn't a promise). Keep the original form or report the difference.
+    versus `??` (they differ for `null`), `.then()` versus `await` (they differ for a value
+    that isn't a promise), and adding or removing parameter defaults (`now = undefined` versus
+    `now?`), which changes the function's `.length`. Keep the original form or report the
+    difference.
 
 ## Types and boundaries
 
@@ -247,7 +251,11 @@ For a readability pass over an existing codebase, follow
    work unasked.
 3. **Ask** about line width (100 recommended), depth (cosmetic, readability refactors
    (recommended), or deeper restructuring) and, when any file names aren't kebab-case, file names
-   (rename to kebab-case (recommended), or keep), or state the defaults you chose.
+   (rename to kebab-case (recommended), or keep), or state the defaults you chose. A rename keeps
+   each file in its folder with the same base name (`lib/serviceTypes.ts` becomes
+   `lib/service-types.ts`, as `rename-kebab.mjs` does). Moving files between folders, regrouping
+   by domain or adding role suffixes (`.types.ts`) is deeper restructuring, even when the user
+   asks about "file layout": at the default depth, list those as recommendations.
 4. **Mechanical pass**: formatter config and a format run, `scripts/style-check.mjs --write` for
    the spacing, then the renames with `scripts/rename-kebab.mjs` if the user chose them, then
    checkpoint a copy of the tree.
@@ -258,7 +266,8 @@ For a readability pass over an existing codebase, follow
    string-diff script, and probe edge cases (`null` arguments, empty lists, non-promise
    callbacks) on the old and new code.
 7. **Report** against the baseline ("7/7 tests passed before and after", style-check counts per
-   rule before and after): the substantive changes, **every** observable behavior difference
+   rule before and after): the substantive changes, the renames (how many files and import
+   specifiers changed, and the leftovers fixed by hand), **every** observable behavior difference
    however small (or that you checked and found none), what you left alone and why, structure
    and naming recommendations you didn't apply (with a file count), what couldn't run, and where
    the snapshots are. Offer a commit instead of making one.
