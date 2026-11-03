@@ -139,7 +139,10 @@ that behavior didn't change, so they should change as little as possible.
 
 Run all of these on the combined tree, checking real exit codes:
 
-1. Typecheck, lint, format check, JSDoc or doc lint if the project has it.
+1. Typecheck, lint, format check, JSDoc or doc lint if the project has it, and
+   `node <skill>/scripts/style-check.mjs <changed dirs>`: no error findings may remain outside
+   the `[api]` and `[files]` ones you're reporting as recommendations. `--write` fixes the
+   spacing; format again afterwards.
 2. Build.
 3. Full test suite, at least twice. If anything was flaky, run it five times.
 4. **User-facing strings**:

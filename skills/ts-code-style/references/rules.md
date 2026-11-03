@@ -14,7 +14,10 @@ after every statement has no visible steps either.
   clauses. Not before `else`, `catch` or `finally`, and not before the enclosing block's own `}`.
 - **A value and its check stay together**: no blank line between a declaration and the `if`,
   `for` or `switch` that tests or consumes it (`const output = …;` directly above
-  `if (output === undefined)`, `let total = 0;` directly above the loop that adds to it).
+  `if (output === undefined)`, `let total = 0;` directly above the loop that adds to it). This
+  is the most common spacing mistake, and it usually comes from reading "a blank line between
+  guard clauses" as "a blank line before every guard". The blank line goes between two guards,
+  never between a value and the guard that checks it.
 - **A comment and its code stay together**: no blank line between a comment and the statement it
   describes.
 - **A result and its return stay together**: no blank line between `const result = …` and the
@@ -24,10 +27,14 @@ after every statement has no visible steps either.
   starts after a blank line.
 - Never two blank lines in a row, and never a blank line at the start or end of a block.
 - **Check it mechanically before you finish.** Agents reliably over-apply "blank line between
-  steps" and leave one between a value and its use. Look at every blank line you wrote: if the
-  statement just below it uses a name declared in the statement just above it, delete the blank
-  line. This catches `const delayMs = …;`, a blank line, then `if (delayMs !== undefined)`, and a
-  table of test cases separated from the loop that runs them.
+  steps" and leave one between a value and its use. Run `scripts/style-check.mjs` on every file
+  you wrote or changed: it reports each blank line where the statement just below uses a name
+  declared in the statement just above (in its condition, loop header or value, not only inside
+  a nested function), and each blank line between a comment and its code. This catches
+  `const delayMs = …;`, a blank line, then `if (delayMs !== undefined)`, and a table of test
+  cases separated from the loop that runs them. `--write` removes them. Module-level code is
+  exempt from the value-and-use and comment checks (constants sit apart from the functions that
+  use them on purpose), except a doc comment separated from its declaration.
 
 ```ts
 export function classifyFailure(provider: Provider, error: unknown): ApiError {
@@ -52,7 +59,8 @@ export function classifyFailure(provider: Provider, error: unknown): ApiError {
 
 Enforce the closing-brace part with a lint rule when the project's linter supports it (see
 [formatter.md](formatter.md)). The other parts can't be linted, because a
-rule can't tell a related statement from an unrelated one.
+rule can't tell a related statement from an unrelated one; `scripts/style-check.mjs` checks them
+instead.
 
 ### 2. Name every magic number, pattern and repeated literal
 

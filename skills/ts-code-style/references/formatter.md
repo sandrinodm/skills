@@ -138,7 +138,11 @@ from ESLint, typescript-eslint and unicorn; oxlint has most of them):
 - `@stylistic/padding-line-between-statements` with
   `{ blankLine: 'always', prev: ['if', 'for', 'while', 'do', 'switch', 'try'], next: '*' }`: a blank
   line after a block when more code follows. The other spacing rules (a value next to its check, a
-  comment next to its code) can't be linted and stay hand rules.
+  comment next to its code) can't be linted; `scripts/style-check.mjs` checks them. It also
+  covers braces and nested ternaries, and reports magic numbers, long functions and deep nesting
+  as review items, so projects without this config still get those checks. It has no
+  `max-params` (it counts optional parameters instead) and no type-aware checks such as
+  `no-deprecated`.
 - `no-nested-ternary` / `unicorn/no-nested-ternary`.
 - `max-params` (for example 4): pushes long optional parameter lists toward options objects.
 - `@typescript-eslint/no-magic-numbers`: noisy on a whole codebase, but useful as a one-off audit
